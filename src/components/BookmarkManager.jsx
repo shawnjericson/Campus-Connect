@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { createPortal } from 'react-dom'
 import { X, Search, Filter, Download, Upload, Trash2, ExternalLink } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useBookmarks } from '../contexts/BookmarkContext'
@@ -65,35 +66,35 @@ function BookmarkManager({ onClose }) {
     }
   }
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col">
+  return createPortal(
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[100] p-4 overflow-hidden">
+      <div className="bg-slate-900 border border-slate-700/50 rounded-xl shadow-2xl w-full max-w-4xl h-full max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b">
+        <div className="flex items-center justify-between p-6 border-b border-slate-700/50">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">My Bookmarks</h2>
-            <p className="text-gray-600">{bookmarks.length} items saved</p>
+            <h2 className="text-2xl font-bold text-white">My Bookmarks</h2>
+            <p className="text-slate-400">{bookmarks.length} items saved</p>
           </div>
           <button
             onClick={onClose}
-            className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+            className="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-600 hover:border-cyan-500/30 flex items-center justify-center transition-all duration-300 text-slate-300 hover:text-cyan-400"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Controls */}
-        <div className="p-6 border-b bg-gray-50">
+        <div className="p-6 border-b border-slate-700/50 bg-slate-800/50">
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search bookmarks..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 text-white placeholder-slate-400 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-300"
               />
             </div>
 
@@ -252,7 +253,8 @@ function BookmarkManager({ onClose }) {
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
