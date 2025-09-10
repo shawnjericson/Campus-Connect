@@ -26,10 +26,10 @@ function GalleryPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
-          <p className="text-slate-300">Loading gallery...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading gallery...</p>
         </div>
       </div>
     )
@@ -37,9 +37,9 @@ function GalleryPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-400 mb-4">Error loading gallery: {error}</p>
+          <p className="text-red-500 mb-4">Error loading gallery: {error}</p>
           <button
             onClick={() => window.location.reload()}
             className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-300"
@@ -84,14 +84,20 @@ function GalleryPage() {
   )
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-white py-8">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Gallery
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-2 mb-6">
+            <Camera className="w-4 h-4 text-cyan-400" />
+            <span className="text-cyan-400 text-sm font-medium tracking-wider">PHOTO GALLERY</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
+              Gallery
+            </span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore memorable moments from our campus events
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Visual memories from our tech events • Explore memorable moments from our campus community
           </p>
         </div>
 

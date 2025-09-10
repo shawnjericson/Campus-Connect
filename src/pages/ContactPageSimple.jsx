@@ -6,36 +6,36 @@ function ContactPageSimple() {
 
   // Static data for testing
   const university = {
-    name: 'University of Information Technology and Communications',
-    address: '144 Xuan Thuy Street, Cau Giay District, Hanoi, Vietnam',
-    phone: '(024) 3869-2222',
-    email: 'info@university.edu.vn'
+    name: 'Aptech Computer Education Center',
+    address: '35/6 D5 Street, Thanh My Tay Ward, Ho Chi Minh City, Vietnam',
+    phone: '(028) 3848-3333',
+    email: 'info@aptech.edu.vn'
   }
 
   const contacts = [
     {
       id: 1,
-      name: 'Dr. Nguyen Van An',
-      title: 'Head of Information Technology Faculty',
-      department: 'Information Technology',
-      phone: '024-3869-2222',
-      email: 'nguyen.van.an@university.edu.vn',
-      office: 'Room 301, Building A',
-      workingHours: 'Mon-Fri: 8:00-17:00',
+      name: 'Mr. Le Minh Duc',
+      title: 'Academic Director',
+      department: 'Academic Affairs',
+      phone: '028-3848-3334',
+      email: 'duc.le@aptech.edu.vn',
+      office: 'Room 201, Main Building',
+      workingHours: 'Mon-Fri: 8:00-17:30',
       role: 'faculty',
-      specialization: 'Artificial Intelligence, Machine Learning'
+      specialization: 'Software Development, Project Management'
     },
     {
       id: 2,
-      name: 'Ms. Tran Thi Binh',
-      title: 'Student Coordinator',
+      name: 'Ms. Nguyen Thi Mai',
+      title: 'Student Services Coordinator',
       department: 'Student Affairs',
-      phone: '024-3869-2223',
-      email: 'tran.thi.binh@university.edu.vn',
-      office: 'Room 105, Building B',
-      workingHours: 'Mon-Fri: 8:00-17:00',
+      phone: '028-3848-3335',
+      email: 'mai.nguyen@aptech.edu.vn',
+      office: 'Room 102, Main Building',
+      workingHours: 'Mon-Fri: 8:00-17:30',
       role: 'coordinator',
-      specialization: 'Student Support, Event Coordination'
+      specialization: 'Student Support, Career Guidance'
     }
   ]
 
@@ -250,14 +250,14 @@ function ContactPageSimple() {
             {/* Google Maps Embed */}
             <div className="h-96 bg-gray-200 relative">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.863855283474!2d105.78230831533216!3d21.03813778599482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4cd0c66f05%3A0x3c1e5d8b8b8b8b8b!2s144%20Xu%C3%A2n%20Th%E1%BB%A7y%2C%20C%E1%BA%A7u%20Gi%E1%BA%A5y%2C%20H%C3%A0%20N%E1%BB%99i%2C%20Vietnam!5e0!3m2!1sen!2s!4v1635000000000!5m2!1sen!2s"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4857385897!2d106.6677!3d10.8142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752797e321f8e9%3A0x3c4e6b7e5d8b8b8b!2s35%2F6%20%C4%90%C6%B0%E1%BB%9Dng%20D5%2C%20Th%E1%BA%A1nh%20M%E1%BB%B9%20T%C3%A2y%2C%20Qu%E1%BA%ADn%202%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh%2C%20Vietnam!5e0!3m2!1sen!2s!4v1635000000000!5m2!1sen!2s"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="University Campus Location"
+                title="Aptech Campus Location - D5 Street"
                 className="absolute inset-0"
               />
             </div>

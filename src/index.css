@@ -169,6 +169,11 @@
   animation: slide-in-right 0.5s ease-out forwards;
 }
 
+/* Text Shadow Effects */
+.text-shadow-lg {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(6, 182, 212, 0.2);
+}
+
 /* MIT Tech Scrollbar */
 ::-webkit-scrollbar {
   width: 12px;

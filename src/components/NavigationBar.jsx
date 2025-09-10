@@ -49,11 +49,19 @@ function NavigationBar() {
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                CampusConnect
+              <span className="text-xl font-black relative tracking-tight">
+                <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-transparent">
+                  Campus
+                </span>
+                <span className="text-white font-extrabold text-shadow-lg ml-0.5">
+                  Connect
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-blue-400/10 blur-lg -z-10 opacity-50"></span>
               </span>
-              <span className="text-xs text-slate-400 font-medium tracking-wider">
+              <span className="text-xs text-cyan-300 font-semibold tracking-[0.2em] uppercase opacity-90">
+                <span className="inline-block w-1 h-1 bg-cyan-400 rounded-full mr-1 animate-pulse"></span>
                 APTECH EVENT CENTER
+                <span className="inline-block w-1 h-1 bg-cyan-400 rounded-full ml-1 animate-pulse"></span>
               </span>
             </div>
           </Link>

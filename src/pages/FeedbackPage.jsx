@@ -102,9 +102,9 @@ function FeedbackPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-500 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading feedback form...</p>
         </div>
       </div>
@@ -112,14 +112,20 @@ function FeedbackPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-white py-8">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Feedback
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-2 mb-6">
+            <MessageSquare className="w-4 h-4 text-cyan-400" />
+            <span className="text-cyan-400 text-sm font-medium tracking-wider">FEEDBACK CENTER</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
+              Feedback
+            </span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Share your thoughts and help us improve our services. Your feedback is valuable to us.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Advanced feedback system • Share your thoughts and help us improve our tech community services
           </p>
         </div>
 
@@ -140,13 +146,13 @@ function FeedbackPage() {
           ) : (
             <div className="bg-white rounded-xl shadow-lg p-8">
               <div className="flex items-center mb-6">
-                <MessageSquare className="w-8 h-8 text-blue-600 mr-3" />
+                <MessageSquare className="w-8 h-8 text-cyan-600 mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Send us your feedback</h2>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
+              <div className="bg-cyan-50 border border-cyan-200 rounded-lg p-4 mb-8">
                 <div className="flex items-start">
-                  <AlertCircle className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
+                  <AlertCircle className="w-5 h-5 text-cyan-600 mr-2 mt-0.5" />
                   <div>
                     <p className="text-blue-800 font-medium">Demo Form Notice</p>
                     <p className="text-blue-700 text-sm">

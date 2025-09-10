@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Calendar, Users, MapPin, Search, Filter } from 'lucide-react'
+import { Calendar, Users, MapPin, Search, Filter, Quote, Star } from 'lucide-react'
 import BookmarkButton from '../components/BookmarkButton'
 import { useBookmarks } from '../contexts/BookmarkContext'
 import { useEvents } from '../hooks/useEvents'
@@ -22,6 +22,65 @@ function EventsPage() {
   const [selectedFaculty, setSelectedFaculty] = useState('all')
   const [sortBy, setSortBy] = useState('date')
   const { isHydrated } = useBookmarks()
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0)
+
+  // Reviews data
+  const reviews = [
+    {
+      id: 1,
+      name: "Sarah Chen",
+      role: "Computer Science Student",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      rating: 5,
+      review: "The TECHWIZ competition was absolutely incredible! The organization was flawless and I learned so much from other participants. Can't wait for next year!",
+      event: "TECHWIZ 6 2025"
+    },
+    {
+      id: 2,
+      name: "Michael Rodriguez",
+      role: "AI Research Assistant",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      rating: 5,
+      review: "Nano Banana Hot Trend opened my eyes to the future of nanotechnology. The speakers were world-class and the networking opportunities were amazing!",
+      event: "Nano Banana Hot Trend"
+    },
+    {
+      id: 3,
+      name: "Emily Johnson",
+      role: "Software Engineering Student",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      rating: 5,
+      review: "Best tech event I've ever attended! The hands-on workshops were incredibly valuable and the community here is so supportive and inspiring.",
+      event: "Technology & Science Conference"
+    },
+    {
+      id: 4,
+      name: "David Park",
+      role: "Data Science Graduate",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      rating: 5,
+      review: "Aptech events consistently deliver high-quality content and amazing networking opportunities. The innovation showcased here is truly cutting-edge!",
+      event: "Innovation Showcase"
+    },
+    {
+      id: 5,
+      name: "Lisa Wang",
+      role: "UX/UI Designer",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+      rating: 5,
+      review: "The creative workshops and design thinking sessions were phenomenal. I gained new perspectives and made connections that will last a lifetime!",
+      event: "Creative Design Workshop"
+    }
+  ]
+
+  // Auto-rotate reviews
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentReviewIndex((prev) => (prev + 1) % reviews.length)
+    }, 5000) // Change review every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [reviews.length])
 
   // Filter and sort events when filters change
   useEffect(() => {
@@ -248,6 +307,86 @@ function EventsPage() {
           </div>
         )}
       </div>
+
+      {/* Reviews Section */}
+      <section className="py-16 bg-gradient-to-r from-slate-800 to-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 tech-grid opacity-20"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-2 mb-6">
+              <Quote className="w-4 h-4 text-cyan-400" />
+              <span className="text-cyan-400 text-sm font-medium tracking-wider">STUDENT REVIEWS</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                What Our Community Says
+              </span>
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              Real feedback from students and professionals who attended our events
+            </p>
+          </div>
+
+          {/* Review Card with Fade Animation */}
+          <div className="max-w-4xl mx-auto">
+            <div className="relative h-80 flex items-center justify-center">
+              {reviews.map((review, index) => (
+                <div
+                  key={review.id}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    index === currentReviewIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center">
+                    {/* Stars */}
+                    <div className="flex justify-center space-x-1 mb-6">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+                      ))}
+                    </div>
+
+                    {/* Review Text */}
+                    <blockquote className="text-xl md:text-2xl text-white font-light leading-relaxed mb-8 italic">
+                      "{review.review}"
+                    </blockquote>
+
+                    {/* Author Info */}
+                    <div className="flex items-center justify-center space-x-4">
+                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-cyan-400">
+                        <img
+                          src={review.avatar}
+                          alt={review.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="text-left">
+                        <h4 className="text-lg font-semibold text-white">{review.name}</h4>
+                        <p className="text-cyan-300 text-sm">{review.role}</p>
+                        <p className="text-slate-400 text-xs mt-1">Event: {review.event}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Review Indicators */}
+            <div className="flex justify-center space-x-2 mt-8">
+              {reviews.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentReviewIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentReviewIndex
+                      ? 'bg-cyan-400 scale-125'
+                      : 'bg-white/30 hover:bg-white/50'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { X, Calendar, MapPin, Users, Zap, Star, Clock, ArrowRight } from 'lucide-react'
+import { X, Calendar, MapPin, Users, Zap, Star, Clock, ArrowRight, Minus, Plus } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 function HotEventPopup() {
   const [isVisible, setIsVisible] = useState(false)
   const [currentEventIndex, setCurrentEventIndex] = useState(0)
+  const [isMinimized, setIsMinimized] = useState(false)
 
   // Hot events data
   const hotEvents = [
@@ -33,7 +34,7 @@ function HotEventPopup() {
       location: 'Innovation Lab, Building C',
       participants: '200+ Researchers',
       prize: 'Innovation Awards',
-      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop&crop=center',
+      image: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=800&h=600&fit=crop&crop=center',
       tags: ['AI', 'Nanotechnology', 'Innovation', 'Research'],
       urgency: 'Limited seats available!',
       color: 'from-cyan-500 to-blue-600'
@@ -59,75 +60,110 @@ function HotEventPopup() {
     setIsVisible(true)
   }
 
+  const toggleMinimize = () => {
+    setIsMinimized(!isMinimized)
+  }
+
   return (
     <>
       {/* Mini Popup - Always Visible Top Right Corner */}
       <div className="fixed top-24 right-4 z-40">
-        <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-4 max-w-sm w-80 relative overflow-hidden transition-all duration-500">
-          {/* Event Indicator */}
-          <div className="absolute top-2 left-2 flex space-x-1">
-            {hotEvents.map((_, index) => (
-              <div
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentEventIndex ? 'bg-orange-500' : 'bg-gray-300'
-                }`}
-              />
-            ))}
-          </div>
+        <div className={`bg-white rounded-2xl shadow-2xl border border-gray-200 relative overflow-hidden transition-all duration-500 ${
+          isMinimized ? 'p-2 w-32' : 'p-4 max-w-sm w-80'
+        }`}>
 
-          {/* Hot Badge */}
-          <div className="flex items-center justify-center mb-3 mt-2">
-            <div className="flex items-center space-x-1 bg-gradient-to-r from-red-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
-              <Zap className="w-3 h-3" />
-              <span>HOT EVENT</span>
-              <Star className="w-3 h-3 animate-spin" />
-            </div>
-          </div>
-
-          {/* Event Preview */}
-          <div className="flex items-start space-x-3 mb-4">
-            <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 shadow-lg">
-              <img
-                src={currentEvent.image}
-                alt={currentEvent.title}
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-              />
-            </div>
-            <div className="flex-1 min-w-0">
-              <h3 className="font-bold text-gray-900 text-sm mb-1 line-clamp-2">
-                {currentEvent.title}
-              </h3>
-              <p className="text-xs text-gray-600 mb-2">
-                {currentEvent.subtitle}
-              </p>
-              <div className="flex items-center space-x-1 text-xs text-gray-500 mb-1">
-                <Calendar className="w-3 h-3 text-cyan-500" />
-                <span>{currentEvent.date}</span>
+          {/* Minimized State */}
+          {isMinimized ? (
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-1 bg-gradient-to-r from-red-500 to-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold animate-pulse">
+                <Zap className="w-3 h-3" />
+                <span>HOT EVENT</span>
               </div>
-              <div className="flex items-center space-x-1 text-xs text-gray-500">
-                <MapPin className="w-3 h-3 text-blue-500" />
-                <span className="truncate">{currentEvent.location}</span>
+              <button
+                onClick={toggleMinimize}
+                className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 transition-all duration-300"
+              >
+                <Plus className="w-3 h-3" />
+              </button>
+            </div>
+          ) : (
+            <>
+              {/* Event Indicator */}
+              <div className="absolute top-2 left-2 flex space-x-1">
+                {hotEvents.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentEventIndex ? 'bg-orange-500' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
               </div>
-            </div>
-          </div>
 
-          {/* Urgency */}
-          <div className="bg-red-50 border border-red-200 rounded-lg p-2 mb-4">
-            <div className="flex items-center space-x-1 text-red-600 text-xs">
-              <Clock className="w-3 h-3 animate-pulse" />
-              <span className="font-medium">{currentEvent.urgency}</span>
-            </div>
-          </div>
+              {/* Minimize Button - Mobile Only */}
+              <div className="absolute top-2 right-2 md:hidden">
+                <button
+                  onClick={toggleMinimize}
+                  className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 transition-all duration-300"
+                >
+                  <Minus className="w-3 h-3" />
+                </button>
+              </div>
 
-          {/* Action Button */}
-          <button
-            onClick={openFullPopup}
-            className={`w-full bg-gradient-to-r ${currentEvent.color} text-white px-4 py-3 rounded-lg text-sm font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2`}
-          >
-            <span>View Details</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
+              {/* Hot Badge */}
+              <div className="flex items-center justify-center mb-3 mt-2">
+                <div className="flex items-center space-x-1 bg-gradient-to-r from-red-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
+                  <Zap className="w-3 h-3" />
+                  <span>HOT EVENT</span>
+                  <Star className="w-3 h-3 animate-spin" />
+                </div>
+              </div>
+
+              {/* Event Preview */}
+              <div className="flex items-start space-x-3 mb-4">
+                <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 shadow-lg">
+                  <img
+                    src={currentEvent.image}
+                    alt={currentEvent.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-bold text-gray-900 text-sm mb-1 line-clamp-2">
+                    {currentEvent.title}
+                  </h3>
+                  <p className="text-xs text-gray-600 mb-2">
+                    {currentEvent.subtitle}
+                  </p>
+                  <div className="flex items-center space-x-1 text-xs text-gray-500 mb-1">
+                    <Calendar className="w-3 h-3 text-cyan-500" />
+                    <span>{currentEvent.date}</span>
+                  </div>
+                  <div className="flex items-center space-x-1 text-xs text-gray-500">
+                    <MapPin className="w-3 h-3 text-blue-500" />
+                    <span className="truncate">{currentEvent.location}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Urgency */}
+              <div className="bg-red-50 border border-red-200 rounded-lg p-2 mb-4">
+                <div className="flex items-center space-x-1 text-red-600 text-xs">
+                  <Clock className="w-3 h-3 animate-pulse" />
+                  <span className="font-medium">{currentEvent.urgency}</span>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <button
+                onClick={openFullPopup}
+                className={`w-full bg-gradient-to-r ${currentEvent.color} text-white px-4 py-3 rounded-lg text-sm font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2`}
+              >
+                <span>View Details</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </>
+          )}
         </div>
       </div>
 
