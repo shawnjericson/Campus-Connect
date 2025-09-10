@@ -1,0 +1,256 @@
+{
+  "albums": [
+    {
+      "id": 1,
+      "title": "Technology & Science Conference 2024",
+      "eventId": 1,
+      "date": "2024-01-15",
+      "category": "Academic",
+      "year": 2024,
+      "description": "Memorable moments from the technology and science conference",
+      "coverImage": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&crop=center",
+      "images": [
+        {
+          "id": 101,
+          "url": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=200&fit=crop&crop=center",
+          "caption": "Conference opening session with keynote speaker",
+          "photographer": "Nguyen Van A",
+          "date": "2024-01-15",
+          "tags": ["opening", "keynote", "technology"]
+        },
+        {
+          "id": 102,
+          "url": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=300&h=200&fit=crop&crop=center",
+          "caption": "Presentation on AI and Machine Learning applications",
+          "photographer": "Tran Thi B",
+          "date": "2024-01-15",
+          "tags": ["AI", "machine learning", "presentation"]
+        },
+        {
+          "id": 103,
+          "url": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=300&h=200&fit=crop&crop=center",
+          "caption": "Interactive group discussion session",
+          "photographer": "Le Van C",
+          "date": "2024-01-15",
+          "tags": ["discussion", "group", "interactive"]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Student Cultural Festival",
+      "eventId": 2,
+      "date": "2024-01-20",
+      "category": "Cultural",
+      "year": 2024,
+      "description": "Diverse and vibrant cultural performances",
+      "coverImage": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=600&fit=crop&crop=center",
+      "images": [
+        {
+          "id": 201,
+          "url": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=300&h=200&fit=crop&crop=center",
+          "caption": "Traditional dance performance by international students",
+          "photographer": "Pham Thi D",
+          "date": "2024-01-20",
+          "tags": ["dance", "traditional", "international"]
+        },
+        {
+          "id": 202,
+          "url": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&h=200&fit=crop&crop=center",
+          "caption": "Musical performance featuring local artists",
+          "photographer": "Hoang Van E",
+          "date": "2024-01-20",
+          "tags": ["music", "performance", "artists"]
+        },
+        {
+          "id": 203,
+          "url": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=200&fit=crop&crop=center",
+          "caption": "International food stalls and culinary experiences",
+          "photographer": "Vu Thi F",
+          "date": "2024-01-20",
+          "tags": ["food", "international", "culinary"]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Soft Skills Workshop",
+      "eventId": 3,
+      "date": "2024-01-25",
+      "category": "Skills",
+      "year": 2024,
+      "description": "Practical soft skills development activities",
+      "coverImage": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&crop=center",
+      "images": [
+        {
+          "id": 301,
+          "url": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=300&h=200&fit=crop&crop=center",
+          "caption": "Team building and group collaboration activities",
+          "photographer": "Do Van G",
+          "date": "2024-01-25",
+          "tags": ["teamwork", "collaboration", "skills"]
+        },
+        {
+          "id": 302,
+          "url": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=300&h=200&fit=crop&crop=center",
+          "caption": "Student presentations and public speaking practice",
+          "photographer": "Bui Thi H",
+          "date": "2024-01-25",
+          "tags": ["presentation", "public speaking", "practice"]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Scientific Research Exhibition",
+      "eventId": 4,
+      "date": "2023-12-15",
+      "category": "Academic",
+      "year": 2023,
+      "description": "Showcase of excellent research projects",
+      "coverImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center",
+      "images": [
+        {
+          "id": 401,
+          "url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop&crop=center",
+          "caption": "Research posters and project displays",
+          "photographer": "Ngo Van I",
+          "date": "2023-12-15",
+          "tags": ["research", "posters", "projects"]
+        },
+        {
+          "id": 402,
+          "url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=200&fit=crop&crop=center",
+          "caption": "Faculty and students presenting research findings",
+          "photographer": "Ly Thi J",
+          "date": "2023-12-15",
+          "tags": ["presentation", "research", "findings"]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Job Fair 2023",
+      "eventId": 5,
+      "date": "2023-11-20",
+      "category": "Career",
+      "year": 2023,
+      "description": "Career opportunities and networking event",
+      "coverImage": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop&crop=center",
+      "images": [
+        {
+          "id": 501,
+          "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=300&h=200&fit=crop&crop=center",
+          "caption": "Company booths and recruitment displays",
+          "photographer": "Mai Van K",
+          "date": "2023-11-20",
+          "tags": ["recruitment", "companies", "booths"]
+        },
+        {
+          "id": 502,
+          "url": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop&crop=center",
+          "caption": "Students networking with industry professionals",
+          "photographer": "Dao Thi L",
+          "date": "2023-11-20",
+          "tags": ["networking", "students", "professionals"]
+        },
+        {
+          "id": 503,
+          "url": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=300&h=200&fit=crop&crop=center",
+          "caption": "Career counseling and interview preparation sessions",
+          "photographer": "Phan Van M",
+          "date": "2023-11-20",
+          "tags": ["counseling", "interviews", "preparation"]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Annual Sports Tournament",
+      "eventId": 6,
+      "date": "2024-02-10",
+      "category": "Sports",
+      "year": 2024,
+      "description": "University-wide sports competition",
+      "coverImage": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center",
+      "images": [
+        {
+          "id": 601,
+          "url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop&crop=center",
+          "caption": "Football match between faculty teams",
+          "photographer": "Tran Van N",
+          "date": "2024-02-10",
+          "tags": ["football", "competition", "teams"]
+        },
+        {
+          "id": 602,
+          "url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop&crop=center",
+          "thumbnail": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&h=200&fit=crop&crop=center",
+          "caption": "Basketball tournament finals",
+          "photographer": "Nguyen Thi O",
+          "date": "2024-02-10",
+          "tags": ["basketball", "tournament", "finals"]
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "academic",
+      "name": "Academic",
+      "count": 2
+    },
+    {
+      "id": "cultural",
+      "name": "Cultural",
+      "count": 1
+    },
+    {
+      "id": "sports",
+      "name": "Sports",
+      "count": 1
+    },
+    {
+      "id": "skills",
+      "name": "Skills",
+      "count": 1
+    },
+    {
+      "id": "career",
+      "name": "Career",
+      "count": 1
+    }
+  ],
+  "years": [2024, 2023],
+  "photographers": [
+    "Nguyen Van A",
+    "Tran Thi B",
+    "Le Van C",
+    "Pham Thi D",
+    "Hoang Van E",
+    "Vu Thi F",
+    "Do Van G",
+    "Bui Thi H",
+    "Ngo Van I",
+    "Ly Thi J",
+    "Mai Van K",
+    "Dao Thi L",
+    "Phan Van M",
+    "Tran Van N",
+    "Nguyen Thi O"
+  ]
+}

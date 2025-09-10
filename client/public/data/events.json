@@ -1,0 +1,190 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Technology & Science Conference 2024",
+      "description": "Explore the latest technology trends and applications in education. Join leading experts and researchers as they share insights on artificial intelligence, machine learning, and digital transformation in academic environments.",
+      "date": "2024-01-15",
+      "time": "09:00 - 17:00",
+      "location": "Main Hall A, Main Building",
+      "category": "Academic",
+      "faculty": "Information Technology",
+      "organizer": "Information Technology Faculty",
+      "status": "upcoming",
+      "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&crop=center",
+      "gallery": [
+        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&crop=center",
+        "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=600&fit=crop&crop=center",
+        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop&crop=center"
+      ],
+      "maxParticipants": 200,
+      "currentParticipants": 150,
+      "registrationDeadline": "2024-01-10",
+      "tags": ["technology", "AI", "education", "research"]
+    },
+    {
+      "id": 2,
+      "title": "Student Cultural Festival",
+      "description": "Diverse cultural exchange with music, dance and culinary activities. Experience the rich cultural heritage of our international student community through performances, exhibitions, and traditional food.",
+      "date": "2024-01-20",
+      "time": "14:00 - 20:00",
+      "location": "University Stadium",
+      "category": "Cultural",
+      "faculty": "All Faculties",
+      "organizer": "Youth Union",
+      "status": "upcoming",
+      "image": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=600&fit=crop&crop=center",
+      "gallery": [
+        "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=600&fit=crop&crop=center",
+        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&h=600&fit=crop&crop=center",
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop&crop=center"
+      ],
+      "maxParticipants": 500,
+      "currentParticipants": 300,
+      "registrationDeadline": "2024-01-18",
+      "tags": ["culture", "music", "dance", "food", "international"]
+    },
+    {
+      "id": 3,
+      "title": "Soft Skills Workshop",
+      "description": "Develop communication, teamwork and leadership skills for students. Interactive sessions covering public speaking, project management, conflict resolution, and professional networking.",
+      "date": "2024-01-25",
+      "time": "08:30 - 16:30",
+      "location": "Room 301, Building B",
+      "category": "Skills",
+      "faculty": "All Faculties",
+      "organizer": "Student Affairs Office",
+      "status": "upcoming",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&crop=center",
+      "gallery": [
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&crop=center",
+        "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop&crop=center"
+      ],
+      "maxParticipants": 100,
+      "currentParticipants": 80,
+      "registrationDeadline": "2024-01-22",
+      "tags": ["skills", "communication", "leadership", "teamwork"]
+    },
+    {
+      "id": 4,
+      "title": "Scientific Research Exhibition",
+      "description": "Showcase excellent research projects by students and faculty. Discover innovative solutions and groundbreaking research across various disciplines including engineering, sciences, and technology.",
+      "date": "2023-12-15",
+      "time": "09:00 - 17:00",
+      "location": "Central Library",
+      "category": "Academic",
+      "faculty": "All Faculties",
+      "organizer": "Scientific Research Office",
+      "status": "past",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center",
+      "gallery": [
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center",
+        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop&crop=center"
+      ],
+      "maxParticipants": 250,
+      "attendees": 245,
+      "tags": ["research", "science", "innovation", "exhibition"]
+    },
+    {
+      "id": 5,
+      "title": "Job Fair 2023",
+      "description": "Connect students with leading employers. Meet recruiters from top companies, attend career workshops, and explore internship and full-time opportunities across various industries.",
+      "date": "2023-11-20",
+      "time": "08:00 - 18:00",
+      "location": "Conference Center",
+      "category": "Career",
+      "faculty": "All Faculties",
+      "organizer": "Student Support Center",
+      "status": "past",
+      "image": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop&crop=center",
+      "gallery": [
+        "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop&crop=center",
+        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&crop=center",
+        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=600&fit=crop&crop=center"
+      ],
+      "maxParticipants": 500,
+      "attendees": 480,
+      "tags": ["career", "jobs", "recruitment", "networking"]
+    },
+    {
+      "id": 6,
+      "title": "Annual Sports Tournament",
+      "description": "University-wide sports competition featuring football, basketball, volleyball, and track events. Students and faculty compete in friendly matches promoting health, teamwork, and school spirit.",
+      "date": "2024-02-10",
+      "time": "08:00 - 18:00",
+      "location": "Sports Complex",
+      "category": "Sports",
+      "faculty": "All Faculties",
+      "organizer": "Sports Department",
+      "status": "upcoming",
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center",
+      "gallery": [
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center",
+        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop&crop=center"
+      ],
+      "maxParticipants": 300,
+      "currentParticipants": 180,
+      "registrationDeadline": "2024-02-05",
+      "tags": ["sports", "competition", "health", "teamwork"]
+    }
+  ],
+  "categories": [
+    {
+      "id": "academic",
+      "name": "Academic",
+      "description": "Educational conferences, seminars, and academic events",
+      "color": "#3B82F6"
+    },
+    {
+      "id": "cultural",
+      "name": "Cultural",
+      "description": "Cultural festivals, arts, and entertainment events",
+      "color": "#EF4444"
+    },
+    {
+      "id": "sports",
+      "name": "Sports",
+      "description": "Sports competitions, fitness, and recreational activities",
+      "color": "#10B981"
+    },
+    {
+      "id": "skills",
+      "name": "Skills",
+      "description": "Professional development and skill-building workshops",
+      "color": "#F59E0B"
+    },
+    {
+      "id": "career",
+      "name": "Career",
+      "description": "Job fairs, career guidance, and networking events",
+      "color": "#8B5CF6"
+    }
+  ],
+  "faculties": [
+    {
+      "id": "information-technology",
+      "name": "Information Technology",
+      "shortName": "IT"
+    },
+    {
+      "id": "economics",
+      "name": "Economics",
+      "shortName": "ECON"
+    },
+    {
+      "id": "engineering",
+      "name": "Engineering",
+      "shortName": "ENG"
+    },
+    {
+      "id": "natural-sciences",
+      "name": "Natural Sciences",
+      "shortName": "SCI"
+    },
+    {
+      "id": "all-faculties",
+      "name": "All Faculties",
+      "shortName": "ALL"
+    }
+  ]
+}
