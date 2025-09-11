@@ -7,7 +7,7 @@ import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import EventsPage from './pages/EventsPage'
-import ContactPageSimple from './pages/ContactPageSimple'
+import ContactPage from './pages/ContactPage'
 import FeedbackPage from './pages/FeedbackPage'
 import GalleryPage from './pages/GalleryPage'
 import RegisterPage from './pages/RegisterPage'
@@ -24,7 +24,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/events" element={<EventsPage />} />
-            <Route path="/contact" element={<ContactPageSimple />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/feedback" element={<FeedbackPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/register" element={<RegisterPage />} />

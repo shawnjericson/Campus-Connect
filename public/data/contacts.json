@@ -2,143 +2,107 @@
   "contacts": [
     {
       "id": 1,
-      "name": "Dr. Nguyen Van An",
-      "title": "Head of Information Technology Faculty",
+      "name": "Mr. Rajesh Kumar",
+      "title": "Academic Director",
       "department": "Information Technology",
-      "phone": "024-3869-2222",
-      "email": "nguyen.van.an@university.edu.vn",
-      "office": "Room 301, Building A",
+      "phone": "028-7300-8866",
+      "email": "rajesh.kumar@aptechvietnam.edu.vn",
+      "office": "Room 201, Ho Chi Minh City Campus",
       "workingHours": "Mon-Fri: 8:00-17:00",
       "role": "faculty",
-      "specialization": "Artificial Intelligence, Machine Learning",
-      "image": "/images/team/nguyen-van-an.jpg",
-      "bio": "Dr. An has over 15 years of experience in AI research and education. He leads several international research projects and has published numerous papers in top-tier conferences."
+      "specialization": "Software Engineering, IT Training",
+      "image": "/images/team/rajesh-kumar.jpg",
+      "bio": "Mr. Rajesh Kumar has over 20 years of experience in international IT training. He is the Academic Director of Aptech Vietnam."
     },
     {
       "id": 2,
-      "name": "Ms. Tran Thi Binh",
+      "name": "Ms. Nguyen Thi Lan",
       "title": "Student Coordinator",
       "department": "Student Affairs Office",
-      "phone": "024-3869-2333",
-      "email": "tran.thi.binh@university.edu.vn",
-      "office": "Room 105, Building B",
+      "phone": "028-7300-1122",
+      "email": "nguyen.thi.lan@aptechvietnam.edu.vn",
+      "office": "Room 105, Hanoi Campus",
       "workingHours": "Mon-Fri: 8:00-17:00",
       "role": "coordinator",
-      "specialization": "Academic Counseling, Extracurricular Activities",
-      "image": "/images/team/tran-thi-binh.jpg",
-      "bio": "Ms. Binh coordinates student activities and provides academic support. She has been helping students achieve their goals for over 8 years."
+      "specialization": "Academic Counseling, Career Support",
+      "image": "/images/team/nguyen-thi-lan.jpg",
+      "bio": "Ms. Lan is in charge of supporting students in academics, career orientation, and extracurricular activities."
     },
     {
       "id": 3,
-      "name": "Assoc. Prof. Le Minh Cuong",
-      "title": "Vice Dean of Economics Faculty",
-      "department": "Economics",
-      "phone": "024-3869-2444",
-      "email": "le.minh.cuong@university.edu.vn",
-      "office": "Room 205, Building C",
+      "name": "Mr. Tran Minh Hoang",
+      "title": "Head of Software Engineering Faculty",
+      "department": "Software Engineering",
+      "phone": "024-7300-2233",
+      "email": "tran.minh.hoang@aptechvietnam.edu.vn",
+      "office": "Room 205, Hanoi Campus",
       "workingHours": "Mon-Fri: 8:00-17:00",
       "role": "faculty",
-      "specialization": "Macroeconomics, Corporate Finance",
-      "image": "/images/team/le-minh-cuong.jpg",
-      "bio": "Prof. Cuong is an expert in macroeconomic policy and corporate finance. He regularly consults for government agencies and private corporations."
+      "specialization": "Web Development, Cloud Computing",
+      "image": "/images/team/tran-minh-hoang.jpg",
+      "bio": "Mr. Hoang specializes in software development and cloud computing, and directly teaches many courses at Aptech."
     },
     {
       "id": 4,
-      "name": "Ms. Pham Thu Dung",
+      "name": "Ms. Pham Thu Huong",
       "title": "Events Coordinator",
       "department": "Training Office",
-      "phone": "024-3869-2555",
-      "email": "pham.thu.dung@university.edu.vn",
-      "office": "Room 102, Building A",
+      "phone": "028-7300-3344",
+      "email": "pham.thu.huong@aptechvietnam.edu.vn",
+      "office": "Room 102, Ho Chi Minh City Campus",
       "workingHours": "Mon-Fri: 8:00-17:00",
       "role": "coordinator",
-      "specialization": "Event Organization, External Relations",
-      "image": "/images/team/pham-thu-dung.jpg",
-      "bio": "Ms. Dung manages all major university events and maintains relationships with external partners. She has successfully organized over 100 events."
-    },
-    {
-      "id": 5,
-      "name": "Dr. Hoang Van Em",
-      "title": "Engineering Faculty Lecturer",
-      "department": "Engineering",
-      "phone": "024-3869-2666",
-      "email": "hoang.van.em@university.edu.vn",
-      "office": "Room 401, Building D",
-      "workingHours": "Mon-Fri: 8:00-17:00",
-      "role": "faculty",
-      "specialization": "Mechanical Engineering, Automation",
-      "image": "/images/team/hoang-van-em.jpg",
-      "bio": "Dr. Em specializes in mechanical engineering and industrial automation. His research focuses on smart manufacturing and robotics."
-    },
-    {
-      "id": 6,
-      "name": "Ms. Vu Thi Phuong",
-      "title": "Academic Coordinator",
-      "department": "Examination Office",
-      "phone": "024-3869-2777",
-      "email": "vu.thi.phuong@university.edu.vn",
-      "office": "Room 201, Building B",
-      "workingHours": "Mon-Fri: 8:00-17:00",
-      "role": "coordinator",
-      "specialization": "Academic Management, Student Support",
-      "image": "/images/team/vu-thi-phuong.jpg",
-      "bio": "Ms. Phuong oversees academic operations and provides comprehensive support to students throughout their academic journey."
+      "specialization": "Event Organization, Industry Relations",
+      "image": "/images/team/pham-thu-huong.jpg",
+      "bio": "Ms. Huong is responsible for organizing events, seminars, and building relationships with technology companies."
     }
   ],
   "departments": [
     {
       "id": "information-technology",
       "name": "Information Technology",
-      "head": "Dr. Nguyen Van An",
-      "location": "Building A",
-      "phone": "024-3869-2222",
-      "email": "it@university.edu.vn"
+      "head": "Mr. Rajesh Kumar",
+      "location": "Ho Chi Minh City Campus",
+      "phone": "028-7300-8866",
+      "email": "it@aptechvietnam.edu.vn"
     },
     {
-      "id": "economics",
-      "name": "Economics",
-      "head": "Prof. Le Minh Cuong",
-      "location": "Building C",
-      "phone": "024-3869-2444",
-      "email": "economics@university.edu.vn"
-    },
-    {
-      "id": "engineering",
-      "name": "Engineering",
-      "head": "Dr. Hoang Van Em",
-      "location": "Building D",
-      "phone": "024-3869-2666",
-      "email": "engineering@university.edu.vn"
+      "id": "software-engineering",
+      "name": "Software Engineering",
+      "head": "Mr. Tran Minh Hoang",
+      "location": "Hanoi Campus",
+      "phone": "024-7300-2233",
+      "email": "se@aptechvietnam.edu.vn"
     },
     {
       "id": "student-affairs",
       "name": "Student Affairs Office",
-      "head": "Ms. Tran Thi Binh",
-      "location": "Building B",
-      "phone": "024-3869-2333",
-      "email": "studentaffairs@university.edu.vn"
+      "head": "Ms. Nguyen Thi Lan",
+      "location": "Hanoi Campus",
+      "phone": "028-7300-1122",
+      "email": "studentaffairs@aptechvietnam.edu.vn"
     }
   ],
   "university": {
-    "name": "University of Information Technology and Communications",
-    "shortName": "UITC",
-    "address": "144 Xuan Thuy, Cau Giay, Hanoi, Vietnam",
-    "phone": "(024) 3869-2222",
-    "email": "info@university.edu.vn",
-    "website": "https://university.edu.vn",
-    "established": 1956,
+    "name": "Aptech Computer Education Vietnam",
+    "shortName": "Aptech Vietnam",
+    "address": "285 Doi Can, Ba Dinh, Hanoi & 212-214 Nguyen Dinh Chieu, District 3, Ho Chi Minh City",
+    "phone": "1800-1785",
+    "email": "info@aptechvietnam.edu.vn",
+    "website": "https://aptechvietnam.com.vn",
+    "established": 1999,
     "coordinates": {
-      "lat": 21.038137,
-      "lng": 105.782307
+      "lat": 21.033781,
+      "lng": 105.814107
     },
     "socialMedia": {
-      "facebook": "https://facebook.com/university",
-      "twitter": "https://twitter.com/university",
-      "linkedin": "https://linkedin.com/company/university"
+      "facebook": "https://facebook.com/aptechvietnam",
+      "youtube": "https://youtube.com/aptechvietnam",
+      "linkedin": "https://linkedin.com/company/aptech-vietnam"
     },
     "officeHours": {
-      "weekdays": "8:00 AM - 5:00 PM",
-      "saturday": "9:00 AM - 1:00 PM",
+      "weekdays": "8:00 AM - 8:00 PM",
+      "saturday": "8:00 AM - 5:00 PM",
       "sunday": "Closed"
     }
   }
