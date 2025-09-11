@@ -119,7 +119,152 @@
       "currentParticipants": 120,
       "registrationDeadline": "2025-11-05",
       "tags": ["design", "multimedia", "creativity"]
+    },
+    {
+      "events": [
+        {
+          "id": 7,
+          "title": "Aptech Career Fair 2025",
+          "description": "Job fair connecting Aptech students with top IT companies in Vietnam.",
+          "date": "2025-10-20",
+          "time": "09:00 - 16:00",
+          "location": "Aptech HCMC Convention Center",
+          "category": "StudentLife",
+          "faculty": "All Faculties",
+          "organizer": "Aptech Career Services",
+          "status": "upcoming",
+          "image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop&crop=center",
+          "gallery": [
+            "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop&crop=center"
+          ],
+          "maxParticipants": 600,
+          "currentParticipants": 410,
+          "registrationDeadline": "2025-10-15",
+          "tags": ["career", "jobfair", "networking"]
+        },
+        {
+          "id": 8,
+          "title": "Women in Tech Meetup",
+          "description": "An inspiring meetup celebrating women in technology and promoting diversity in the IT field.",
+          "date": "2025-03-08",
+          "time": "13:00 - 17:00",
+          "location": "Aptech Hanoi Campus Hall",
+          "category": "Cultural",
+          "faculty": "All Faculties",
+          "organizer": "Aptech Vietnam",
+          "status": "past",
+          "image": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&h=600&fit=crop&crop=center",
+          "gallery": [
+            "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&h=600&fit=crop&crop=center"
+          ],
+          "maxParticipants": 300,
+          "currentParticipants": 270,
+          "registrationDeadline": "2025-03-01",
+          "tags": ["diversity", "women", "tech"]
+        },
+        {
+          "id": 9,
+          "title": "Mobile App Development Workshop",
+          "description": "Hands-on workshop for Aptech students to build their first mobile app using Flutter.",
+          "date": "2025-09-18",
+          "time": "09:00 - 12:00",
+          "location": "Aptech Danang Campus Lab 2",
+          "category": "Academic",
+          "faculty": "Mobile Development",
+          "organizer": "Aptech Mobile Faculty",
+          "status": "upcoming",
+          "image": "https://images.unsplash.com/photo-1556742031-c6961e8560b0?w=800&h=600&fit=crop&crop=center",
+          "gallery": [
+            "https://images.unsplash.com/photo-1556742031-c6961e8560b0?w=800&h=600&fit=crop&crop=center"
+          ],
+          "maxParticipants": 80,
+          "currentParticipants": 65,
+          "registrationDeadline": "2025-09-15",
+          "tags": ["mobile", "flutter", "workshop"]
+        },
+        {
+          "id": 10,
+          "title": "Alumni Networking Night",
+          "description": "A networking evening for Aptech alumni to share career journeys and connect with current students.",
+          "date": "2025-12-05",
+          "time": "18:00 - 21:00",
+          "location": "Aptech HCMC Rooftop Hall",
+          "category": "StudentLife",
+          "faculty": "All Faculties",
+          "organizer": "Aptech Alumni Association",
+          "status": "upcoming",
+          "image": "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800&h=600&fit=crop&crop=center",
+          "gallery": [
+            "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800&h=600&fit=crop&crop=center"
+          ],
+          "maxParticipants": 200,
+          "currentParticipants": 140,
+          "registrationDeadline": "2025-12-01",
+          "tags": ["alumni", "networking", "career"]
+        },
+        {
+          "id": 11,
+          "title": "Game Development Challenge",
+          "description": "One-day competition for students to create innovative games using Unity.",
+          "date": "2025-06-15",
+          "time": "08:00 - 19:00",
+          "location": "Aptech Hanoi Innovation Lab",
+          "category": "Academic",
+          "faculty": "Software Engineering",
+          "organizer": "Aptech Game Dev Club",
+          "status": "past",
+          "image": "https://images.unsplash.com/photo-1549924231-f129b911e442?w=800&h=600&fit=crop&crop=center",
+          "gallery": [
+            "https://images.unsplash.com/photo-1549924231-f129b911e442?w=800&h=600&fit=crop&crop=center"
+          ],
+          "maxParticipants": 150,
+          "currentParticipants": 120,
+          "registrationDeadline": "2025-06-10",
+          "tags": ["gaming", "unity", "competition"]
+        },
+        {
+          "id": 12,
+          "title": "Cybersecurity Awareness Day",
+          "description": "A day-long event raising awareness on digital security and safe practices online.",
+          "date": "2025-04-20",
+          "time": "10:00 - 16:00",
+          "location": "Aptech HCMC Auditorium",
+          "category": "Academic",
+          "faculty": "AI & Data Science",
+          "organizer": "Aptech Security Lab",
+          "status": "past",
+          "image": "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=800&h=600&fit=crop&crop=center",
+          "gallery": [
+            "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=800&h=600&fit=crop&crop=center"
+          ],
+          "maxParticipants": 400,
+          "currentParticipants": 380,
+          "registrationDeadline": "2025-04-15",
+          "tags": ["cybersecurity", "safety", "technology"]
+        },
+        {
+          "id": 13,
+          "title": "Aptech Sports Day",
+          "description": "Annual sports event promoting fitness and teamwork among students and staff.",
+          "date": "2025-11-25",
+          "time": "08:00 - 18:00",
+          "location": "Aptech HCMC Sports Ground",
+          "category": "StudentLife",
+          "faculty": "All Faculties",
+          "organizer": "Aptech Student Affairs",
+          "status": "upcoming",
+          "image": "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=800&h=600&fit=crop&crop=center",
+          "gallery": [
+            "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=800&h=600&fit=crop&crop=center"
+          ],
+          "maxParticipants": 500,
+          "currentParticipants": 350,
+          "registrationDeadline": "2025-11-20",
+          "tags": ["sports", "fitness", "teamwork"]
+        }
+      ]
     }
+    
   ],
   "categories": [
     {
