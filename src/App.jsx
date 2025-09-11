@@ -12,7 +12,6 @@ import FeedbackPage from './pages/FeedbackPage'
 import GalleryPage from './pages/GalleryPage'
 import RegisterPage from './pages/RegisterPage'
 import NotFoundPage from './pages/NotFoundPage'
-import ContactPage from './pages/ContactPage'
 
 function App() {
   return (
