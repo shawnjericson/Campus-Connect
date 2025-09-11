@@ -192,13 +192,6 @@ const Footer = () => {
               </p>
             </div>
           </div>
-
-          {/* Additional Info */}
-          <div className="mt-4 text-center">
-            <p className="text-gray-500 text-xs">
-              Aptech Computer Education Center - Shaping Tomorrow's Tech Leaders
-            </p>
-          </div>
         </div>
       </div>
     </footer>

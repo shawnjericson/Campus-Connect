@@ -142,7 +142,6 @@ const UpcomingEventsHighlights = () => {
                 {/* Countdown Timer */}
                 {displayEvents[currentSlide]?.countdown?.enabled && (
                   <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-                    <p className="text-gray-700 text-sm mb-2 font-medium">Event starts in:</p>
                     <CountdownTimer targetDate={displayEvents[currentSlide]?.countdown?.targetDate} />
                   </div>
                 )}

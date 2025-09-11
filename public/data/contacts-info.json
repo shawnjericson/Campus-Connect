@@ -1,0 +1,177 @@
+{
+  "university": {
+    "name": "Aptech Computer Education Center",
+    "address": "35/6 D5 Street, Thanh My Tay Ward, District 2, Ho Chi Minh City, Vietnam",
+    "phone": "1800 1779",
+    "email": "aptech2@aprotrain.com",
+    "website": "https://aptech.edu.vn",
+    "established": "2008",
+    "description": "Leading IT Education Provider in Vietnam, affiliated with FPT University",
+    "coordinates": {
+      "lat": 10.7769,
+      "lng": 106.7009
+    }
+  },
+  "faculty": [
+    {
+      "id": 1,
+      "name": "Dr. Nguyen Van Minh",
+      "designation": "Director & Principal",
+      "department": "Administration",
+      "phone": "+84 28 3744 5678",
+      "email": "director@aptech.edu.vn",
+      "office": "Admin Building, Room 101",
+      "specialization": "Educational Leadership, IT Management",
+      "experience": "15+ years",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+    },
+    {
+      "id": 2,
+      "name": "Ms. Tran Thi Lan",
+      "designation": "Academic Coordinator",
+      "department": "Academic Affairs",
+      "phone": "+84 28 3744 5679",
+      "email": "academic@aptech.edu.vn",
+      "office": "Academic Block, Room 205",
+      "specialization": "Curriculum Development, Student Affairs",
+      "experience": "12+ years",
+      "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face"
+    },
+    {
+      "id": 3,
+      "name": "Mr. Le Hoang Duc",
+      "designation": "Head of IT Department",
+      "department": "Information Technology",
+      "phone": "+84 28 3744 5680",
+      "email": "it.head@aptech.edu.vn",
+      "office": "IT Lab Building, Room 301",
+      "specialization": "Software Engineering, AI & Machine Learning",
+      "experience": "10+ years",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face"
+    },
+    {
+      "id": 4,
+      "name": "Dr. Pham Thi Hong",
+      "designation": "Research Coordinator",
+      "department": "Research & Development",
+      "phone": "+84 28 3744 5681",
+      "email": "research@aptech.edu.vn",
+      "office": "Research Center, Room 102",
+      "specialization": "Data Science, Research Methodology",
+      "experience": "8+ years",
+      "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face"
+    },
+    {
+      "id": 5,
+      "name": "Mr. Vo Thanh Son",
+      "designation": "Event Coordinator",
+      "department": "Student Affairs",
+      "phone": "+84 28 3744 5682",
+      "email": "events@aptech.edu.vn",
+      "office": "Student Center, Room 150",
+      "specialization": "Event Management, Student Engagement",
+      "experience": "6+ years",
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face"
+    }
+  ],
+  "student_coordinators": [
+    {
+      "id": 1,
+      "name": "Nguyen Minh Quan",
+      "designation": "Student Council President",
+      "department": "Computer Science",
+      "year": "Final Year",
+      "phone": "+84 90 123 4567",
+      "email": "president@student.aptech.edu.vn",
+      "responsibilities": ["Overall student coordination", "Event planning", "Student representation"],
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+    },
+    {
+      "id": 2,
+      "name": "Tran Thi Mai",
+      "designation": "Technical Events Coordinator",
+      "department": "Software Engineering",
+      "year": "Third Year",
+      "phone": "+84 90 234 5678",
+      "email": "tech.events@student.aptech.edu.vn",
+      "responsibilities": ["TechWiz coordination", "Hackathon organization", "Technical workshops"],
+      "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face"
+    },
+    {
+      "id": 3,
+      "name": "Le Van Duc",
+      "designation": "Cultural Events Coordinator",
+      "department": "Information Technology",
+      "year": "Second Year",
+      "phone": "+84 90 345 6789",
+      "email": "cultural@student.aptech.edu.vn",
+      "responsibilities": ["Cultural festival", "Music & arts events", "International programs"],
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face"
+    },
+    {
+      "id": 4,
+      "name": "Pham Thi Linh",
+      "designation": "Sports Coordinator",
+      "department": "Computer Science",
+      "year": "Third Year",
+      "phone": "+84 90 456 7890",
+      "email": "sports@student.aptech.edu.vn",
+      "responsibilities": ["Sports tournaments", "Inter-college competitions", "Health & wellness programs"],
+      "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face"
+    },
+    {
+      "id": 5,
+      "name": "Hoang Minh Tuan",
+      "designation": "Media & Communications",
+      "department": "Digital Media",
+      "year": "Final Year",
+      "phone": "+84 90 567 8901",
+      "email": "media@student.aptech.edu.vn",
+      "responsibilities": ["Event photography", "Social media management", "Campus communications"],
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face"
+    }
+  ],
+  "departments": [
+    {
+      "id": 1,
+      "name": "Information Technology",
+      "head": "Mr. Le Hoang Duc",
+      "phone": "+84 28 3744 5680",
+      "email": "it@aptech.edu.vn",
+      "location": "IT Lab Building"
+    },
+    {
+      "id": 2,
+      "name": "Academic Affairs",
+      "head": "Ms. Tran Thi Lan",
+      "phone": "+84 28 3744 5679",
+      "email": "academic@aptech.edu.vn",
+      "location": "Academic Block"
+    },
+    {
+      "id": 3,
+      "name": "Student Affairs",
+      "head": "Mr. Vo Thanh Son",
+      "phone": "+84 28 3744 5682",
+      "email": "student.affairs@aptech.edu.vn",
+      "location": "Student Center"
+    },
+    {
+      "id": 4,
+      "name": "Research & Development",
+      "head": "Dr. Pham Thi Hong",
+      "phone": "+84 28 3744 5681",
+      "email": "research@aptech.edu.vn",
+      "location": "Research Center"
+    }
+  ],
+  "office_hours": {
+    "weekdays": "8:00 AM - 6:00 PM",
+    "saturday": "8:00 AM - 12:00 PM",
+    "sunday": "Closed"
+  },
+  "emergency_contact": {
+    "security": "+84 28 3744 5555",
+    "medical": "+84 28 3744 5556"
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "institute": {
+    "name": "Aptech Computer Education Center",
+    "shortName": "Aptech",
+    "established": "1986",
+    "location": "35/6 D5 Street, Thanh My Tay Ward, District 2, Ho Chi Minh City, Vietnam",
+    "website": "https://aptech.edu.vn",
+    "phone": "1800 1779",
+    "email": "aptech2@aprotrain.com",
+    "logo": "/images/aptech-logo.png",
+    "heroImage": "https://images.unsplash.com/photo-1562774053-701939374585?w=1200&h=600&fit=crop&crop=center",
+    "overview": {
+      "description": "Aptech Computer Education is a leading global IT training institute with over 35 years of excellence in computer education. We are committed to providing world-class IT education and training programs that prepare students for successful careers in the technology industry.",
+      "mission": "To empower individuals with cutting-edge IT skills and knowledge, enabling them to excel in the rapidly evolving technology landscape and contribute meaningfully to the digital transformation of society.",
+      "vision": "To be the world's most preferred IT education brand, recognized for innovation, quality, and excellence in preparing future-ready IT professionals.",
+      "values": [
+        {
+          "title": "Excellence",
+          "description": "We strive for the highest standards in education, training, and student outcomes."
+        },
+        {
+          "title": "Innovation",
+          "description": "We continuously evolve our curriculum and teaching methods to stay ahead of industry trends."
+        },
+        {
+          "title": "Integrity",
+          "description": "We maintain the highest ethical standards in all our interactions and operations."
+        },
+        {
+          "title": "Student-Centric",
+          "description": "We place our students at the center of everything we do, ensuring their success is our priority."
+        }
+      ]
+    },
+    "achievements": [
+      {
+        "title": "35+ Years of Excellence",
+        "description": "Over three decades of providing quality IT education worldwide",
+        "icon": "award"
+      },
+      {
+        "title": "40+ Countries",
+        "description": "Global presence with training centers across multiple continents",
+        "icon": "globe"
+      },
+      {
+        "title": "7 Million+ Students",
+        "description": "Successfully trained millions of IT professionals globally",
+        "icon": "users"
+      },
+      {
+        "title": "Industry Recognition",
+        "description": "Certified by leading technology companies and educational bodies",
+        "icon": "certificate"
+      }
+    ],
+    "accreditations": [
+      {
+        "name": "ISO 9001:2015 Certified",
+        "description": "Quality Management System certification",
+        "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop&crop=center"
+      },
+      {
+        "name": "Microsoft Learning Partner",
+        "description": "Authorized Microsoft training provider",
+        "logo": "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=100&h=100&fit=crop&crop=center"
+      },
+      {
+        "name": "Oracle Academy Member",
+        "description": "Official Oracle education partner",
+        "logo": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=100&h=100&fit=crop&crop=center"
+      }
+    ]
+  },
+  "departments": [
+    {
+      "id": 1,
+      "name": "Software Engineering",
+      "shortName": "SE",
+      "description": "Comprehensive programs in software development, web technologies, and application design using cutting-edge programming languages and frameworks.",
+      "head": "Dr. Nguyen Van Minh",
+      "programs": [
+        "Advanced Diploma in Software Engineering (ADSE)",
+        "Web Development Specialist",
+        "Mobile App Development",
+        "Full-Stack Development"
+      ],
+      "technologies": ["Java", "Python", ".NET", "React", "Angular", "Node.js", "Flutter"],
+      "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop&crop=center",
+      "icon": "code",
+      "color": "blue"
+    },
+    {
+      "id": 2,
+      "name": "Network & Security",
+      "shortName": "NS",
+      "description": "Specialized training in network administration, cybersecurity, cloud computing, and infrastructure management for enterprise environments.",
+      "head": "Mr. Tran Duc Huy",
+      "programs": [
+        "Network Administration",
+        "Cybersecurity Specialist",
+        "Cloud Computing",
+        "Ethical Hacking & Penetration Testing"
+      ],
+      "technologies": ["Cisco", "Microsoft Azure", "AWS", "VMware", "Linux", "Windows Server"],
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop&crop=center",
+      "icon": "shield",
+      "color": "green"
+    },
+    {
+      "id": 3,
+      "name": "Data Science & AI",
+      "shortName": "DSAI",
+      "description": "Advanced programs in data analytics, machine learning, artificial intelligence, and business intelligence for the modern data-driven world.",
+      "head": "Dr. Le Thi Mai",
+      "programs": [
+        "Data Science & Analytics",
+        "Machine Learning Engineer",
+        "Artificial Intelligence",
+        "Business Intelligence"
+      ],
+      "technologies": ["Python", "R", "TensorFlow", "PyTorch", "Tableau", "Power BI", "SQL"],
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=center",
+      "icon": "brain",
+      "color": "purple"
+    },
+    {
+      "id": 4,
+      "name": "Digital Design & Media",
+      "shortName": "DDM",
+      "description": "Creative programs combining technology and design, covering multimedia, animation, UI/UX design, and digital marketing strategies.",
+      "head": "Ms. Pham Thi Lan",
+      "programs": [
+        "Multimedia & Animation",
+        "UI/UX Design",
+        "Digital Marketing",
+        "Graphic Design"
+      ],
+      "technologies": ["Adobe Creative Suite", "Figma", "Sketch", "After Effects", "Blender"],
+      "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop&crop=center",
+      "icon": "palette",
+      "color": "pink"
+    }
+  ],
+  "annualEvents": {
+    "overview": "Aptech organizes a comprehensive calendar of events throughout the academic year, designed to enhance learning, foster innovation, and build strong industry connections. Our events range from technical competitions to cultural celebrations, providing students with diverse opportunities for growth and networking.",
+    "categories": [
+      {
+        "name": "Academic & Technical Events",
+        "description": "Competitions, workshops, and seminars focused on technical skills and academic excellence",
+        "color": "blue",
+        "events": [
+          {
+            "name": "TechWiz Global Programming Championship",
+            "description": "International programming competition where students showcase their coding skills and innovative solutions",
+            "month": "October",
+            "duration": "3 days",
+            "participants": "500+ students globally",
+            "image": "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=400&h=300&fit=crop&crop=center",
+            "highlights": ["International competition", "Industry mentorship", "Cash prizes", "Internship opportunities"]
+          },
+          {
+            "name": "Innovation & Project Showcase",
+            "description": "Annual exhibition where students present their final year projects and innovative solutions",
+            "month": "March",
+            "duration": "2 days",
+            "participants": "300+ students",
+            "image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=300&fit=crop&crop=center",
+            "highlights": ["Industry judges", "Best project awards", "Startup opportunities", "Media coverage"]
+          },
+          {
+            "name": "Tech Talk Series",
+            "description": "Monthly seminars featuring industry experts sharing latest technology trends and career insights",
+            "month": "Monthly",
+            "duration": "2 hours",
+            "participants": "200+ attendees per session",
+            "image": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=300&fit=crop&crop=center",
+            "highlights": ["Industry experts", "Latest tech trends", "Career guidance", "Networking opportunities"]
+          }
+        ]
+      },
+      {
+        "name": "Career Development",
+        "description": "Events focused on career preparation, industry connections, and professional development",
+        "color": "green",
+        "events": [
+          {
+            "name": "Career Fair & Industry Connect",
+            "description": "Major recruitment event connecting students with leading IT companies and startups",
+            "month": "November",
+            "duration": "2 days",
+            "participants": "100+ companies, 1000+ students",
+            "image": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=300&fit=crop&crop=center",
+            "highlights": ["Job placements", "Internship offers", "Company presentations", "Resume reviews"]
+          },
+          {
+            "name": "Alumni Homecoming",
+            "description": "Annual gathering of Aptech graduates sharing success stories and networking opportunities",
+            "month": "December",
+            "duration": "1 day",
+            "participants": "500+ alumni",
+            "image": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&h=300&fit=crop&crop=center",
+            "highlights": ["Success stories", "Mentorship programs", "Industry insights", "Networking"]
+          },
+          {
+            "name": "Graduation Ceremony",
+            "description": "Formal ceremony celebrating the achievements of graduating students",
+            "month": "June",
+            "duration": "Half day",
+            "participants": "400+ graduates",
+            "image": "https://images.unsplash.com/photo-1523050854058-8df90110c9d1?w=400&h=300&fit=crop&crop=center",
+            "highlights": ["Academic recognition", "Industry awards", "Family celebration", "Achievement certificates"]
+          }
+        ]
+      },
+      {
+        "name": "Cultural & Community",
+        "description": "Events celebrating diversity, creativity, and community spirit within the Aptech family",
+        "color": "purple",
+        "events": [
+          {
+            "name": "Aptech Cultural Festival",
+            "description": "Multi-cultural celebration featuring performances, food, and traditions from around the world",
+            "month": "April",
+            "duration": "3 days",
+            "participants": "800+ participants",
+            "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=300&fit=crop&crop=center",
+            "highlights": ["Cultural performances", "International cuisine", "Art exhibitions", "Music competitions"]
+          },
+          {
+            "name": "Sports & Wellness Week",
+            "description": "Inter-department sports competitions and wellness activities promoting healthy lifestyle",
+            "month": "February",
+            "duration": "5 days",
+            "participants": "600+ students",
+            "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+            "highlights": ["Sports tournaments", "Fitness workshops", "Health screenings", "Team building"]
+          },
+          {
+            "name": "Orientation Week",
+            "description": "Welcome program for new students introducing them to Aptech culture and academic life",
+            "month": "January & July",
+            "duration": "1 week",
+            "participants": "400+ new students per intake",
+            "image": "https://images.unsplash.com/photo-1523580846011-d3982bcd500e?w=400&h=300&fit=crop&crop=center",
+            "highlights": ["Campus tours", "Academic guidance", "Student clubs", "Mentorship programs"]
+          }
+        ]
+      }
+    ],
+    "statistics": {
+      "totalEvents": "25+",
+      "annualParticipants": "5000+",
+      "industryPartners": "50+",
+      "internationalReach": "15+ countries"
+    }
+  }
+}

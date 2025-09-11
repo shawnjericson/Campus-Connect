@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Calendar, Users, MapPin, Search, Filter, Quote, Star } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Calendar, Users, MapPin, Search, Quote, Star } from 'lucide-react'
 import BookmarkButton from '../components/BookmarkButton'
 import { useBookmarks } from '../contexts/BookmarkContext'
 import { useEvents } from '../hooks/useEvents'
@@ -7,20 +8,17 @@ import { useEvents } from '../hooks/useEvents'
 function EventsPage() {
   const {
     events: allEvents,
-    categories,
-    faculties,
     loading,
-    error,
-    filterEvents,
-    sortEvents
+    error
   } = useEvents()
 
   const [filteredEvents, setFilteredEvents] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedStatus, setSelectedStatus] = useState('all')
   const [selectedCategory, setSelectedCategory] = useState('all')
-  const [selectedFaculty, setSelectedFaculty] = useState('all')
-  const [sortBy, setSortBy] = useState('date')
+
+  const [sortBy, setSortBy] = useState('priority') // Default to priority to show TechWiz first
+  const [sortOrder, setSortOrder] = useState('desc')
   const { isHydrated } = useBookmarks()
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0)
 
@@ -82,20 +80,63 @@ function EventsPage() {
     return () => clearInterval(interval)
   }, [reviews.length])
 
-  // Filter and sort events when filters change
+  // Enhanced filtering and sorting logic
   useEffect(() => {
     if (allEvents.length > 0) {
-      const filtered = filterEvents({
-        category: selectedCategory,
-        faculty: selectedFaculty,
-        status: selectedStatus,
-        search: searchQuery
+      let filtered = [...allEvents]
+
+      // Filter by search query
+      if (searchQuery.trim()) {
+        filtered = filtered.filter(event =>
+          event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          event.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          event.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          event.organizer.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      }
+
+      // Filter by category
+      if (selectedCategory !== 'all') {
+        filtered = filtered.filter(event => event.category === selectedCategory)
+      }
+
+
+
+      // Filter by status
+      if (selectedStatus !== 'all') {
+        filtered = filtered.filter(event => event.status === selectedStatus)
+      }
+
+      // Sort events
+      filtered.sort((a, b) => {
+        let comparison = 0
+
+        switch (sortBy) {
+          case 'priority':
+            // Featured/priority events first
+            const aPriority = a.priority || 999
+            const bPriority = b.priority || 999
+            comparison = aPriority - bPriority
+            break
+          case 'date':
+            comparison = new Date(a.date) - new Date(b.date)
+            break
+          case 'name':
+            comparison = a.title.localeCompare(b.title)
+            break
+          case 'category':
+            comparison = a.category.localeCompare(b.category)
+            break
+          default:
+            comparison = 0
+        }
+
+        return sortOrder === 'desc' ? -comparison : comparison
       })
 
-      const sorted = sortEvents(filtered, sortBy, 'asc')
-      setFilteredEvents(sorted)
+      setFilteredEvents(filtered)
     }
-  }, [allEvents, selectedCategory, selectedFaculty, selectedStatus, searchQuery, sortBy, filterEvents, sortEvents])
+  }, [allEvents, selectedCategory, selectedStatus, searchQuery, sortBy, sortOrder])
 
   if (loading) {
     return (
@@ -125,13 +166,28 @@ function EventsPage() {
   }
 
   const EventCard = ({ event }) => (
-    <div className="group bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500 transform hover:-translate-y-2">
+    <Link to={`/events/${event.id}`} className="block">
+      <div className={`group bg-white rounded-2xl shadow-lg border overflow-hidden transition-all duration-500 transform hover:-translate-y-2 ${
+        event.featured
+          ? 'border-red-500 hover:border-red-600 hover:shadow-2xl hover:shadow-red-500/20'
+          : 'border-gray-200 hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/10'
+      }`}>
       <div className="relative">
         <img
           src={event.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&crop=center'}
           alt={event.title}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
         />
+
+        {/* Featured Badge */}
+        {event.featured && (
+          <div className="absolute top-4 left-4 bg-red-900 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center space-x-1">
+            <Star className="w-3 h-3 fill-current" />
+            <span>FEATURED</span>
+          </div>
+        )}
+
+        {/* Bookmark Button */}
         <div className="absolute top-4 right-4">
           {isHydrated && (
             <BookmarkButton
@@ -148,45 +204,71 @@ function EventsPage() {
             />
           )}
         </div>
+
+        {/* Status Badge */}
         {event.status === 'past' && (
-          <div className="absolute top-4 left-4 bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+          <div className="absolute bottom-4 left-4 bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-medium">
             Completed
           </div>
         )}
       </div>
       
       <div className="p-6">
-        <div className="flex items-center gap-2 text-purple-600 text-sm font-medium mb-2">
+        {/* Date & Time */}
+        <div className="flex items-center gap-2 text-red-900 text-sm font-medium mb-3">
           <Calendar className="w-4 h-4" />
-          {event.date} • {event.time}
+          <span>{new Date(event.date).toLocaleDateString('en-US', {
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+          })}</span>
+          <span className="text-gray-400">•</span>
+          <span>{event.time}</span>
         </div>
-        
-        <h3 className="text-xl font-bold text-gray-900 mb-2">
+
+        {/* Event Title */}
+        <h3 className={`text-xl font-bold mb-3 ${event.featured ? 'text-red-900' : 'text-gray-900'}`}>
           {event.title}
         </h3>
-        
-        <p className="text-gray-600 mb-4 line-clamp-2">
+
+        {/* Description */}
+        <p className="text-gray-600 mb-4 line-clamp-3 text-sm leading-relaxed">
           {event.description}
         </p>
-        
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4 text-sm text-gray-500">
-            <div className="flex items-center gap-1">
-              <MapPin className="w-4 h-4" />
-              {event.location}
+
+        {/* Location & Participants */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col gap-2 text-sm text-gray-500">
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-red-900" />
+              <span className="truncate">{event.location}</span>
             </div>
-            <div className="flex items-center gap-1">
-              <Users className="w-4 h-4" />
-              {event.participants} people
-            </div>
+            {event.currentParticipants && event.maxParticipants && (
+              <div className="flex items-center gap-2">
+                <Users className="w-4 h-4 text-red-900" />
+                <span>{event.currentParticipants}/{event.maxParticipants} registered</span>
+              </div>
+            )}
           </div>
-          
-          <span className="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded-full">
+        </div>
+
+        {/* Category & Organizer */}
+        <div className="flex items-center justify-between">
+          <span className={`text-xs px-3 py-1 rounded-full font-medium ${
+            event.featured
+              ? 'bg-red-100 text-red-900'
+              : 'bg-gray-100 text-gray-700'
+          }`}>
             {event.category}
+          </span>
+          <span className="text-xs text-gray-500">
+            by {event.organizer}
           </span>
         </div>
       </div>
     </div>
+    </Link>
   )
 
 
@@ -194,96 +276,103 @@ function EventsPage() {
   return (
     <div className="min-h-screen bg-white py-8">
       <div className="container mx-auto px-4">
-        {/* Header - MIT Tech Style */}
+        {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-2 mb-6">
-            <Calendar className="w-4 h-4 text-cyan-400" />
-            <span className="text-cyan-400 text-sm font-medium tracking-wider">EVENT DIRECTORY</span>
+          <div className="inline-flex items-center space-x-2 bg-red-50 border border-red-200 rounded-full px-4 py-2 mb-6">
+            <Calendar className="w-4 h-4 text-red-900" />
+            <span className="text-red-900 text-sm font-medium tracking-wider">EVENT CATALOG</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
+            <span className="text-red-900">
               Campus Events
             </span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Advanced event discovery system • Join our vibrant tech community
+            Discover upcoming and past events • Join our vibrant tech community and expand your horizons
           </p>
         </div>
 
-        {/* Filters - Clean White Style */}
+        {/* Enhanced Filters & Controls */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 mb-8">
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col lg:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search events..."
+                placeholder="Search events by name, description, location, or organizer..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all duration-300"
+                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-red-500/50 focus:border-red-500 transition-all duration-300"
               />
             </div>
 
-            {/* Status Filter */}
-            <div className="relative">
-              <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <select
-                value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-                className="pl-10 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none bg-white"
-              >
-                <option value="all">All Events</option>
-                <option value="upcoming">Upcoming</option>
-                <option value="past">Past Events</option>
-              </select>
-            </div>
+            {/* Filter Controls */}
+            <div className="flex flex-wrap gap-3">
+              {/* Category Filter */}
+              <div className="relative">
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 appearance-none bg-white text-gray-900 min-w-[140px]"
+                >
+                  <option value="all">All Categories</option>
+                  <option value="Technical">Technical Events</option>
+                  <option value="Cultural">Cultural Events</option>
+                  <option value="Sport">Sport Events</option>
+                  <option value="Departmental">Departmental Events</option>
+                </select>
+              </div>
 
-            {/* Category Filter */}
-            <div className="relative">
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none bg-white"
-              >
-                <option value="all">All Categories</option>
-                {categories.map(category => (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+              {/* Status Filter */}
+              <div className="relative">
+                <select
+                  value={selectedStatus}
+                  onChange={(e) => setSelectedStatus(e.target.value)}
+                  className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 appearance-none bg-white text-gray-900 min-w-[120px]"
+                >
+                  <option value="all">All Events</option>
+                  <option value="upcoming">Upcoming</option>
+                  <option value="past">Past Events</option>
+                </select>
+              </div>
 
-            {/* Faculty Filter */}
-            <div className="relative">
-              <select
-                value={selectedFaculty}
-                onChange={(e) => setSelectedFaculty(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none bg-white"
-              >
-                <option value="all">All Faculties</option>
-                {faculties.map(faculty => (
-                  <option key={faculty.id} value={faculty.name}>
-                    {faculty.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+              {/* Sort Options */}
+              <div className="relative">
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 appearance-none bg-white text-gray-900 min-w-[140px]"
+                >
+                  <option value="priority">Featured First</option>
+                  <option value="date">Sort by Date</option>
+                  <option value="name">Sort by Name</option>
+                  <option value="category">Sort by Category</option>
+                </select>
+              </div>
 
-            {/* Sort Filter */}
-            <div className="relative">
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none bg-white"
+              {/* Sort Order Toggle */}
+              <button
+                onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+                className="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors duration-200 bg-white"
+                title={`Sort ${sortOrder === 'asc' ? 'Descending' : 'Ascending'}`}
               >
-                <option value="date">Sort by Date</option>
-                <option value="title">Sort by Title</option>
-                <option value="category">Sort by Category</option>
-                <option value="participants">Sort by Participants</option>
-              </select>
+                {sortOrder === 'asc' ? '↑' : '↓'}
+              </button>
             </div>
+          </div>
+
+          {/* Results Summary */}
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <p className="text-sm text-gray-600">
+              Showing <span className="font-semibold text-red-900">{filteredEvents.length}</span> events
+              {selectedCategory !== 'all' && (
+                <span> in <span className="font-semibold">{selectedCategory}</span> category</span>
+              )}
+              {searchQuery && (
+                <span> matching "<span className="font-semibold">{searchQuery}</span>"</span>
+              )}
+            </p>
           </div>
         </div>
 

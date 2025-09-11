@@ -102,9 +102,9 @@ function FeedbackPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-500 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-900 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading feedback form...</p>
         </div>
       </div>
@@ -112,15 +112,15 @@ function FeedbackPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white py-8">
+    <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-2 mb-6">
-            <MessageSquare className="w-4 h-4 text-cyan-400" />
-            <span className="text-cyan-400 text-sm font-medium tracking-wider">FEEDBACK CENTER</span>
+          <div className="inline-flex items-center space-x-2 bg-red-50 border border-red-200 rounded-full px-4 py-2 mb-6">
+            <MessageSquare className="w-4 h-4 text-red-900" />
+            <span className="text-red-900 text-sm font-medium tracking-wider">FEEDBACK CENTER</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
+            <span className="text-red-900">
               Feedback
             </span>
           </h1>
@@ -144,18 +144,18 @@ function FeedbackPage() {
               </p>
             </div>
           ) : (
-            <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
               <div className="flex items-center mb-6">
-                <MessageSquare className="w-8 h-8 text-cyan-600 mr-3" />
+                <MessageSquare className="w-8 h-8 text-red-900 mr-3" />
                 <h2 className="text-2xl font-bold text-gray-900">Send us your feedback</h2>
               </div>
 
-              <div className="bg-cyan-50 border border-cyan-200 rounded-lg p-4 mb-8">
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
                 <div className="flex items-start">
-                  <AlertCircle className="w-5 h-5 text-cyan-600 mr-2 mt-0.5" />
+                  <AlertCircle className="w-5 h-5 text-red-900 mr-2 mt-0.5" />
                   <div>
-                    <p className="text-blue-800 font-medium">Demo Form Notice</p>
-                    <p className="text-blue-700 text-sm">
+                    <p className="text-red-900 font-medium">Demo Form Notice</p>
+                    <p className="text-red-800 text-sm">
                       This is a demonstration form for UI purposes only. No data will be actually sent or stored.
                     </p>
                   </div>
@@ -342,7 +342,7 @@ function FeedbackPage() {
                 <div className="flex justify-end">
                   <button
                     type="submit"
-                    className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2 font-medium"
+                    className="bg-red-900 text-white px-8 py-3 rounded-lg hover:bg-red-800 transition-colors flex items-center space-x-2 font-medium"
                   >
                     <Send className="w-5 h-5" />
                     <span>Submit Feedback</span>

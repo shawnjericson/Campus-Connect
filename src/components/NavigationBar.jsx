@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Bookmark, Cpu, Zap, Home, Info, Calendar, Image, Phone, MessageSquare, UserPlus } from 'lucide-react'
+import { Menu, X, Bookmark, Cpu, Zap, Home, Info, Calendar, Image, Phone, MessageSquare } from 'lucide-react'
 import { useBookmarks } from '../contexts/BookmarkContext'
 import BookmarkIndicator from './BookmarkIndicator'
 
@@ -91,16 +91,7 @@ function NavigationBar() {
               <BookmarkIndicator />
             </div>
 
-            {/* Register Button */}
-            <Link
-              to="/register"
-              className="relative group bg-red-900 text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:bg-red-800"
-            >
-              <div className="flex items-center space-x-2">
-                
-                <span>Register</span>
-              </div>
-            </Link>
+
           </div>
 
           {/* Mobile menu button - Tech Style */}
@@ -137,14 +128,7 @@ function NavigationBar() {
                   </Link>
                 )
               })}
-              <Link
-                to="/register"
-                className="flex items-center justify-center space-x-2 w-full bg-red-900 text-white px-4 py-3 rounded-xl font-medium hover:bg-red-800 transition-all duration-300 mt-4 shadow-lg"
-                onClick={() => setIsOpen(false)}
-              >
-                <UserPlus className="w-5 h-5" />
-                <span>Register</span>
-              </Link>
+
             </div>
           </div>
         )}
