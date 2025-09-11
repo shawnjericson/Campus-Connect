@@ -93,7 +93,7 @@ const UpcomingEventsHighlights = () => {
         <div className="text-center mb-12">
           <div className="inline-flex items-center space-x-2 bg-red-50 border border-red-200 rounded-full px-4 py-2 mb-4">
             <Calendar className="w-4 h-4 text-red-900" />
-            <span className="text-red-900 text-sm font-medium tracking-wider">UPCOMING HIGHLIGHTS</span>
+            <span className="text-red-900 text-sm font-medium tracking-wider">HIGHLIGHT EVENT</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             <span className="text-red-900">Don't Miss</span> These Events
@@ -184,43 +184,14 @@ const UpcomingEventsHighlights = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`transition-all duration-300 ${
-                    index === currentSlide
+                  className={`transition-all duration-300 ${index === currentSlide
                       ? 'w-8 h-2 bg-red-900 rounded-full'
                       : 'w-2 h-2 bg-gray-400 rounded-full hover:bg-gray-600'
-                  }`}
+                    }`}
                 />
               ))}
             </div>
           )}
-        </div>
-
-        {/* Quick Event Grid */}
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
-          {displayEvents.slice(1, 4).map((event) => (
-            <div key={event.id} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-300">
-              <img
-                src={event.thumbnail}
-                alt={event.title}
-                className="w-full h-32 object-cover"
-              />
-              <div className="p-4">
-                <div className="flex items-center gap-2 text-red-900 text-xs font-medium mb-2">
-                  <Calendar className="w-3 h-3" />
-                  <span>{event.date}</span>
-                </div>
-                <h4 className="font-bold text-gray-900 mb-2 line-clamp-2">{event.title}</h4>
-                <p className="text-gray-600 text-sm line-clamp-2 mb-3">{event.shortDescription}</p>
-                <Link
-                  to={`/events/${event.id}`}
-                  className="text-red-900 hover:text-red-700 font-medium text-sm flex items-center gap-1"
-                >
-                  <span>Learn More</span>
-                  <ArrowRight className="w-3 h-3" />
-                </Link>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>

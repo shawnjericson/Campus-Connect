@@ -120,7 +120,7 @@ function HomePage() {
           )}
         </div>
         {isPast && (
-          <div className="absolute top-4 left-4 bg-slate-600/80 backdrop-blur-sm text-slate-300 px-3 py-1 rounded-full text-sm font-medium border border-slate-500/50">
+          <div className="absolute top-4 left-4 bg-green-400 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium border ">
             Completed
           </div>
         )}
@@ -285,54 +285,6 @@ function HomePage() {
 
       {/* Upcoming Events Highlights */}
       <UpcomingEventsHighlights />
-
-      {/* Upcoming Events - MIT Tech Style */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-red-50 border border-red-200 rounded-full px-4 py-2 mb-6">
-              <Calendar className="w-4 h-4 text-red-900" />
-              <span className="text-red-900 text-sm font-medium tracking-wider">UPCOMING EVENTS</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              <span className="text-red-900">
-                Next Generation
-              </span>
-              <br />
-              <span className="text-gray-900">Learning Events</span>
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Advanced educational experiences designed for the future of technology and innovation
-            </p>
-          </div>
-
-          {upcomingEvents.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-              {upcomingEvents.map(event => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16">
-              <div className="w-20 h-20 bg-slate-700/50 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-slate-600/50">
-                <Calendar className="w-10 h-10 text-slate-400" />
-              </div>
-              <p className="text-slate-400 text-xl">No upcoming events at the moment</p>
-              <p className="text-slate-500 text-sm mt-2">Check back soon for new events</p>
-            </div>
-          )}
-
-          <div className="text-center">
-            <Link
-              to="/events"
-              className="inline-flex items-center gap-3 bg-red-900 text-white px-8 py-4 rounded-xl font-medium hover:bg-red-800 transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              <span>Explore All Events</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* Past Events */}
       <section className="py-16 bg-white/50">
