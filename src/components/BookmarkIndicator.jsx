@@ -24,12 +24,12 @@ function BookmarkIndicator() {
       <div className="relative">
         <button
           onClick={() => setShowManager(true)}
-          className="w-10 h-10 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700/50 hover:border-cyan-500/30 rounded-xl flex items-center justify-center transition-all duration-300 group"
+          className="w-10 h-10 bg-gray-100 hover:bg-red-50 border border-gray-200 hover:border-red-200 rounded-xl flex items-center justify-center transition-all duration-300 group"
           title="View Bookmarks"
         >
-          <Bookmark className="w-5 h-5 text-slate-300 group-hover:text-cyan-400 transition-colors duration-300" />
+          <Bookmark className="w-5 h-5 text-gray-600 group-hover:text-red-900 transition-colors duration-300" />
           {displayCount > 0 && (
-            <div className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold rounded-full flex items-center justify-center animate-pulse shadow-lg">
+            <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-900 text-white text-xs font-bold rounded-full flex items-center justify-center animate-pulse shadow-lg">
               {displayCount > 99 ? '99+' : displayCount}
             </div>
           )}

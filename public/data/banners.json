@@ -1,0 +1,83 @@
+{
+  "welcomeMessages": [
+    {
+      "id": 1,
+      "title": "Welcome to Aptech Computer Education Center Event Hub",
+      "subtitle": "Stay Updated, Stay Involved!",
+      "description": "Connect with your tech community and discover amazing events, workshops, and opportunities.",
+      "badge": "LIVE EVENT SYSTEM",
+      "active": true
+    },
+    {
+      "id": 2,
+      "title": "Welcome to CampusConnect",
+      "subtitle": "Your Gateway to Tech Excellence",
+      "description": "Join thousands of students, staff, and tech enthusiasts in our vibrant learning community.",
+      "badge": "TECH COMMUNITY",
+      "active": false
+    }
+  ],
+  "bannerSlides": [
+    {
+      "id": 1,
+      "image": "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "category": "College Branding",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "category": "College Branding",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "category": "Event Snapshots",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "category": "Event Snapshots",
+      "featured": true
+    },
+    {
+      "id": 5,
+      "image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "category": "Event Snapshots",
+      "featured": true
+    },
+    {
+      "id": 6,
+      "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "category": "Seasonal Celebrations",
+      "featured": true
+    },
+    {
+      "id": 7,
+      "image": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "category": "Seasonal Celebrations",
+      "featured": true
+    },
+    {
+      "id": 8,
+      "image": "https://images.unsplash.com/photo-1482686115713-0fbcaced6e28?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "category": "Seasonal Celebrations",
+      "featured": true
+    }
+  ],
+  "collegeInfo": {
+    "name": "Aptech Computer Education Center",
+    "shortName": "Aptech",
+    "tagline": "Shaping Tomorrow's Tech Leaders",
+    "established": "1986",
+    "location": "Ho Chi Minh City, Vietnam",
+    "website": "https://aptech.edu.vn",
+    "colors": {
+      "primary": "#06b6d4",
+      "secondary": "#3b82f6",
+      "accent": "#6366f1"
+    }
+  }
+}

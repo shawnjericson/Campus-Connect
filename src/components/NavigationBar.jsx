@@ -33,59 +33,54 @@ function NavigationBar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled
-        ? 'backdrop-blur-xl bg-slate-900/90 border-b border-cyan-500/20 shadow-2xl shadow-cyan-500/10'
-        : 'backdrop-blur-md bg-slate-900/70 border-b border-slate-700/30'
+        ? 'backdrop-blur-xl bg-white/95 border-b border-gray-200 shadow-lg'
+        : 'backdrop-blur-md bg-white/90 border-b border-gray-100'
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           {/* Logo - MIT Tech Style */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-cyan-500/25 transition-all duration-300 group-hover:scale-105 border border-cyan-400/20">
+              <div className="w-12 h-12 bg-red-900 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-red-900/25 transition-all duration-300 group-hover:scale-105 border border-red-900/20">
                 <Cpu className="w-6 h-6 text-white" />
               </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center animate-pulse">
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full flex items-center justify-center animate-pulse">
                 <Zap className="w-2 h-2 text-white" />
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-black relative tracking-tight">
-                <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-transparent">
-                  Campus
-                </span>
-                <span className="text-white font-extrabold text-shadow-lg ml-0.5">
-                  Connect
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-blue-400/10 blur-lg -z-10 opacity-50"></span>
-              </span>
-              <span className="text-xs text-cyan-300 font-semibold tracking-[0.2em] uppercase opacity-90">
-                <span className="inline-block w-1 h-1 bg-cyan-400 rounded-full mr-1 animate-pulse"></span>
-                APTECH EVENT CENTER
-                <span className="inline-block w-1 h-1 bg-cyan-400 rounded-full ml-1 animate-pulse"></span>
-              </span>
+              <div className="w-48 h-8">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 320" width="100%" height="100%" role="img" aria-label="CampusConnect — Ribbon">
+                  <style>
+                    {`@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700;800&display=swap');
+                    .w{ fill:#760009; font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,Arial; }`}
+                  </style>
+                  <text x="60" y="190" className="w" fontSize="200" fontWeight="700">Campus </text>
+                  <text x="880" y="190" className="w" fontSize="200" fontWeight="800">Connect</text>
+                  <path d="M60 210 C 360 240, 540 240, 625 210 S 980 170, 1820 200" fill="none" stroke="#760009" strokeWidth="18" strokeLinecap="round"/>
+                </svg>
+              </div>
             </div>
           </Link>
 
           {/* Desktop Navigation - Glass Morphism Style */}
           <div className="hidden md:flex items-center space-x-2">
             {navigation.map((item) => {
-              const Icon = item.icon
               return (
                 <Link
                   key={item.name}
                   to={item.href}
                   className={`group relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                     isActive(item.href)
-                      ? 'text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-lg shadow-cyan-500/10'
-                      : 'text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 border border-transparent hover:border-slate-700/50'
+                      ? 'text-red-900 bg-red-50 border border-red-200 shadow-sm'
+                      : 'text-gray-700 hover:text-red-900 hover:bg-gray-50 border border-transparent hover:border-gray-200'
                   }`}
                 >
-                  <div className="flex items-center space-x-2">
-                    <Icon className="w-4 h-4" />
+                  <div className="flex items-center">
                     <span>{item.name}</span>
                   </div>
                   {isActive(item.href) && (
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full"></div>
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-red-900 rounded-full"></div>
                   )}
                 </Link>
               )
@@ -96,16 +91,15 @@ function NavigationBar() {
               <BookmarkIndicator />
             </div>
 
-            {/* Register Button - MIT Style */}
+            {/* Register Button */}
             <Link
               to="/register"
-              className="relative group bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25 border border-cyan-400/20"
+              className="relative group bg-red-900 text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:bg-red-800"
             >
               <div className="flex items-center space-x-2">
-                <UserPlus className="w-4 h-4" />
+                
                 <span>Register</span>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
             </Link>
           </div>
 
@@ -145,7 +139,7 @@ function NavigationBar() {
               })}
               <Link
                 to="/register"
-                className="flex items-center justify-center space-x-2 w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-3 rounded-xl font-medium hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 mt-4 shadow-lg border border-cyan-400/20"
+                className="flex items-center justify-center space-x-2 w-full bg-red-900 text-white px-4 py-3 rounded-xl font-medium hover:bg-red-800 transition-all duration-300 mt-4 shadow-lg"
                 onClick={() => setIsOpen(false)}
               >
                 <UserPlus className="w-5 h-5" />

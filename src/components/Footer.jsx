@@ -1,169 +1,203 @@
 import { Link } from 'react-router-dom'
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin, Cpu, Zap, Github, Linkedin } from 'lucide-react'
+import { MapPin, Phone, Mail, Calendar, Users, BookOpen, Heart } from 'lucide-react'
 
-function Footer() {
+const Footer = () => {
+  const currentYear = new Date().getFullYear()
+
+  const quickLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Events', href: '/events' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'Feedback', href: '/feedback' }
+  ]
+
+  const eventCategories = [
+    { name: 'Technology Events', href: '/events?category=technology' },
+    { name: 'Cultural Programs', href: '/events?category=cultural' },
+    { name: 'Academic Seminars', href: '/events?category=academic' },
+    { name: 'Career Development', href: '/events?category=career' },
+    { name: 'Student Activities', href: '/events?category=student' },
+    { name: 'Workshops', href: '/events?category=workshop' }
+  ]
+
   return (
-    <footer className="relative bg-slate-900/95 backdrop-blur-xl border-t border-slate-700/50 text-white overflow-hidden">
-      {/* Tech Background Pattern */}
-      <div className="absolute inset-0 tech-grid opacity-30"></div>
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500"></div>
-
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        <div className="grid md:grid-cols-4 gap-8">
-          {/* Brand - MIT Tech Style */}
-          <div className="col-span-1">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg animate-circuit border border-cyan-400/20">
-                  <Cpu className="w-6 h-6 text-white" />
-                </div>
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center animate-pulse">
-                  <Zap className="w-2 h-2 text-white" />
-                </div>
+    <footer className="bg-white border-t border-gray-200">
+      <div className="container mx-auto px-4 py-12">
+        {/* Main Footer Content */}
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
+          {/* Company Info */}
+          <div className="md:col-span-1">
+            <div className="mb-6">
+              <div className="w-48 h-8 mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 320" width="100%" height="100%" role="img" aria-label="CampusConnect — Ribbon">
+                  <style>
+                    {`@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700;800&display=swap');
+                    .w{ fill:#760009; font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,Arial; }`}
+                  </style>
+                  <text x="60" y="190" className="w" fontSize="200" fontWeight="700">Campus </text>
+                  <text x="880" y="190" className="w" fontSize="200" fontWeight="800">Connect</text>
+                  <path d="M60 210 C 360 240, 540 240, 625 210 S 980 170, 1820 200" fill="none" stroke="#760009" strokeWidth="18" strokeLinecap="round" />
+                </svg>
               </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                  CampusConnect
-                </span>
-                <span className="text-xs text-slate-400 font-medium tracking-wider">
-                  APTECH EVENT CENTER
-                </span>
-              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Advanced Event Management System for Aptech Computer Education Center.
+                Stay connected with your tech community and discover amazing events.
+              </p>
             </div>
-            <p className="text-slate-300 mb-6 leading-relaxed">
-              Advanced Event Management System • Connecting the future of education through technology and innovation.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="p-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-300">
-                <Github className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-300">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-300">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-300">
-                <Instagram className="w-5 h-5" />
-              </a>
+
+            {/* Partner Logos */}
+            <div className="mb-6">
+              <h4 className="text-sm font-semibold text-gray-900 mb-3">Our Partners</h4>
+              <div className="flex items-center space-x-4">
+                <img
+                  src="/images/Logo1.png"
+                  alt="Partner Logo 1"
+                  className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
+                />
+                <img
+                  src="/images/Logo2.png"
+                  alt="Partner Logo 2"
+                  className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
+                />
+                <img
+                  src="/images/Logo3.png"
+                  alt="Partner Logo 3"
+                  className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Navigation Links */}
+          {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-cyan-400 circuit-line">Navigation</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/" className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center space-x-2 group">
-                  <span className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <span>Home</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center space-x-2 group">
-                  <span className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <span>About</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/events" className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center space-x-2 group">
-                  <span className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <span>Events</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/gallery" className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center space-x-2 group">
-                  <span className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <span>Gallery</span>
-                </Link>
-              </li>
+            <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <BookOpen className="w-4 h-4 text-red-900 mr-2" />
+              Quick Links
+            </h4>
+            <ul className="space-y-2">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-gray-600 hover:text-red-900 transition-colors duration-300 text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Event Categories */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-cyan-400 circuit-line">Services</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/register" className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center space-x-2 group">
-                  <span className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <span>Registration</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center space-x-2 group">
-                  <span className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <span>Contact</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/feedback" className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center space-x-2 group">
-                  <span className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <span>Feedback</span>
-                </Link>
-              </li>
-              <li>
-                <a href="#" className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center space-x-2 group">
-                  <span className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <span>Support</span>
-                </a>
-              </li>
+            <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <Calendar className="w-4 h-4 text-red-900 mr-2" />
+              Event Categories
+            </h4>
+            <ul className="space-y-2">
+              {eventCategories.map((category) => (
+                <li key={category.name}>
+                  <Link
+                    to={category.href}
+                    className="text-gray-600 hover:text-red-900 transition-colors duration-300 text-sm"
+                  >
+                    {category.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Information */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-cyan-400 circuit-line">Contact Info</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start space-x-3 group">
-                <div className="p-2 rounded-lg bg-slate-800/50 border border-slate-700/50 group-hover:border-cyan-500/30 transition-all duration-300">
-                  <MapPin className="w-4 h-4 text-cyan-400" />
-                </div>
+            <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <Users className="w-4 h-4 text-red-900 mr-2" />
+              Contact Info
+            </h4>
+            <div className="space-y-3">
+              <div className="flex items-start space-x-3">
+                <MapPin className="w-4 h-4 text-red-900 mt-0.5 flex-shrink-0" />
                 <div>
-                  <span className="text-slate-300 text-sm">144 Xuan Thuy, Cau Giay</span>
-                  <br />
-                  <span className="text-slate-400 text-xs">Hanoi, Vietnam</span>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    35/6 đường D5, Phường Thạnh Mỹ Tây<br />
+                    Ho Chi Minh City, Vietnam
+                  </p>
                 </div>
-              </li>
-              <li className="flex items-center space-x-3 group">
-                <div className="p-2 rounded-lg bg-slate-800/50 border border-slate-700/50 group-hover:border-cyan-500/30 transition-all duration-300">
-                  <Phone className="w-4 h-4 text-cyan-400" />
+              </div>
+
+              <div className="flex items-center space-x-3">
+                <Phone className="w-4 h-4 text-red-900 flex-shrink-0" />
+                <a
+                  href="tel:18001779"
+                  className="text-gray-600 hover:text-red-900 transition-colors duration-300 text-sm"
+                >
+                  1800 1779
+                </a>
+              </div>
+
+              <div className="flex items-center space-x-3">
+                <Mail className="w-4 h-4 text-red-900 flex-shrink-0" />
+                <a
+                  href="mailto:aptech2@aprotrain.com"
+                  className="text-gray-600 hover:text-red-900 transition-colors duration-300 text-sm"
+                >
+                  aptech2@aprotrain.com
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+              <h5 className="text-sm font-semibold text-gray-900 mb-2">Campus Stats</h5>
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                <div className="text-center">
+                  <div className="text-red-900 font-bold">500+</div>
+                  <div className="text-gray-600">Students</div>
                 </div>
-                <span className="text-slate-300 text-sm">(024) 3869-2222</span>
-              </li>
-              <li className="flex items-center space-x-3 group">
-                <div className="p-2 rounded-lg bg-slate-800/50 border border-slate-700/50 group-hover:border-cyan-500/30 transition-all duration-300">
-                  <Mail className="w-4 h-4 text-cyan-400" />
+                <div className="text-center">
+                  <div className="text-red-900 font-bold">50+</div>
+                  <div className="text-gray-600">Events/Year</div>
                 </div>
-                <span className="text-slate-300 text-sm">info@aptech.edu.vn</span>
-              </li>
-            </ul>
+                <div className="text-center">
+                  <div className="text-red-900 font-bold">20+</div>
+                  <div className="text-gray-600">Programs</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-red-900 font-bold">15+</div>
+                  <div className="text-gray-600">Years</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar - Tech Style */}
-        <div className="border-t border-slate-700/50 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-4 mb-4 md:mb-0">
-              <p className="text-slate-400 text-sm">
-                © 2024 CampusConnect • Aptech Event Center
+        {/* Bottom Footer */}
+        <div className="border-t border-gray-200 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            {/* Copyright */}
+            <div className="text-center md:text-left">
+              <p className="text-gray-600 text-sm">
+                © {currentYear} CampusConnect - Aptech Computer Education Center. All rights reserved.
               </p>
-              <div className="hidden md:flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-xs text-slate-500">System Online</span>
-              </div>
             </div>
-            <div className="flex space-x-6">
-              <a href="#" className="text-slate-400 hover:text-cyan-400 text-sm transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-slate-400 hover:text-cyan-400 text-sm transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-slate-400 hover:text-cyan-400 text-sm transition-colors">
-                API Docs
-              </a>
+
+            {/* Team Signature */}
+            <div className="text-center md:text-right">
+              <p className="text-gray-600 text-sm flex items-center justify-center md:justify-end">
+                Made with
+                <Heart className="w-3 h-3 text-red-900 mx-1" />
+                by <span className="font-semibold text-red-900 ml-1">Concurrency</span>
+              </p>
             </div>
+          </div>
+
+          {/* Additional Info */}
+          <div className="mt-4 text-center">
+            <p className="text-gray-500 text-xs">
+              Aptech Computer Education Center - Shaping Tomorrow's Tech Leaders
+            </p>
           </div>
         </div>
       </div>

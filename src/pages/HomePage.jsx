@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import { Calendar, Users, MapPin, ArrowRight, Heart, ChevronLeft, ChevronRight, Clock } from 'lucide-react'
 import { useBookmarks } from '../contexts/BookmarkContext'
 import BookmarkButton from '../components/BookmarkButton'
-import HotEventPopup from '../components/HotEventPopup'
+import UpcomingEventsHighlights from '../components/UpcomingEventsHighlights'
 import { useEvents } from '../hooks/useEvents'
+import useBanners from '../hooks/useBanners'
 
 function HomePage() {
   const { isHydrated } = useBookmarks()
@@ -14,48 +15,36 @@ function HomePage() {
     loading,
     error
   } = useEvents()
+  const { getActiveWelcomeMessage, getFeaturedSlides, loading: bannersLoading } = useBanners()
 
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  // Hero slider images and content
-  const heroSlides = [
+  // Get dynamic banner slides or fallback to static data
+  const heroSlides = getFeaturedSlides().length > 0 ? getFeaturedSlides() : [
     {
       id: 1,
-      title: "Technology & Science Conference 2024",
-      subtitle: "Discover the Future of Innovation",
-      description: "Join leading experts and researchers in exploring cutting-edge technologies and scientific breakthroughs.",
-      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      cta: "Register Now",
-      link: "/events"
+      image: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      category: "College Branding"
     },
     {
       id: 2,
-      title: "Student Cultural Festival",
-      subtitle: "Celebrate Diversity & Creativity",
-      description: "Experience the rich tapestry of cultures through music, dance, art, and culinary delights from around the world.",
-      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      cta: "Join Festival",
-      link: "/events"
+      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      category: "Event Snapshots"
     },
     {
       id: 3,
-      title: "Career Development Workshop",
-      subtitle: "Build Your Professional Future",
-      description: "Enhance your skills with hands-on workshops, networking opportunities, and career guidance from industry leaders.",
-      image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      cta: "Learn More",
-      link: "/events"
-    },
-    {
-      id: 4,
-      title: "Annual Sports Tournament",
-      subtitle: "Compete, Connect, Celebrate",
-      description: "Show your team spirit and athletic prowess in our exciting inter-faculty sports competition.",
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      cta: "Join Tournament",
-      link: "/events"
+      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      category: "Seasonal Celebrations"
     }
   ]
+
+  // Get active welcome message
+  const welcomeMessage = getActiveWelcomeMessage() || {
+    title: "Welcome to CampusConnect",
+    subtitle: "Stay Updated, Stay Involved!",
+    description: "Connect with your community and discover amazing events.",
+    badge: "LIVE SYSTEM"
+  }
 
   // Auto-slide functionality
   useEffect(() => {
@@ -81,7 +70,7 @@ function HomePage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-900 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading events...</p>
         </div>
       </div>
@@ -92,10 +81,10 @@ function HomePage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-600 mb-4">Error loading events: {error}</p>
+          <p className="text-red-900 mb-4">Error loading events: {error}</p>
           <button
             onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            className="px-4 py-2 bg-red-900 text-white rounded hover:bg-red-800"
           >
             Retry
           </button>
@@ -105,7 +94,7 @@ function HomePage() {
   }
 
   const EventCard = ({ event, isPast = false }) => (
-    <div className="group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden hover:border-cyan-500/30 hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500 transform hover:-translate-y-2">
+    <div className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-red-300 hover:shadow-xl hover:shadow-red-900/10 transition-all duration-500 transform hover:-translate-y-2">
       <div className="relative">
         <img 
           src={event.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&crop=center'}
@@ -138,23 +127,23 @@ function HomePage() {
 
         {/* Category Badge */}
         <div className="absolute bottom-4 left-4">
-          <span className="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-xs font-medium border border-cyan-500/30 backdrop-blur-sm">
+          <span className="bg-red-900 text-white px-3 py-1 rounded-full text-xs font-medium shadow-sm">
             {event.category}
           </span>
         </div>
       </div>
       
       <div className="p-6">
-        <div className="flex items-center gap-2 text-cyan-400 text-sm font-medium mb-3">
+        <div className="flex items-center gap-2 text-red-900 text-sm font-medium mb-3">
           <Calendar className="w-4 h-4" />
           <span>{event.date} • {event.time}</span>
         </div>
 
-        <h3 className="text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-cyan-400 transition-colors duration-300">
+        <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-red-900 transition-colors duration-300">
           {event.title}
         </h3>
 
-        <p className="text-slate-300 text-sm mb-4 line-clamp-2 leading-relaxed">
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
           {event.description}
         </p>
         
@@ -172,7 +161,7 @@ function HomePage() {
 
           <Link
             to={`/events/${event.id}`}
-            className="text-cyan-400 hover:text-cyan-300 font-medium flex items-center gap-1 transition-colors group-hover:text-white"
+            className="text-red-900 hover:text-red-700 font-medium flex items-center gap-1 transition-colors"
           >
             <span>View Details</span>
             <ArrowRight className="w-4 h-4" />
@@ -184,11 +173,11 @@ function HomePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100">
+      <div className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-12">
           <div className="animate-pulse">
             <div className="h-8 bg-gray-300 rounded w-1/3 mx-auto mb-4"></div>
-            <div className="h-4 bg-gray-300 rounded w-1/2 mx-auto mb-12"></div>
+            <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto mb-12"></div>
             <div className="grid md:grid-cols-3 gap-8">
               {[1, 2, 3].map(i => (
                 <div key={i} className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -212,44 +201,29 @@ function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900">
-      {/* Hot Event Popup */}
-      <HotEventPopup />
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Banner with Slider - Mobile Responsive */}
       <section className="relative h-screen overflow-hidden -mt-20">
-        {/* Welcome Message - MIT Tech Style */}
-        <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-slate-900/90 via-slate-900/60 to-transparent">
-          <div className="container mx-auto px-4 py-16 md:py-20">
-            <div className="text-center text-white">
-              <div className="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 md:px-6 py-2 mb-4 md:mb-6 backdrop-blur-sm">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                <span className="text-cyan-400 text-xs md:text-sm font-medium tracking-wider">LIVE EVENT SYSTEM</span>
+        {/* Welcome Message - Glass Morphism Container */}
+        <div className="absolute top-24 left-8 right-8 z-20 flex justify-center">
+          <div className="bg-white/80 backdrop-blur-lg border border-white/50 rounded-3xl shadow-2xl p-8 md:p-12 max-w-4xl w-full">
+            <div className="text-center">
+              <div className="inline-flex items-center space-x-2 bg-red-50 border border-red-200 rounded-full px-4 md:px-6 py-2 mb-6">
+                <div className="w-2 h-2 bg-red-900 rounded-full animate-pulse"></div>
+                <span className="text-red-900 text-xs md:text-sm font-medium tracking-wider">{welcomeMessage.badge}</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 drop-shadow-lg">
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                  Welcome to Aptech
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+                <span className="text-red-900">
+                  {welcomeMessage.title}
                 </span>
                 <br />
-                <span className="text-white">Event Center</span>
+                <span className="text-gray-900">{welcomeMessage.subtitle}</span>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-light drop-shadow-md text-slate-300 max-w-3xl mx-auto leading-relaxed px-4">
-                Advanced Event Management System • Stay Updated, Join Now!
-              </p>
-              <div className="flex items-center justify-center space-x-3 md:space-x-4 mt-6 md:mt-8">
-                <div className="flex items-center space-x-2 text-cyan-400">
-                  <div className="w-2 md:w-3 h-2 md:h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-xs md:text-sm font-medium">System Online</span>
-                </div>
-                <div className="w-px h-3 md:h-4 bg-slate-600"></div>
-                <div className="flex items-center space-x-2 text-slate-400">
-                  <span className="text-xs md:text-sm">Real-time Updates</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
 
-        {/* Image Slider */}
+        {/* Image Slider - Clean Background Images */}
         <div className="relative h-full">
           {heroSlides.map((slide, index) => (
             <div
@@ -260,42 +234,11 @@ function HomePage() {
             >
               <img
                 src={slide.image}
-                alt={slide.title}
+                alt={slide.category || 'Campus Image'}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-slate-900/20"></div>
-
-              {/* Slide Content - Mobile Responsive */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 lg:p-16">
-                <div className="container mx-auto">
-                  <div className="max-w-4xl">
-                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-white mb-2 md:mb-4 drop-shadow-lg">
-                      {slide.title}
-                    </h2>
-                    <h3 className="text-sm sm:text-base md:text-xl lg:text-2xl text-cyan-300 font-light mb-2 md:mb-4 drop-shadow-md tracking-wide">
-                      {slide.subtitle}
-                    </h3>
-                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-4 md:mb-8 leading-relaxed drop-shadow-md max-w-2xl">
-                      {slide.description}
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <Link
-                        to={slide.link}
-                        className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-xl font-medium hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 shadow-xl inline-flex items-center justify-center border border-cyan-400/20"
-                      >
-                        {slide.cta}
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                      </Link>
-                      <Link
-                        to="/about"
-                        className="bg-slate-800/30 backdrop-blur-md text-white px-8 py-4 rounded-xl font-medium hover:bg-slate-800/50 transition-all duration-300 transform hover:scale-105 shadow-xl border border-slate-600/30 inline-flex items-center justify-center"
-                      >
-                        Learn More
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* Light overlay for welcome message readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-gray-900/20 to-gray-900/30"></div>
             </div>
           ))}
         </div>
@@ -303,13 +246,13 @@ function HomePage() {
         {/* Navigation Arrows - Tech Style */}
         <button
           onClick={prevSlide}
-          className="absolute left-6 top-1/2 transform -translate-y-1/2 z-30 bg-slate-800/50 backdrop-blur-md text-cyan-400 p-3 rounded-xl hover:bg-slate-800/70 hover:text-cyan-300 transition-all duration-300 shadow-lg border border-slate-700/50 hover:border-cyan-500/30"
+          className="absolute left-6 top-1/2 transform -translate-y-1/2 z-30 bg-white/90 backdrop-blur-md text-red-900 p-3 rounded-xl hover:bg-red-50 hover:text-red-800 transition-all duration-300 shadow-lg border border-gray-200 hover:border-red-300"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-6 top-1/2 transform -translate-y-1/2 z-30 bg-slate-800/50 backdrop-blur-md text-cyan-400 p-3 rounded-xl hover:bg-slate-800/70 hover:text-cyan-300 transition-all duration-300 shadow-lg border border-slate-700/50 hover:border-cyan-500/30"
+          className="absolute right-6 top-1/2 transform -translate-y-1/2 z-30 bg-white/90 backdrop-blur-md text-red-900 p-3 rounded-xl hover:bg-red-50 hover:text-red-800 transition-all duration-300 shadow-lg border border-gray-200 hover:border-red-300"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
@@ -322,8 +265,8 @@ function HomePage() {
               onClick={() => setCurrentSlide(index)}
               className={`transition-all duration-300 ${
                 index === currentSlide
-                  ? 'w-8 h-2 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50'
-                  : 'w-2 h-2 bg-slate-500 rounded-full hover:bg-slate-400'
+                  ? 'w-8 h-2 bg-red-900 rounded-full shadow-lg'
+                  : 'w-2 h-2 bg-gray-400 rounded-full hover:bg-gray-600'
               }`}
             />
           ))}
@@ -331,29 +274,32 @@ function HomePage() {
 
         {/* Scroll Down Indicator - Tech Style */}
         <div className="absolute bottom-8 right-8 z-30 animate-bounce">
-          <div className="text-cyan-400 text-center">
-            <div className="w-6 h-10 border-2 border-cyan-400 rounded-full flex justify-center bg-slate-800/30 backdrop-blur-sm">
-              <div className="w-1 h-3 bg-cyan-400 rounded-full mt-2 animate-pulse"></div>
+          <div className="text-red-900 text-center">
+            <div className="w-6 h-10 border-2 border-red-900 rounded-full flex justify-center bg-white/90 backdrop-blur-sm">
+              <div className="w-1 h-3 bg-red-900 rounded-full mt-2 animate-pulse"></div>
             </div>
             <p className="text-xs mt-2 font-medium tracking-wider">SCROLL</p>
           </div>
         </div>
       </section>
 
+      {/* Upcoming Events Highlights */}
+      <UpcomingEventsHighlights />
+
       {/* Upcoming Events - MIT Tech Style */}
-      <section className="py-20 bg-slate-800/50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-2 mb-6">
-              <Calendar className="w-4 h-4 text-cyan-400" />
-              <span className="text-cyan-400 text-sm font-medium tracking-wider">UPCOMING EVENTS</span>
+            <div className="inline-flex items-center space-x-2 bg-red-50 border border-red-200 rounded-full px-4 py-2 mb-6">
+              <Calendar className="w-4 h-4 text-red-900" />
+              <span className="text-red-900 text-sm font-medium tracking-wider">UPCOMING EVENTS</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <span className="text-red-900">
                 Next Generation
               </span>
               <br />
-              <span className="text-white">Learning Events</span>
+              <span className="text-gray-900">Learning Events</span>
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
               Advanced educational experiences designed for the future of technology and innovation
@@ -379,7 +325,7 @@ function HomePage() {
           <div className="text-center">
             <Link
               to="/events"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-xl font-medium hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 shadow-lg border border-cyan-400/20"
+              className="inline-flex items-center gap-3 bg-red-900 text-white px-8 py-4 rounded-xl font-medium hover:bg-red-800 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               <span>Explore All Events</span>
               <ArrowRight className="w-5 h-5" />
@@ -415,79 +361,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Infinite Carousel CTA - Don't Miss Events */}
-      <section className="py-16 bg-gradient-to-r from-slate-800 to-slate-900 overflow-hidden relative">
-        {/* Background Tech Pattern */}
-        <div className="absolute inset-0 tech-grid opacity-20"></div>
 
-        {/* Header */}
-        <div className="container mx-auto px-4 text-center mb-12 relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-2 mb-4">
-            <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
-            <span className="text-orange-400 text-sm font-medium tracking-wider">DON'T MISS OUT</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-              Upcoming Events
-            </span>
-            <span className="text-white"> You Can't Miss!</span>
-          </h2>
-        </div>
-
-        {/* Infinite Scrolling Carousel */}
-        <div className="relative">
-          <div className="flex animate-scroll-left space-x-6">
-            {/* First set of events */}
-            {upcomingEvents.concat(upcomingEvents).map((event, index) => (
-              <div
-                key={`${event.id}-${index}`}
-                className="flex-shrink-0 w-80 bg-gradient-to-br from-slate-700/50 to-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-2xl p-6 hover:border-orange-500/30 transition-all duration-300 group"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
-                    <img
-                      src={event.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&crop=center'}
-                      alt={event.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-white font-semibold text-lg mb-2 line-clamp-2 group-hover:text-orange-400 transition-colors">
-                      {event.title}
-                    </h3>
-                    <div className="flex items-center space-x-2 text-slate-300 text-sm mb-2">
-                      <Calendar className="w-4 h-4 text-orange-400" />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center space-x-2 text-slate-300 text-sm mb-3">
-                      <MapPin className="w-4 h-4 text-orange-400" />
-                      <span className="truncate">{event.location}</span>
-                    </div>
-                    <Link
-                      to={`/events`}
-                      className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-orange-400 hover:to-red-400 transition-all duration-300 transform hover:scale-105"
-                    >
-                      <span>Register Now</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="container mx-auto px-4 text-center mt-12 relative z-10">
-          <Link
-            to="/events"
-            className="inline-flex items-center space-x-3 bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-orange-400 hover:to-red-400 transition-all duration-300 transform hover:scale-105 shadow-lg border border-orange-400/20"
-          >
-            <span>View All Events</span>
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
-      </section>
     </div>
   )
 }

@@ -1,389 +1,324 @@
-import { Users, Target, Award, Heart, Calendar, Building, Briefcase, Trophy } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { useContacts } from '../hooks/useContacts'
-import { useEvents } from '../hooks/useEvents'
+import { Users, Award, Calendar, MapPin, Globe, Heart, Star, Trophy, Code, Music, Gamepad2, Building, GraduationCap, Target, BookOpen, Lightbulb, UserCheck } from 'lucide-react'
 
 function AboutPage() {
-  const { university, departments, loading: contactsLoading } = useContacts()
-  const { events, categories, loading: eventsLoading } = useEvents()
-
-  if (contactsLoading || eventsLoading) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading university information...</p>
-        </div>
-      </div>
-    )
+  const collegeInfo = {
+    name: 'Aptech Computer Education Center',
+    affiliation: 'Affiliated with FPT University',
+    location: '35/6 D5 Street, Thanh My Tay Ward, Ho Chi Minh City',
+    established: '2008',
+    recognition: 'Leading IT Education Provider in Vietnam'
   }
 
-  // Calculate real statistics from data
-  const upcomingEvents = events.filter(event => event.status === 'upcoming').length
-  const totalEvents = events.length
-  const totalDepartments = departments.length
-
   const stats = [
-    { label: 'Active Students', value: '5,000+', icon: Users },
-    { label: 'Total Events', value: `${totalEvents}+`, icon: Target },
-    { label: 'Upcoming Events', value: `${upcomingEvents}`, icon: Calendar },
-    { label: 'Departments', value: `${totalDepartments}`, icon: Building }
+    { icon: Users, label: 'Active Students', value: '500+', color: 'text-red-900' },
+    { icon: Award, label: 'Annual Events', value: '50+', color: 'text-red-900' },
+    { icon: Trophy, label: 'Industry Awards', value: '15+', color: 'text-red-900' },
+    { icon: Globe, label: 'Years of Excellence', value: '15+', color: 'text-red-900' }
   ]
 
-  // Annual important events
-  const annualEvents = [
+  const highlights = [
     {
-      name: "Technology & Science Conference",
-      description: "Annual conference showcasing latest research and innovations in technology and science",
-      frequency: "Yearly",
-      category: "Academic",
-      icon: "🔬",
-      organizer: "Information Technology Faculty"
+      icon: GraduationCap,
+      title: 'Premier IT Education',
+      description: 'Leading computer education center with industry-aligned curriculum and expert faculty'
     },
     {
-      name: "Student Cultural Festival",
-      description: "Celebration of diverse cultures and traditions with music, dance, and culinary experiences",
-      frequency: "Yearly",
-      category: "Cultural",
-      icon: "🎭",
-      organizer: "Youth Union"
+      icon: Building,
+      title: 'Modern Campus',
+      description: 'State-of-the-art facilities with advanced computer labs and learning environments'
     },
     {
-      name: "Job Fair",
-      description: "Career opportunities and networking with leading employers and industry professionals",
-      frequency: "Bi-annual",
-      category: "Career",
-      icon: "💼",
-      organizer: "Student Support Center"
+      icon: UserCheck,
+      title: 'Industry Partnerships',
+      description: 'Strong connections with tech companies providing internships and job placements'
     },
     {
-      name: "Annual Sports Tournament",
-      description: "University-wide sports competition promoting health, teamwork, and school spirit",
-      frequency: "Yearly",
-      category: "Sports",
-      icon: "🏆",
-      organizer: "Sports Department"
-    },
-    {
-      name: "Scientific Research Exhibition",
-      description: "Showcase of outstanding student and faculty research projects and innovations",
-      frequency: "Yearly",
-      category: "Academic",
-      icon: "📊",
-      organizer: "Scientific Research Office"
-    },
-    {
-      name: "Soft Skills Workshop Series",
-      description: "Professional development and skill enhancement programs for career readiness",
-      frequency: "Quarterly",
-      category: "Skills",
-      icon: "🎯",
-      organizer: "Student Affairs Office"
+      icon: Target,
+      title: 'Career Success',
+      description: '95% placement rate with graduates working in top IT companies across Vietnam'
     }
   ]
 
-  const team = [
+  const annualEvents = {
+    technical: [
+      {
+        name: 'TechFest',
+        month: 'July',
+        description: 'Annual technology festival featuring coding competitions, project exhibitions, and tech talks',
+        highlights: ['Coding Marathon', 'Project Showcase', 'Industry Expert Sessions', 'Innovation Awards']
+      },
+      {
+        name: 'Hackathon Championship',
+        month: 'October',
+        description: '48-hour intensive coding competition bringing together the best programming minds',
+        highlights: ['Team Challenges', 'Real-world Problems', 'Mentorship', 'Cash Prizes']
+      },
+      {
+        name: 'Robotics Championship',
+        month: 'March',
+        description: 'Robotics competition showcasing automation and AI projects',
+        highlights: ['Robot Design', 'AI Integration', 'Automation Tasks', 'Technical Innovation']
+      }
+    ],
+    cultural: [
+      {
+        name: 'Annual Day Celebration',
+        month: 'December',
+        description: 'Grand celebration showcasing student talents and achievements',
+        highlights: ['Cultural Performances', 'Achievement Awards', 'Alumni Meet', 'Entertainment Shows']
+      },
+      {
+        name: 'Music & Arts Night',
+        month: 'April',
+        description: 'Evening dedicated to music, dance, and artistic expressions',
+        highlights: ['Live Performances', 'Art Exhibitions', 'Poetry Sessions', 'Creative Showcases']
+      },
+      {
+        name: 'Cultural Week',
+        month: 'August',
+        description: 'Week-long celebration of diverse cultures and traditions',
+        highlights: ['Cultural Displays', 'Traditional Food', 'Dance Competitions', 'Fashion Shows']
+      }
+    ],
+    sports: [
+      {
+        name: 'Inter-College Sports Meet',
+        month: 'February',
+        description: 'Competitive sports tournament with multiple colleges participating',
+        highlights: ['Cricket Tournament', 'Football Championship', 'Basketball League', 'Athletics Meet']
+      },
+      {
+        name: 'Health & Wellness Week',
+        month: 'September',
+        description: 'Focus on physical and mental well-being of students',
+        highlights: ['Fitness Challenges', 'Yoga Sessions', 'Health Checkups', 'Wellness Workshops']
+      },
+      {
+        name: 'Alumni Meet & Sports Day',
+        month: 'November',
+        description: 'Reunion event combining networking with recreational activities',
+        highlights: ['Alumni Networking', 'Sports Competitions', 'Career Guidance', 'Success Stories']
+      }
+    ]
+  }
+
+  const organizingBodies = [
     {
-      name: 'Dr. Sarah Johnson',
-      role: 'Director of Student Affairs',
-      image: '/images/team/sarah.jpg',
-      description: 'Leading campus engagement initiatives for over 10 years.'
+      name: 'Student Council',
+      role: 'Overall event coordination and student representation',
+      responsibilities: ['Event Planning', 'Student Welfare', 'Academic Support', 'Campus Activities']
     },
     {
-      name: 'Michael Chen',
-      role: 'Events Coordinator',
-      image: '/images/team/michael.jpg',
-      description: 'Passionate about creating memorable experiences for students.'
+      name: 'Technical Committee',
+      role: 'Organizing technical events and competitions',
+      responsibilities: ['TechFest Organization', 'Hackathon Management', 'Industry Connections', 'Technical Workshops']
     },
     {
-      name: 'Emily Rodriguez',
-      role: 'Community Outreach Manager',
-      image: '/images/team/emily.jpg',
-      description: 'Building bridges between campus and local community.'
+      name: 'Cultural Committee',
+      role: 'Managing cultural and artistic events',
+      responsibilities: ['Cultural Programs', 'Arts & Crafts', 'Music Events', 'Creative Competitions']
+    },
+    {
+      name: 'Sports Committee',
+      role: 'Coordinating sports and recreational activities',
+      responsibilities: ['Sports Tournaments', 'Fitness Programs', 'Inter-college Competitions', 'Health Initiatives']
     }
   ]
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section - MIT Tech Style */}
-      <section className="bg-gradient-to-r from-slate-800 to-slate-900 text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 tech-grid opacity-20"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-2 mb-6">
-            <Building className="w-4 h-4 text-cyan-400" />
-            <span className="text-cyan-400 text-sm font-medium tracking-wider">ABOUT US</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              About CampusConnect
-            </span>
+    <div className="min-h-screen bg-gray-50 py-12">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            About <span className="text-red-900">Aptech</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-            Advanced Event Management System • Creating meaningful connections and unforgettable experiences
-            that enrich student life and foster innovation within our tech community.
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Discover our journey in shaping tomorrow's tech leaders through excellence in education, 
+            innovation in learning, and a vibrant campus community that celebrates achievement and creativity.
           </p>
         </div>
-      </section>
 
-      {/* Mission & Vision */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <div className="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
-                <Target className="w-8 h-8 text-cyan-600" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
-              <p className="text-gray-600 leading-relaxed">
-                To create a vibrant campus community where every student has the opportunity to 
-                engage, learn, and grow through meaningful events and connections. We strive to 
-                bridge the gap between academic learning and real-world experiences.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                <Award className="w-8 h-8 text-blue-600" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h2>
-              <p className="text-gray-600 leading-relaxed">
-                To be the leading platform for university event management and student engagement, 
-                fostering a culture of collaboration, innovation, and personal development that 
-                extends beyond graduation.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Impact in Numbers
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              See how we're making a difference in the university community
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon
-              return (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-white" />
+        {/* College Information */}
+        <section className="mb-16">
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  <span className="text-red-900">{collegeInfo.name}</span>
+                </h2>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <GraduationCap className="w-5 h-5 text-red-900" />
+                    <span className="text-gray-700">{collegeInfo.affiliation}</span>
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                  <div className="text-gray-600">{stat.label}</div>
+                  <div className="flex items-center space-x-3">
+                    <MapPin className="w-5 h-5 text-red-900" />
+                    <span className="text-gray-700">{collegeInfo.location}</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Calendar className="w-5 h-5 text-red-900" />
+                    <span className="text-gray-700">Established {collegeInfo.established}</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Award className="w-5 h-5 text-red-900" />
+                    <span className="text-gray-700">{collegeInfo.recognition}</span>
+                  </div>
                 </div>
-              )
-            })}
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                {stats.map((stat, index) => (
+                  <div key={index} className="bg-gray-50 rounded-xl p-6 text-center">
+                    <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-3`} />
+                    <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
+                    <div className="text-sm text-gray-600">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Values */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+        {/* Campus Highlights */}
+        <section className="mb-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Core Values
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              The principles that guide everything we do
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Campus Highlights</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              What makes Aptech a premier destination for technology education and career development
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {highlights.map((highlight, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
+                <highlight.icon className="w-12 h-12 text-red-900 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">{highlight.title}</h3>
+                <p className="text-gray-600 text-sm">{highlight.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Annual Events */}
+        <section className="mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Key Annual Events</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Discover our signature events that bring together students, industry experts, and the community throughout the year
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-              <div className="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Users className="w-8 h-8 text-cyan-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Community</h3>
-              <p className="text-gray-600">
-                Building strong connections and fostering a sense of belonging among all students.
-              </p>
+          {/* Technical Events */}
+          <div className="mb-12">
+            <div className="flex items-center mb-6">
+              <Code className="w-6 h-6 text-red-900 mr-3" />
+              <h3 className="text-2xl font-bold text-gray-900">Technical Events</h3>
             </div>
-
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Target className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Excellence</h3>
-              <p className="text-gray-600">
-                Striving for the highest quality in every event and interaction we facilitate.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Heart className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Inclusivity</h3>
-              <p className="text-gray-600">
-                Creating welcoming spaces where every student feels valued and included.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Annual Important Events */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Annual Important Events
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Throughout the year, we host signature events that bring together our community and showcase our commitment to excellence
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {annualEvents.map((event, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div className="flex items-start space-x-4">
-                  <div className="text-4xl">{event.icon}</div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{event.name}</h3>
-                    <p className="text-gray-600 text-sm mb-3">{event.description}</p>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">
-                          {event.category}
-                        </span>
-                        <span className="text-xs text-gray-500">{event.frequency}</span>
+            <div className="grid md:grid-cols-3 gap-6">
+              {annualEvents.technical.map((event, index) => (
+                <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-lg font-semibold text-gray-900">{event.name}</h4>
+                    <span className="bg-red-100 text-red-900 px-3 py-1 rounded-full text-sm font-medium">{event.month}</span>
+                  </div>
+                  <p className="text-gray-600 mb-4 text-sm">{event.description}</p>
+                  <div className="space-y-2">
+                    {event.highlights.map((highlight, idx) => (
+                      <div key={idx} className="flex items-center text-sm text-gray-700">
+                        <div className="w-1.5 h-1.5 bg-red-900 rounded-full mr-2"></div>
+                        {highlight}
                       </div>
-                      <p className="text-xs text-gray-500">
-                        <strong>Organized by:</strong> {event.organizer}
-                      </p>
-                    </div>
+                    ))}
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Cultural Events */}
+          <div className="mb-12">
+            <div className="flex items-center mb-6">
+              <Music className="w-6 h-6 text-red-900 mr-3" />
+              <h3 className="text-2xl font-bold text-gray-900">Cultural Events</h3>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {annualEvents.cultural.map((event, index) => (
+                <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-lg font-semibold text-gray-900">{event.name}</h4>
+                    <span className="bg-red-100 text-red-900 px-3 py-1 rounded-full text-sm font-medium">{event.month}</span>
+                  </div>
+                  <p className="text-gray-600 mb-4 text-sm">{event.description}</p>
+                  <div className="space-y-2">
+                    {event.highlights.map((highlight, idx) => (
+                      <div key={idx} className="flex items-center text-sm text-gray-700">
+                        <div className="w-1.5 h-1.5 bg-red-900 rounded-full mr-2"></div>
+                        {highlight}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Sports & Activities */}
+          <div className="mb-12">
+            <div className="flex items-center mb-6">
+              <Gamepad2 className="w-6 h-6 text-red-900 mr-3" />
+              <h3 className="text-2xl font-bold text-gray-900">Sports & Activities</h3>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {annualEvents.sports.map((event, index) => (
+                <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-lg font-semibold text-gray-900">{event.name}</h4>
+                    <span className="bg-red-100 text-red-900 px-3 py-1 rounded-full text-sm font-medium">{event.month}</span>
+                  </div>
+                  <p className="text-gray-600 mb-4 text-sm">{event.description}</p>
+                  <div className="space-y-2">
+                    {event.highlights.map((highlight, idx) => (
+                      <div key={idx} className="flex items-center text-sm text-gray-700">
+                        <div className="w-1.5 h-1.5 bg-red-900 rounded-full mr-2"></div>
+                        {highlight}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Organizing Bodies */}
+        <section className="mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Organizing Bodies</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Meet the dedicated teams and committees that make our events and campus life vibrant and successful
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {organizingBodies.map((body, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  <Users className="w-6 h-6 text-red-900 mr-3" />
+                  <h3 className="text-xl font-semibold text-gray-900">{body.name}</h3>
+                </div>
+                <p className="text-gray-600 mb-4">{body.role}</p>
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-2">Key Responsibilities:</h4>
+                  {body.responsibilities.map((responsibility, idx) => (
+                    <div key={idx} className="flex items-center text-sm text-gray-700">
+                      <div className="w-1.5 h-1.5 bg-red-900 rounded-full mr-2"></div>
+                      {responsibility}
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Organizing Units & Departments */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Organizing Units & Departments
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our events are organized by various departments and units across the university, each bringing their unique expertise
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {departments.map((dept, index) => (
-              <div key={dept.id} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                <div className="flex items-start space-x-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
-                    {dept.name.charAt(0)}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{dept.name}</h3>
-                    <p className="text-gray-600 mb-3">
-                      <strong>Department Head:</strong> {dept.head}
-                    </p>
-                    <div className="space-y-1 text-sm text-gray-500">
-                      <p className="flex items-center">
-                        <Building className="w-4 h-4 mr-2" />
-                        <strong>Location:</strong> {dept.location}
-                      </p>
-                      <p className="flex items-center">
-                        <Target className="w-4 h-4 mr-2" />
-                        <strong>Phone:</strong> {dept.phone}
-                      </p>
-                      <p className="flex items-center">
-                        <Award className="w-4 h-4 mr-2" />
-                        <strong>Email:</strong> {dept.email}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* University Information */}
-      <section className="py-16 bg-gradient-to-r from-slate-800 to-slate-900 text-white relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {university.name || 'University of Information Technology and Communications'}
-            </h2>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Established in {university.established || 1956}, we have been a beacon of excellence in education and research for over {new Date().getFullYear() - (university.established || 1956)} years.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Building className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Campus Location</h3>
-              <p className="text-blue-100">{university.address || '144 Xuan Thuy, Cau Giay, Hanoi, Vietnam'}</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Contact Information</h3>
-              <p className="text-blue-100">{university.phone || '(024) 3869-2222'}</p>
-              <p className="text-blue-100">{university.email || 'info@university.edu.vn'}</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Academic Excellence</h3>
-              <p className="text-blue-100">{categories.length} Event Categories</p>
-              <p className="text-blue-100">{totalDepartments} Academic Departments</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-slate-800 to-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 tech-grid opacity-20"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Get Involved?
-          </h2>
-          <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-            Join our tech community and start making meaningful connections today
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/events"
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              Join CampusConnect
-            </Link>
-            <Link
-              to="/contact"
-              className="bg-slate-700 text-white px-8 py-4 rounded-xl font-semibold hover:bg-slate-600 transition-all duration-300 transform hover:scale-105 shadow-lg border border-slate-600"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   )
 }

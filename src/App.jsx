@@ -7,16 +7,17 @@ import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import EventsPage from './pages/EventsPage'
-import ContactPageSimple from './pages/ContactPageSimple'
+import ContactPage from './pages/ContactPage'
 import FeedbackPage from './pages/FeedbackPage'
 import GalleryPage from './pages/GalleryPage'
 import RegisterPage from './pages/RegisterPage'
 import NotFoundPage from './pages/NotFoundPage'
+import ContactPage from './pages/ContactPage'
 
 function App() {
   return (
     <BookmarkProvider>
-      <div className="min-h-screen bg-slate-900">
+      <div className="min-h-screen bg-gray-50">
         <NavigationBar />
 
         <main className="min-h-screen pt-20">
@@ -24,7 +25,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/events" element={<EventsPage />} />
-            <Route path="/contact" element={<ContactPageSimple />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/feedback" element={<FeedbackPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/register" element={<RegisterPage />} />
