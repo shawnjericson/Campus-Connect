@@ -1,14 +1,34 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Calendar, Clock, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
-import useUpcomingEvents from '../hooks/useUpcomingEvents'
+import { useEvents } from '../hooks/useEvents'
 
 const UpcomingEventsHighlights = () => {
-  const { upcomingEvents, loading, error, getFeaturedEvents, getCountdown } = useUpcomingEvents()
+  const { events, loading, error } = useEvents()
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  const featuredEvents = getFeaturedEvents()
+  // Get featured upcoming events
+  const featuredEvents = events.filter(event => event.featured && event.status === 'upcoming')
+  const upcomingEvents = events.filter(event => event.status === 'upcoming')
   const displayEvents = featuredEvents.length > 0 ? featuredEvents : upcomingEvents.slice(0, 6)
+
+  // Countdown function
+  const getCountdown = (targetDate) => {
+    const now = new Date().getTime()
+    const target = new Date(targetDate).getTime()
+    const difference = target - now
+
+    if (difference > 0) {
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24))
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000)
+
+      return { days, hours, minutes, seconds, isActive: true }
+    }
+
+    return { days: 0, hours: 0, minutes: 0, seconds: 0, isActive: false }
+  }
 
   // Auto-slide functionality
   useEffect(() => {
@@ -136,7 +156,7 @@ const UpcomingEventsHighlights = () => {
                 </h3>
 
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  {displayEvents[currentSlide]?.shortDescription}
+                  {displayEvents[currentSlide]?.description}
                 </p>
 
                 {/* Countdown Timer */}

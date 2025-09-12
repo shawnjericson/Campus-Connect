@@ -26,7 +26,24 @@ export const useEvents = () => {
     fetchEvents()
   }, [])
 
-  const events = useMemo(() => data?.events || [], [data])
+  const events = useMemo(() => {
+    if (!data?.events) return []
+
+    // Flatten nested events structure
+    let allEvents = []
+
+    data.events.forEach(item => {
+      if (item.id && item.title) {
+        // Direct event object
+        allEvents.push(item)
+      } else if (item.events && Array.isArray(item.events)) {
+        // Nested events array
+        allEvents.push(...item.events)
+      }
+    })
+
+    return allEvents
+  }, [data])
   const categories = useMemo(() => data?.categories || [], [data])
   const faculties = useMemo(() => data?.faculties || [], [data])
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { 
-  Calendar, Clock, MapPin, Users, User, Building, 
+import {
+  Calendar, Clock, MapPin, Users, User, Building,
   ArrowLeft, Share2, Heart, CheckCircle, AlertCircle,
-  Star, Trophy, Tag
+  Star, Trophy, Tag, Mail, X, Download, QrCode
 } from 'lucide-react'
 import { useBookmarks } from '../contexts/BookmarkContext'
 import BookmarkButton from '../components/BookmarkButton'
@@ -16,9 +16,22 @@ function EventDetailPage() {
   const [error, setError] = useState(null)
   const [showRegisterModal, setShowRegisterModal] = useState(false)
   const [registrationStatus, setRegistrationStatus] = useState(null)
+  const [registrationForm, setRegistrationForm] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    organization: ''
+  })
+  const [formErrors, setFormErrors] = useState({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [qrCodeData, setQrCodeData] = useState('')
   const { isHydrated } = useBookmarks()
 
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0)
+
     const fetchEvent = async () => {
       try {
         const response = await fetch('/data/events.json')
@@ -26,13 +39,13 @@ function EventDetailPage() {
           throw new Error('Failed to fetch events')
         }
         const data = await response.json()
-        
+
         // Find event in the nested structure
         let foundEvent = null
         if (data.events) {
           // Check direct events array
           foundEvent = data.events.find(event => event.id === parseInt(id))
-          
+
           // If not found, check nested events
           if (!foundEvent) {
             for (const item of data.events) {
@@ -43,11 +56,11 @@ function EventDetailPage() {
             }
           }
         }
-        
+
         if (!foundEvent) {
           throw new Error('Event not found')
         }
-        
+
         setEvent(foundEvent)
       } catch (err) {
         setError(err.message)
@@ -61,17 +74,128 @@ function EventDetailPage() {
 
   const handleRegister = () => {
     setShowRegisterModal(true)
+    setFormErrors({})
+    setRegistrationForm({
+      fullName: '',
+      email: '',
+      phone: '',
+      organization: ''
+    })
   }
 
-  const confirmRegistration = () => {
-    // Simulate registration process
-    setRegistrationStatus('success')
-    setShowRegisterModal(false)
-    
-    // Reset status after 3 seconds
-    setTimeout(() => {
-      setRegistrationStatus(null)
-    }, 3000)
+  const validateForm = () => {
+    const errors = {}
+
+    if (!registrationForm.fullName.trim()) {
+      errors.fullName = 'Full name is required'
+    }
+
+    if (!registrationForm.email.trim()) {
+      errors.email = 'Email is required'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(registrationForm.email)) {
+      errors.email = 'Please enter a valid email address'
+    }
+
+    if (!registrationForm.phone.trim()) {
+      errors.phone = 'Phone number is required'
+    } else if (!/^[\d\s\-\+\(\)]+$/.test(registrationForm.phone)) {
+      errors.phone = 'Please enter a valid phone number'
+    }
+
+    return errors
+  }
+
+  const generateQRCode = (userData) => {
+    // Generate QR code data with user and event information
+    const qrData = {
+      name: userData.fullName,
+      email: userData.email,
+      event: event.title,
+      eventDate: event.date,
+      eventLocation: event.location,
+      registrationId: `REG-${Date.now()}`,
+      timestamp: new Date().toISOString()
+    }
+
+    // Convert to JSON string for QR code
+    return JSON.stringify(qrData)
+  }
+
+  const sendConfirmationEmail = async (userData, qrData) => {
+    // Simulate sending email (in real app, this would call your backend API)
+    console.log('Sending confirmation email to:', userData.email)
+    console.log('Event:', event.title)
+    console.log('QR Data:', qrData)
+
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
+    return true
+  }
+
+  const confirmRegistration = async () => {
+    const errors = validateForm()
+    setFormErrors(errors)
+
+    if (Object.keys(errors).length > 0) {
+      return
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      // Generate QR code data
+      const qrData = generateQRCode(registrationForm)
+      setQrCodeData(qrData)
+
+      // Send confirmation email
+      await sendConfirmationEmail(registrationForm, qrData)
+
+      // Close registration modal and show success modal
+      setShowRegisterModal(false)
+      setShowSuccessModal(true)
+      setRegistrationStatus('success')
+
+      // Reset status after 5 seconds
+      setTimeout(() => {
+        setRegistrationStatus(null)
+        setShowSuccessModal(false)
+      }, 10000)
+
+    } catch (error) {
+      console.error('Registration failed:', error)
+      setFormErrors({ submit: 'Registration failed. Please try again.' })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleInputChange = (field, value) => {
+    setRegistrationForm(prev => ({
+      ...prev,
+      [field]: value
+    }))
+
+    // Clear error when user starts typing
+    if (formErrors[field]) {
+      setFormErrors(prev => ({
+        ...prev,
+        [field]: ''
+      }))
+    }
+  }
+
+  const downloadQRCode = () => {
+    // Create QR code URL (using a QR code service)
+    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qrCodeData)}`
+
+    // Create download link
+    const link = document.createElement('a')
+    link.href = qrCodeUrl
+    link.download = `${event.title.replace(/\s+/g, '_')}_QR_Code.png`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   const getCategoryColor = (category) => {
@@ -367,23 +491,236 @@ function EventDetailPage() {
       {/* Registration Modal */}
       {showRegisterModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Confirm Registration</h3>
-            <p className="text-gray-600 mb-6">
-              Are you sure you want to register for "{event.title}"?
-            </p>
-            <div className="flex gap-3">
+          <div className="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">Event Registration</h3>
               <button
                 onClick={() => setShowRegisterModal(false)}
-                className="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                className="text-gray-400 hover:text-gray-600 transition-colors"
               >
-                Cancel
+                <X className="w-6 h-6" />
               </button>
+            </div>
+
+            {/* Event Info */}
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+              <h4 className="font-semibold text-red-900 mb-2">{event.title}</h4>
+              <div className="text-sm text-red-700 space-y-1">
+                <div className="flex items-center">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  <span>{new Date(event.date).toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}</span>
+                </div>
+                <div className="flex items-center">
+                  <Clock className="w-4 h-4 mr-2" />
+                  <span>{event.time}</span>
+                </div>
+                <div className="flex items-center">
+                  <MapPin className="w-4 h-4 mr-2" />
+                  <span>{event.location}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Registration Form */}
+            <form onSubmit={(e) => { e.preventDefault(); confirmRegistration(); }} className="space-y-4">
+              {/* Full Name */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  value={registrationForm.fullName}
+                  onChange={(e) => handleInputChange('fullName', e.target.value)}
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
+                    formErrors.fullName ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                  }`}
+                  placeholder="Enter your full name"
+                />
+                {formErrors.fullName && (
+                  <p className="text-red-600 text-sm mt-1">{formErrors.fullName}</p>
+                )}
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  value={registrationForm.email}
+                  onChange={(e) => handleInputChange('email', e.target.value)}
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
+                    formErrors.email ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                  }`}
+                  placeholder="Enter your email address"
+                />
+                {formErrors.email && (
+                  <p className="text-red-600 text-sm mt-1">{formErrors.email}</p>
+                )}
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  value={registrationForm.phone}
+                  onChange={(e) => handleInputChange('phone', e.target.value)}
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors ${
+                    formErrors.phone ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                  }`}
+                  placeholder="Enter your phone number"
+                />
+                {formErrors.phone && (
+                  <p className="text-red-600 text-sm mt-1">{formErrors.phone}</p>
+                )}
+              </div>
+
+              {/* Organization */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Organization (Optional)
+                </label>
+                <input
+                  type="text"
+                  value={registrationForm.organization}
+                  onChange={(e) => handleInputChange('organization', e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors"
+                  placeholder="Enter your organization/company"
+                />
+              </div>
+
+              {/* Submit Error */}
+              {formErrors.submit && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                  <p className="text-red-600 text-sm">{formErrors.submit}</p>
+                </div>
+              )}
+
+              {/* Form Actions */}
+              <div className="flex gap-3 pt-4">
+                <button
+                  type="button"
+                  onClick={() => setShowRegisterModal(false)}
+                  className="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  disabled={isSubmitting}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex-1 py-3 px-4 bg-red-900 text-white rounded-lg hover:bg-red-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Registering...
+                    </>
+                  ) : (
+                    'Register Now'
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Success Modal with QR Code */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
+            <div className="text-center">
+              {/* Success Icon */}
+              <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
+                <CheckCircle className="h-8 w-8 text-green-600" />
+              </div>
+
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Registration Successful!</h3>
+              <p className="text-gray-600 mb-6">
+                You have successfully registered for <strong>{event.title}</strong>
+              </p>
+
+              {/* Email Confirmation */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <div className="flex items-center justify-center mb-2">
+                  <Mail className="w-5 h-5 text-blue-600 mr-2" />
+                  <span className="text-blue-800 font-medium">Confirmation Email Sent</span>
+                </div>
+                <p className="text-blue-700 text-sm">
+                  A confirmation email with event details has been sent to <strong>{registrationForm.email}</strong>
+                </p>
+              </div>
+
+              {/* QR Code */}
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+                <div className="flex items-center justify-center mb-3">
+                  <QrCode className="w-5 h-5 text-gray-600 mr-2" />
+                  <span className="text-gray-800 font-medium">Your Event QR Code</span>
+                </div>
+
+                {/* QR Code Image */}
+                <div className="flex justify-center mb-4">
+                  <img
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrCodeData)}`}
+                    alt="Event QR Code"
+                    className="border border-gray-300 rounded-lg"
+                  />
+                </div>
+
+                <p className="text-gray-600 text-sm mb-4">
+                  Present this QR code at the event for quick check-in
+                </p>
+
+                <button
+                  onClick={downloadQRCode}
+                  className="flex items-center justify-center w-full py-2 px-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Download QR Code
+                </button>
+              </div>
+
+              {/* Event Details Reminder */}
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 text-left">
+                <h4 className="font-semibold text-red-900 mb-2">Event Details</h4>
+                <div className="text-sm text-red-700 space-y-1">
+                  <div className="flex items-center">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    <span>{new Date(event.date).toLocaleDateString('en-US', {
+                      weekday: 'long',
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Clock className="w-4 h-4 mr-2" />
+                    <span>{event.time}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <MapPin className="w-4 h-4 mr-2" />
+                    <span>{event.location}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Close Button */}
               <button
-                onClick={confirmRegistration}
-                className="flex-1 py-3 px-4 bg-red-900 text-white rounded-lg hover:bg-red-800 transition-colors"
+                onClick={() => setShowSuccessModal(false)}
+                className="w-full py-3 px-4 bg-red-900 text-white rounded-lg hover:bg-red-800 transition-colors"
               >
-                Confirm
+                Close
               </button>
             </div>
           </div>

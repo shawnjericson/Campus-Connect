@@ -2,321 +2,318 @@
   "events": [
     {
       "id": 1,
-      "title": "Aptech Talk: Vietnam Rising in the AI Era",
-      "description": "A seminar discussing AI trends and empowering Aptech students to engage with emerging technologies.",
-      "date": "2025-08-23",
-      "time": "14:00 - 17:00",
-      "location": "Aptech Hanoi Campus",
+      "title": "TECHWIZ 6 2025",
+      "description": "The premier international programming competition featuring the world's brightest coding talents. Join 500+ participants from 50+ countries competing in algorithmic challenges, AI development, and innovative software solutions. Grand prize: $50,000 and internships at top tech companies.",
+      "date": "2025-09-12",
+      "time": "09:00 - 18:00",
+      "location": "Aptech Main Campus - Innovation Center",
       "category": "Technical",
-      "faculty": "AI & Data Science",
-      "organizer": "Aptech Vietnam",
-      "status": "past",
-      "image": "/images/Event/imgi_29_1733131653002-img-1733131652935-aptech-celebrated-its-25-year-presence-in-vietnam.png",
+      "faculty": "Information Technology",
+      "organizer": "Aptech Computer Education Center",
+      "status": "ongoing",
+      "featured": true,
+      "priority": 1,
+      "image": "/images/Event/Techwiz.png",
+      "thumbnail": "/images/Logo2.png",
       "gallery": [
-        "/images/Event/imgi_29_1733131653002-img-1733131652935-aptech-celebrated-its-25-year-presence-in-vietnam.png"
+        "/images/Event/Techwiz.png",
+        "/images/Event/imgi_19_1733124426509-img-1733124424956-techwiz-img2-.png",
+        "/images/Event/imgi_20_1733124427084-img-1733124424959-techwiz-img3.png",
+        "/images/Event/imgi_2_about-techwiz.jpg",
+        "/images/Event/Techwiz1.jpg"
       ],
-      "maxParticipants": 300,
-      "currentParticipants": 280,
-      "registrationDeadline": "2025-08-20",
-      "tags": ["AI", "seminar", "technology", "innovation"]
+      "maxParticipants": 500,
+      "currentParticipants": 387,
+      "registrationDeadline": "2025-09-01",
+      "tags": ["programming", "competition", "AI", "global", "championship", "techwiz"],
+      "countdown": {
+        "enabled": true,
+        "targetDate": "2025-09-12T09:00:00"
+      }
     },
     {
       "id": 2,
-      "title": "Launch of Aptech Training Program 2025",
-      "description": "Introducing the latest Aptech curriculum focusing on job readiness with modern technologies like Python, Node.js, and React.",
-      "date": "2025-07-08",
-      "time": "10:00 - 13:00",
-      "location": "Aptech Ho Chi Minh City Campus",
-      "category": "Academic",
-      "faculty": "Software Engineering",
-      "organizer": "Aptech Global",
-      "status": "past",
-      "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop&crop=center",
-      "gallery": [
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop&crop=center"
-      ],
-      "maxParticipants": 250,
-      "currentParticipants": 230,
-      "registrationDeadline": "2025-07-01",
-      "tags": ["curriculum", "launch", "career"]
-    },
-    {
-      "id": 3,
-      "title": "Aptech Cultural Festival 2025",
-      "description": "A day of cultural performances, traditional food, and music organized by Aptech students.",
-      "date": "2025-09-30",
-      "time": "15:00 - 21:00",
+      "title": "Cultural Week Begins",
+      "description": "Celebrate diversity with traditional performances, food festivals, and cultural exhibitions from around the world. Experience the rich cultural heritage of our international student community through performances, exhibitions, and traditional food.",
+      "date": "2025-09-12",
+      "time": "10:00 - 21:00",
       "location": "Aptech HCMC Campus Yard",
       "category": "Cultural",
       "faculty": "All Faculties",
       "organizer": "Aptech Youth Union",
-      "status": "upcoming",
-      "image": "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=600&fit=crop&crop=center",
+      "status": "ongoing",
+      "featured": true,
+      "image": "/images/Event/FB_IMG_1757639532640.jpg",
+      "thumbnail": "/images/Event/FB_IMG_1757639532640.jpg",
       "gallery": [
-        "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=600&fit=crop&crop=center"
+        "/images/Event/FB_IMG_1757639532640.jpg",
+        "/images/Event/FB_IMG_1757639918802.jpg",
+        "/images/Event/FB_IMG_1757639922532.jpg",
+        "/images/Event/FB_IMG_1757640675632.jpg"
       ],
       "maxParticipants": 500,
       "currentParticipants": 320,
-      "registrationDeadline": "2025-09-25",
-      "tags": ["culture", "festival", "music", "community"]
+      "registrationDeadline": "2025-08-01",
+      "tags": ["culture", "diversity", "festival", "performance"],
+      "countdown": {
+        "enabled": true,
+        "targetDate": "2025-09-12T10:00:00"
+      }
+    },
+    {
+      "id": 3,
+      "title": "AI & Machine Learning Summit",
+      "description": "Deep dive into artificial intelligence trends, machine learning applications, and future of automation. Join leading experts and researchers as they share insights on AI, ML, and digital transformation in academic environments.",
+      "date": "2025-09-15",
+      "time": "14:00 - 17:00",
+      "location": "Main Hall A, Main Building",
+      "category": "Technical",
+      "faculty": "Information Technology",
+      "organizer": "Information Technology Faculty",
+      "status": "upcoming",
+      "featured": true,
+      "image": "/images/Event/AI & Machine Learning Summit 2.jpg",
+      "thumbnail": "/images/Event/AI & Machine Learning Summit.jpg",
+      "gallery": [
+        "/images/Event/AI & Machine Learning Summit 2.png",
+        "/images/Event/AI & Machine Learning Summit.jpg",
+        "/images/Event/Bitmap11-1.png",
+        "/images/Event/imgi_29_1733131653002-img-1733131652935-aptech-celebrated-its-25-year-presence-in-vietnam.png"
+      ],
+      "maxParticipants": 200,
+      "currentParticipants": 150,
+      "registrationDeadline": "2025-09-10",
+      "tags": ["AI", "machine learning", "technology", "research"],
+      "countdown": {
+        "enabled": true,
+        "targetDate": "2025-09-15T14:00:00"
+      }
     },
     {
       "id": 4,
-      "title": "Hackathon: Code for Future",
-      "description": "48-hour coding challenge for Aptech students to build innovative software solutions.",
+      "title": "Student Innovation Showcase",
+      "description": "Students present their innovative projects, research findings, and creative solutions to real-world problems. Discover groundbreaking research across various disciplines including engineering, sciences, and technology.",
       "date": "2025-10-10",
-      "time": "08:00 - 20:00",
-      "location": "Aptech Danang Campus",
-      "category": "Academic",
-      "faculty": "Web Development",
-      "organizer": "Aptech Innovation Lab",
+      "time": "11:00 - 17:00",
+      "location": "Central Library",
+      "category": "Technical",
+      "faculty": "All Faculties",
+      "organizer": "Scientific Research Office",
       "status": "upcoming",
-      "image": "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=800&h=600&fit=crop&crop=center",
+      "featured": true,
+      "image": "/images/Event/WinterGraduationCeremony1.webp",
+      "thumbnail": "/images/Event/WinterGraduationCeremony1.webp",
       "gallery": [
-        "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=800&h=600&fit=crop&crop=center"
+        "/images/Event/WinterGraduationCeremony1.webp",
+        "/images/Event/WinterGraduationCeremony2.png",
+        "/images/Event/WinterGraduationCeremony3.png"
       ],
-      "maxParticipants": 200,
-      "currentParticipants": 90,
+      "maxParticipants": 300,
+      "currentParticipants": 180,
       "registrationDeadline": "2025-10-05",
-      "tags": ["hackathon", "coding", "teamwork"]
+      "tags": ["innovation", "research", "projects", "showcase"],
+      "countdown": {
+        "enabled": true,
+        "targetDate": "2025-10-10T11:00:00"
+      }
     },
     {
       "id": 5,
+      "title": "Aptech Career Fair 2025",
+      "description": "Connect with top employers, explore career opportunities, and network with industry professionals. Meet recruiters from top companies, attend career workshops, and explore internship and full-time opportunities across various industries.",
+      "date": "2025-11-22",
+      "time": "09:30 - 16:00",
+      "location": "Aptech HCMC Convention Center",
+      "category": "Departmental",
+      "faculty": "All Faculties",
+      "organizer": "Aptech Career Services",
+      "status": "upcoming",
+      "featured": true,
+      "image": "/images/Event/Careerevent.png",
+      "thumbnail": "/images/Event/Careerevent.png",
+      "gallery": [
+        "/images/Event/Careerevent.png",
+        "/images/Event/imgi_15_1733120769096-img-1733120765686-aptech-career-quest-img2.png",
+        "/images/Event/FB_IMG_1757640744804.jpg"
+      ],
+      "maxParticipants": 600,
+      "currentParticipants": 410,
+      "registrationDeadline": "2025-11-15",
+      "tags": ["career", "jobfair", "networking", "employers"],
+      "countdown": {
+        "enabled": true,
+        "targetDate": "2025-11-22T09:30:00"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Winter Graduation Ceremony",
+      "description": "Celebrate academic achievements and honor graduating students in our prestigious winter ceremony. Grand celebration with awards ceremony and recognition of outstanding academic performance.",
+      "date": "2025-12-18",
+      "time": "15:00 - 18:00",
+      "location": "Main Auditorium",
+      "category": "Departmental",
+      "faculty": "All Faculties",
+      "organizer": "Academic Affairs",
+      "status": "upcoming",
+      "featured": true,
+      "image": "/images/Event/WinterGraduationCeremony2.png",
+      "thumbnail": "/images/Event/WinterGraduationCeremony2.png",
+      "gallery": [
+        "/images/Event/WinterGraduationCeremony2.png"
+      ],
+      "maxParticipants": 800,
+      "currentParticipants": 650,
+      "registrationDeadline": "2025-12-10",
+      "tags": ["graduation", "ceremony", "academic", "celebration"],
+      "countdown": {
+        "enabled": true,
+        "targetDate": "2025-12-18T15:00:00"
+      }
+    },
+    {
+      "id": 7,
       "title": "Student Orientation Week",
-      "description": "Welcome week for new Aptech students with workshops, networking, and team-building activities.",
+      "description": "Welcome week for new Aptech students with workshops, networking, and team-building activities. Interactive sessions covering academic programs, campus life, and student services.",
       "date": "2025-09-05",
       "time": "09:00 - 17:00",
       "location": "Aptech HCMC Campus",
-      "category": "StudentLife",
+      "category": "Departmental",
       "faculty": "All Faculties",
       "organizer": "Aptech Student Affairs",
-      "status": "upcoming",
-      "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop&crop=center",
+      "status": "past",
+      "image": "/images/Event/FB_IMG_1757640675632.jpg",
       "gallery": [
-        "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop&crop=center"
+        "/images/Event/FB_IMG_1757640675632.jpg"
       ],
       "maxParticipants": 400,
       "currentParticipants": 250,
       "registrationDeadline": "2025-09-01",
-      "tags": ["orientation", "studentlife", "networking"]
+      "tags": ["orientation", "studentlife", "networking", "welcome"]
     },
     {
-      "id": 6,
+      "id": 8,
+      "title": "Annual Sports Tournament",
+      "description": "University-wide sports competition featuring football, basketball, volleyball, and track events. Students and faculty compete in friendly matches promoting health, teamwork, and school spirit.",
+      "date": "2024-02-10",
+      "time": "08:00 - 18:00",
+      "location": "Sports Complex",
+      "category": "Sport",
+      "faculty": "All Faculties",
+      "organizer": "Sports Department",
+      "status": "past",
+      "image": "/images/Event/Arena100.png",
+      "gallery": [
+        "/images/Event/Arena100.png",
+        "/images/Event/imgi_25_1733125283933-img-1733125282205-arena-100-hours-img2.png"
+      ],
+      "maxParticipants": 300,
+      "currentParticipants": 280,
+      "registrationDeadline": "2024-02-01",
+      "tags": ["sports", "tournament", "athletics", "competition"]
+    },
+    {
+      "id": 9,
+      "title": "Hackathon: Code for Future",
+      "description": "48-hour coding challenge for Aptech students to build innovative software solutions. Teams compete to develop applications addressing real-world problems using cutting-edge technologies.",
+      "date": "2024-10-25",
+      "time": "09:00 - 18:00",
+      "location": "Innovation Lab",
+      "category": "Technical",
+      "faculty": "Information Technology",
+      "organizer": "IT Faculty",
+      "status": "past",
+      "image": "/images/Event/Maac100.png",
+      "gallery": [
+        "/images/Event/Maac100.png",
+        "/images/Event/imgi_23_1733124611472-img-1733124608812-maac-100-hours-img3.png"
+      ],
+      "maxParticipants": 120,
+      "currentParticipants": 96,
+      "registrationDeadline": "2024-10-20",
+      "tags": ["hackathon", "coding", "teamwork", "innovation"]
+    },
+    {
+      "id": 10,
       "title": "Creative Multimedia Exhibition",
-      "description": "Showcase of student projects in animation, graphic design, and multimedia arts.",
-      "date": "2025-11-12",
+      "description": "Showcase of student projects in animation, graphic design, and multimedia arts. Featuring innovative digital art, interactive media installations, and creative technology projects.",
+      "date": "2024-11-12",
       "time": "10:00 - 17:00",
       "location": "Aptech Hanoi Campus Hall",
       "category": "Cultural",
       "faculty": "Multimedia & Design",
       "organizer": "Aptech Creative Faculty",
-      "status": "upcoming",
-      "image": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&h=600&fit=crop&crop=center",
+      "status": "past",
+      "image": "/images/Event/FB_IMG_1757639918802.jpg",
       "gallery": [
-        "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&h=600&fit=crop&crop=center"
+        "/images/Event/FB_IMG_1757639918802.jpg",
+        "/images/Event/FB_IMG_1757639922532.jpg"
       ],
       "maxParticipants": 250,
       "currentParticipants": 120,
-      "registrationDeadline": "2025-11-05",
-      "tags": ["design", "multimedia", "creativity"]
+      "registrationDeadline": "2024-11-05",
+      "tags": ["design", "multimedia", "creativity", "exhibition"]
     },
     {
-      "events": [
-        {
-          "id": 7,
-          "title": "Aptech Career Fair 2025",
-          "description": "Job fair connecting Aptech students with top IT companies in Vietnam.",
-          "date": "2025-10-20",
-          "time": "09:00 - 16:00",
-          "location": "Aptech HCMC Convention Center",
-          "category": "Departmental",
-          "faculty": "All Faculties",
-          "organizer": "Aptech Career Services",
-          "status": "upcoming",
-          "image": "/images/Event/Careerevent.png",
-          "gallery": [
-            "/images/Event/Careerevent.png",
-            "/images/Event/imgi_15_1733120769096-img-1733120765686-aptech-career-quest-img2.png"
-          ],
-          "maxParticipants": 600,
-          "currentParticipants": 410,
-          "registrationDeadline": "2025-10-15",
-          "tags": ["career", "jobfair", "networking"]
-        },
-        {
-          "id": 8,
-          "title": "Women in Tech Meetup",
-          "description": "An inspiring meetup celebrating women in technology and promoting diversity in the IT field.",
-          "date": "2025-03-08",
-          "time": "13:00 - 17:00",
-          "location": "Aptech Hanoi Campus Hall",
-          "category": "Cultural",
-          "faculty": "All Faculties",
-          "organizer": "Aptech Vietnam",
-          "status": "past",
-          "image": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&h=600&fit=crop&crop=center",
-          "gallery": [
-            "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=800&h=600&fit=crop&crop=center"
-          ],
-          "maxParticipants": 300,
-          "currentParticipants": 270,
-          "registrationDeadline": "2025-03-01",
-          "tags": ["diversity", "women", "tech"]
-        },
-        {
-          "id": 9,
-          "title": "Mobile App Development Workshop",
-          "description": "Hands-on workshop for Aptech students to build their first mobile app using Flutter.",
-          "date": "2025-09-18",
-          "time": "09:00 - 12:00",
-          "location": "Aptech Danang Campus Lab 2",
-          "category": "Academic",
-          "faculty": "Mobile Development",
-          "organizer": "Aptech Mobile Faculty",
-          "status": "upcoming",
-          "image": "https://images.unsplash.com/photo-1556742031-c6961e8560b0?w=800&h=600&fit=crop&crop=center",
-          "gallery": [
-            "https://images.unsplash.com/photo-1556742031-c6961e8560b0?w=800&h=600&fit=crop&crop=center"
-          ],
-          "maxParticipants": 80,
-          "currentParticipants": 65,
-          "registrationDeadline": "2025-09-15",
-          "tags": ["mobile", "flutter", "workshop"]
-        },
-        {
-          "id": 10,
-          "title": "Alumni Networking Night",
-          "description": "A networking evening for Aptech alumni to share career journeys and connect with current students.",
-          "date": "2025-12-05",
-          "time": "18:00 - 21:00",
-          "location": "Aptech HCMC Rooftop Hall",
-          "category": "StudentLife",
-          "faculty": "All Faculties",
-          "organizer": "Aptech Alumni Association",
-          "status": "upcoming",
-          "image": "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800&h=600&fit=crop&crop=center",
-          "gallery": [
-            "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800&h=600&fit=crop&crop=center"
-          ],
-          "maxParticipants": 200,
-          "currentParticipants": 140,
-          "registrationDeadline": "2025-12-01",
-          "tags": ["alumni", "networking", "career"]
-        },
-        {
-          "id": 11,
-          "title": "Game Development Challenge",
-          "description": "One-day competition for students to create innovative games using Unity.",
-          "date": "2025-06-15",
-          "time": "08:00 - 19:00",
-          "location": "Aptech Hanoi Innovation Lab",
-          "category": "Academic",
-          "faculty": "Software Engineering",
-          "organizer": "Aptech Game Dev Club",
-          "status": "past",
-          "image": "https://images.unsplash.com/photo-1549924231-f129b911e442?w=800&h=600&fit=crop&crop=center",
-          "gallery": [
-            "https://images.unsplash.com/photo-1549924231-f129b911e442?w=800&h=600&fit=crop&crop=center"
-          ],
-          "maxParticipants": 150,
-          "currentParticipants": 120,
-          "registrationDeadline": "2025-06-10",
-          "tags": ["gaming", "unity", "competition"]
-        },
-        {
-          "id": 12,
-          "title": "Cybersecurity Awareness Day",
-          "description": "A day-long event raising awareness on digital security and safe practices online.",
-          "date": "2025-04-20",
-          "time": "10:00 - 16:00",
-          "location": "Aptech HCMC Auditorium",
-          "category": "Academic",
-          "faculty": "AI & Data Science",
-          "organizer": "Aptech Security Lab",
-          "status": "past",
-          "image": "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=800&h=600&fit=crop&crop=center",
-          "gallery": [
-            "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=800&h=600&fit=crop&crop=center"
-          ],
-          "maxParticipants": 400,
-          "currentParticipants": 380,
-          "registrationDeadline": "2025-04-15",
-          "tags": ["cybersecurity", "safety", "technology"]
-        },
-        {
-          "id": 13,
-          "title": "Aptech Sports Day",
-          "description": "Annual sports event promoting fitness and teamwork among students and staff.",
-          "date": "2025-11-25",
-          "time": "08:00 - 18:00",
-          "location": "Aptech HCMC Sports Ground",
-          "category": "StudentLife",
-          "faculty": "All Faculties",
-          "organizer": "Aptech Student Affairs",
-          "status": "upcoming",
-          "image": "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=800&h=600&fit=crop&crop=center",
-          "gallery": [
-            "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=800&h=600&fit=crop&crop=center"
-          ],
-          "maxParticipants": 500,
-          "currentParticipants": 350,
-          "registrationDeadline": "2025-11-20",
-          "tags": ["sports", "fitness", "teamwork"]
-        }
-      ]
-    }
-    
-  ],
-  "categories": [
-    {
-      "id": "academic",
-      "name": "Academic",
-      "description": "Seminars, workshops, and conferences for Aptech students",
-      "color": "#3B82F6"
+      "id": 11,
+      "title": "Soft Skills Workshop",
+      "description": "Professional development workshop focusing on communication, leadership, and teamwork skills essential for career success in the modern workplace.",
+      "date": "2024-05-15",
+      "time": "13:00 - 17:00",
+      "location": "Conference Room B",
+      "category": "Departmental",
+      "faculty": "All Faculties",
+      "organizer": "Career Development Center",
+      "status": "past",
+      "image": "/images/Event/FB_IMG_1757640744804.jpg",
+      "gallery": [
+        "/images/Event/FB_IMG_1757640744804.jpg"
+      ],
+      "maxParticipants": 80,
+      "currentParticipants": 65,
+      "registrationDeadline": "2024-05-10",
+      "tags": ["skills", "workshop", "professional", "development"]
     },
     {
-      "id": "studentlife",
-      "name": "Student Life",
-      "description": "Student activities, orientation, and community events",
-      "color": "#10B981"
+      "id": 12,
+      "title": "Tech Conference 2024",
+      "description": "Annual technology conference featuring industry leaders, emerging technologies, and networking opportunities. Keynote speakers from major tech companies sharing insights on future trends.",
+      "date": "2024-03-20",
+      "time": "09:00 - 17:00",
+      "location": "Main Auditorium",
+      "category": "Technical",
+      "faculty": "Information Technology",
+      "organizer": "Tech Society",
+      "status": "past",
+      "image": "/images/Event/imgi_2_about-techwiz.jpg",
+      "gallery": [
+        "/images/Event/imgi_2_about-techwiz.jpg",
+        "/images/Event/z4699059598537_21b29672a27245c7509c8c022dd6d57e-copy.jpg"
+      ],
+      "maxParticipants": 400,
+      "currentParticipants": 350,
+      "registrationDeadline": "2024-03-15",
+      "tags": ["technology", "conference", "networking", "innovation"]
     },
     {
-      "id": "cultural",
-      "name": "Cultural",
-      "description": "Festivals, exhibitions, and arts organized by Aptech",
-      "color": "#EF4444"
-    }
-  ],
-  "faculties": [
-    {
-      "id": "software-engineering",
-      "name": "Software Engineering",
-      "shortName": "SE"
-    },
-    {
-      "id": "web-development",
-      "name": "Web Development",
-      "shortName": "WEB"
-    },
-    {
-      "id": "mobile-development",
-      "name": "Mobile Development",
-      "shortName": "MOB"
-    },
-    {
-      "id": "ai-data-science",
-      "name": "AI & Data Science",
-      "shortName": "AI"
-    },
-    {
-      "id": "multimedia-design",
-      "name": "Multimedia & Design",
-      "shortName": "MM"
-    },
-    {
-      "id": "all-faculties",
-      "name": "All Faculties",
-      "shortName": "ALL"
+      "id": 13,
+      "title": "Research Exhibition",
+      "description": "Annual showcase of student and faculty research projects across all disciplines. Poster presentations, demonstrations, and interactive displays of cutting-edge research.",
+      "date": "2024-05-10",
+      "time": "10:00 - 16:00",
+      "location": "Research Center",
+      "category": "Technical",
+      "faculty": "All Faculties",
+      "organizer": "Research Office",
+      "status": "past",
+      "image": "/images/Event/Kallol-Mukherjee-EVP-Aptech-C-is-awarded-the-Sao-Khue-Awards-2025-at-Hanoi-Vietnam-for-Aptech-and-Arena-Multimedia-1-660x375.jpg",
+      "gallery": [
+        "/images/Event/Kallol-Mukherjee-EVP-Aptech-C-is-awarded-the-Sao-Khue-Awards-2025-at-Hanoi-Vietnam-for-Aptech-and-Arena-Multimedia-1-660x375.jpg"
+      ],
+      "maxParticipants": 200,
+      "currentParticipants": 180,
+      "registrationDeadline": "2024-05-05",
+      "tags": ["research", "exhibition", "science", "academic"]
     }
   ]
 }

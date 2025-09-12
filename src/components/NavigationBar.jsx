@@ -38,11 +38,15 @@ function NavigationBar() {
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
-          {/* Logo - MIT Tech Style */}
+          {/* Logo - CampusConnect */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
-              <div className="w-12 h-12 bg-red-900 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-red-900/25 transition-all duration-300 group-hover:scale-105 border border-red-900/20">
-                <Cpu className="w-6 h-6 text-white" />
+              <div className="w-16 h-16 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-orange-500/25 transition-all duration-300 group-hover:scale-105 border border-orange-200" style={{ backgroundColor: '#FFF5E9' }}>
+                <img
+                  src="/images/CampusconnectLogo.png"
+                  alt="CampusConnect Logo"
+                  className="w-24 h-24 object-contain"
+                />
               </div>
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full flex items-center justify-center animate-pulse">
                 <Zap className="w-2 h-2 text-white" />
@@ -94,22 +98,22 @@ function NavigationBar() {
 
           </div>
 
-          {/* Mobile menu button - Tech Style */}
+          {/* Mobile menu button - Light Style */}
           <div className="md:hidden flex items-center space-x-3">
             <BookmarkIndicator />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-xl bg-slate-800/50 border border-slate-700/50 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/30 focus:outline-none transition-all duration-300"
+              className="p-2 rounded-xl bg-gray-100 border border-gray-200 text-gray-600 hover:text-red-900 hover:border-red-300 hover:bg-red-50 focus:outline-none transition-all duration-300"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation - Glass Morphism */}
+        {/* Mobile Navigation - Light Theme */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="backdrop-blur-xl bg-slate-900/95 border-t border-slate-700/50 px-4 pt-4 pb-6 space-y-2">
+            <div className="backdrop-blur-xl bg-white/95 border-t border-gray-200 px-4 pt-4 pb-6 space-y-2 shadow-lg">
               {navigation.map((item) => {
                 const Icon = item.icon
                 return (
@@ -118,8 +122,8 @@ function NavigationBar() {
                     to={item.href}
                     className={`flex items-center space-x-3 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
                       isActive(item.href)
-                        ? 'text-cyan-400 bg-cyan-500/10 border border-cyan-500/20'
-                        : 'text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 border border-transparent hover:border-slate-700/50'
+                        ? 'text-red-900 bg-red-50 border border-red-200 shadow-sm'
+                        : 'text-gray-700 hover:text-red-900 hover:bg-gray-50 border border-transparent hover:border-gray-200'
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
