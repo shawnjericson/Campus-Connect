@@ -10,6 +10,7 @@ import { useEvents } from '../hooks/useEvents'
 function EventsPage() {
   const {
     events: allEvents,
+    calculateEventStatus,
     loading,
     error
   } = useEvents()

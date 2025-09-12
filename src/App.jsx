@@ -13,8 +13,23 @@ import FeedbackPage from './pages/FeedbackPage'
 import GalleryPage from './pages/GalleryPage'
 import RegisterPage from './pages/RegisterPage'
 import NotFoundPage from './pages/NotFoundPage'
+import ChatBotWidget from './widget/chat_bot_widget'
+import { useEvents } from './hooks/useEvents'
 
 function App() {
+  const { events } = useEvents()
+
+  // Convert events data to chatbot format
+  const chatbotEvents = events.map(event => ({
+    id: event.id.toString(),
+    title: event.title,
+    date: event.date,
+    location: event.location,
+    tags: event.tags || [event.category?.toLowerCase()],
+    url: `/events/${event.id}`,
+    summary: event.description
+  }))
+
   return (
     <BookmarkProvider>
       <div className="min-h-screen bg-gray-50">
@@ -35,6 +50,18 @@ function App() {
         </main>
 
         <Footer />
+
+        <ChatBotWidget
+          events={chatbotEvents}
+          title="CampusConnect Assistant"
+          greeting="Chào bạn! Mình có thể giúp tìm sự kiện tại CampusConnect. Hãy thử: 'events today', 'events this week', hoặc 'events tag:technical'."
+          suggestions={[
+            "events today",
+            "events this week",
+            "events tag:technical",
+            "events tag:cultural"
+          ]}
+        />
       </div>
     </BookmarkProvider>
   )

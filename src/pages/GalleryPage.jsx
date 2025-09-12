@@ -1,93 +1,43 @@
 import { useState, useEffect } from 'react'
 import { Search, Filter, Calendar, Camera, Eye, X, Grid, List, Image as ImageIcon } from 'lucide-react'
+import { useGalleryImages } from '../hooks/useGalleryImages'
+import { LoadingSpinner, ErrorMessage } from '../components/shared'
+import { GALLERY_CATEGORIES } from '../constants'
 
 function GalleryPage() {
-  const [galleryData, setGalleryData] = useState([])
-  const [filteredImages, setFilteredImages] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-
   const [viewMode, setViewMode] = useState('category') // 'category' or 'year'
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [selectedCategory, setSelectedCategory] = useState(GALLERY_CATEGORIES.ALL)
   const [selectedYear, setSelectedYear] = useState('all')
   const [selectedImage, setSelectedImage] = useState(null)
+  const [filteredImages, setFilteredImages] = useState([])
 
-  // Load gallery data from JSON
+  const {
+    images,
+    categories,
+    years,
+    filterImages,
+    loading,
+    error,
+    retry
+  } = useGalleryImages()
+
+  // Filter and organize images using the hook
   useEffect(() => {
-    const loadGalleryData = async () => {
-      try {
-        setLoading(true)
-        const response = await fetch('/data/gallery-images.json')
-        if (!response.ok) throw new Error('Failed to load gallery data')
-        const data = await response.json()
-        setGalleryData(data.images || [])
-        setFilteredImages(data.images || [])
-      } catch (err) {
-        setError(err.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadGalleryData()
-  }, [])
-
-  // Filter and organize images
-  useEffect(() => {
-    let filtered = [...galleryData]
-
-    // Filter by search query
-    if (searchQuery.trim()) {
-      filtered = filtered.filter(image =>
-        image.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        image.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        image.event.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        image.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-      )
-    }
-
-    // Filter by category
-    if (selectedCategory !== 'all') {
-      filtered = filtered.filter(image => image.category === selectedCategory)
-    }
-
-    // Filter by year
-    if (selectedYear !== 'all') {
-      filtered = filtered.filter(image => image.year === selectedYear)
-    }
-
+    const filtered = filterImages({
+      category: selectedCategory,
+      year: selectedYear !== 'all' ? selectedYear : null,
+      search: searchQuery
+    })
     setFilteredImages(filtered)
-  }, [galleryData, searchQuery, selectedCategory, selectedYear])
-
-  // Get unique categories and years for filters
-  const categories = [...new Set(galleryData.map(img => img.category))]
-  const years = [...new Set(galleryData.map(img => img.year))].sort().reverse()
+  }, [images, searchQuery, selectedCategory, selectedYear, filterImages])
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-900 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading gallery...</p>
-        </div>
-      </div>
-    )
+    return <LoadingSpinner fullScreen message="Loading gallery..." />
   }
 
   if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-600 mb-4">Error loading gallery: {error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-6 py-3 bg-red-900 text-white rounded-xl hover:bg-red-800 transition-all duration-300"
-          >
-            Retry
-          </button>
-        </div>
-      </div>
-    )
+    return <ErrorMessage fullScreen message={error} onRetry={retry} />
   }
 
   // Group images by category or year

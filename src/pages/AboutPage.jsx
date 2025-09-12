@@ -1,65 +1,40 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import {
   Users, Award, Calendar, MapPin, Globe, Heart, Star, Trophy, Code, Music, Gamepad2,
   Building, GraduationCap, Target, BookOpen, Lightbulb, UserCheck, Shield, Brain,
   Palette, ChevronRight, ExternalLink, CheckCircle, Eye, Briefcase, Phone, Mail, Clock
 } from 'lucide-react'
+import { useAbout } from '../hooks/useAbout'
+import { LoadingSpinner, ErrorMessage } from '../components/shared'
+import { ABOUT_SECTIONS } from '../constants'
 
 function AboutPage() {
-  const [aboutData, setAboutData] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [activeSection, setActiveSection] = useState('overview')
+  const [activeSection, setActiveSection] = useState(ABOUT_SECTIONS.OVERVIEW)
   const [activeDepartment, setActiveDepartment] = useState(null)
 
-  // Load about data from JSON
-  useEffect(() => {
-    const loadAboutData = async () => {
-      try {
-        setLoading(true)
-        const response = await fetch('/data/about-info.json')
-        if (!response.ok) throw new Error('Failed to load about data')
-        const data = await response.json()
-        setAboutData(data)
-      } catch (err) {
-        setError(err.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadAboutData()
-  }, [])
+  const {
+    institute,
+    departments,
+    facilities,
+    achievements,
+    history,
+    annualEvents,
+    loading,
+    error,
+    retry
+  } = useAbout()
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-900 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading about information...</p>
-        </div>
-      </div>
-    )
+    return <LoadingSpinner fullScreen message="Loading about information..." />
   }
 
   if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-600 mb-4">Error loading about data: {error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-red-900 text-white rounded hover:bg-red-800"
-          >
-            Retry
-          </button>
-        </div>
-      </div>
-    )
+    return <ErrorMessage fullScreen message={error} onRetry={retry} />
   }
 
-  if (!aboutData) return null
+  if (!institute.name) return null
 
-  const { institute, departments, annualEvents } = aboutData
+  // Data is now available from the hook, no need to destructure aboutData
 
   // Icon mapping for departments
   const departmentIcons = {

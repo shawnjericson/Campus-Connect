@@ -47,10 +47,53 @@ export const useEvents = () => {
   const categories = useMemo(() => data?.categories || [], [data])
   const faculties = useMemo(() => data?.faculties || [], [data])
 
-  // Filter functions
+  // Helper function to calculate dynamic event status
+  const calculateEventStatus = useMemo(() => {
+    return (event) => {
+      const now = new Date()
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+      const eventDate = new Date(event.date)
+      const eventDateOnly = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate())
+      const registrationDeadline = new Date(event.registrationDeadline)
+      const regDeadlineOnly = new Date(registrationDeadline.getFullYear(), registrationDeadline.getMonth(), registrationDeadline.getDate())
+
+
+
+      // Past event: event date has completely passed
+      if (eventDateOnly < today) {
+        return 'past'
+      }
+
+      // Ongoing event: registration deadline has passed but event hasn't ended yet
+      if (regDeadlineOnly < today && eventDateOnly >= today) {
+        return 'ongoing'
+      }
+
+      // Upcoming event: registration is still open
+      if (regDeadlineOnly >= today) {
+        return 'upcoming'
+      }
+
+      return 'upcoming' // fallback
+    }
+  }, [])
+
+  // Helper function to check registration status
+  const isRegistrationOpen = useMemo(() => {
+    return (event) => {
+      const now = new Date()
+      const registrationDeadline = new Date(event.registrationDeadline)
+      const eventDate = new Date(event.date)
+
+      // Registration is open if deadline hasn't passed and event hasn't happened yet
+      return registrationDeadline >= now && eventDate >= now
+    }
+  }, [])
+
+  // Filter functions with dynamic status calculation
   const getEventsByStatus = useMemo(() => {
-    return (status) => events.filter(event => event.status === status)
-  }, [events])
+    return (status) => events.filter(event => calculateEventStatus(event) === status)
+  }, [events, calculateEventStatus])
 
   const getEventsByCategory = useMemo(() => {
     return (category) => events.filter(event => 
@@ -81,20 +124,20 @@ export const useEvents = () => {
   const getUpcomingEvents = useMemo(() => {
     return (limit) => {
       const upcoming = events
-        .filter(event => event.status === 'upcoming')
+        .filter(event => calculateEventStatus(event) === 'upcoming')
         .sort((a, b) => new Date(a.date) - new Date(b.date))
       return limit ? upcoming.slice(0, limit) : upcoming
     }
-  }, [events])
+  }, [events, calculateEventStatus])
 
   const getPastEvents = useMemo(() => {
     return (limit) => {
       const past = events
-        .filter(event => event.status === 'past')
+        .filter(event => calculateEventStatus(event) === 'past')
         .sort((a, b) => new Date(b.date) - new Date(a.date))
       return limit ? past.slice(0, limit) : past
     }
-  }, [events])
+  }, [events, calculateEventStatus])
 
   const getEventById = useMemo(() => {
     return (id) => events.find(event => event.id === parseInt(id))
@@ -183,7 +226,10 @@ export const useEvents = () => {
     getPastEvents,
     getEventById,
     filterEvents,
-    sortEvents
+    sortEvents,
+    // Utility functions
+    calculateEventStatus,
+    isRegistrationOpen
   }
 }
 

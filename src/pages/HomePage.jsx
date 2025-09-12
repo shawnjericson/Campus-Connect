@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Calendar, Users, MapPin, ArrowRight, Heart, ChevronLeft, ChevronRight, Clock } from 'lucide-react'
 import { useBookmarks } from '../contexts/BookmarkContext'
+import { LoadingSpinner, ErrorMessage } from '../components/shared'
 import BookmarkButton from '../components/BookmarkButton'
 import UpcomingEventsHighlights from '../components/UpcomingEventsHighlights'
 import ImageSlider from '../components/ImageSlider'
@@ -12,8 +13,6 @@ import useBanners from '../hooks/useBanners'
 function HomePage() {
   const { isHydrated } = useBookmarks()
   const {
-    getUpcomingEvents,
-    getPastEvents,
     getEventsByStatus,
     loading,
     error
@@ -66,9 +65,9 @@ function HomePage() {
     setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
   }
 
-  const upcomingEvents = getUpcomingEvents(3)
+  const upcomingEvents = getEventsByStatus('upcoming').slice(0, 3)
   const ongoingEvents = getEventsByStatus('ongoing')
-  const pastEvents = getPastEvents(6)
+  const pastEvents = getEventsByStatus('past').slice(0, 6)
 
   if (loading) {
     return (

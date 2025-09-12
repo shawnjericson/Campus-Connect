@@ -20,49 +20,49 @@
   "bannerSlides": [
     {
       "id": 1,
-      "image": "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "image": "/images/Banner/pexels-pixabay-356065.jpg",
       "category": "College Branding",
       "featured": true
     },
     {
       "id": 2,
-      "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "image": "/images/Banner/pexels-emily-ranquist-493228-1205651.jpg",
       "category": "College Branding",
       "featured": true
     },
     {
       "id": 3,
-      "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "image": "/images/Banner/pexels-hillaryfox-1595385.jpg",
       "category": "Event Snapshots",
       "featured": true
     },
     {
       "id": 4,
-      "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "image": "/images/Banner/pexels-marta-klement-636760-1438072.jpg",
       "category": "Event Snapshots",
       "featured": true
     },
     {
       "id": 5,
-      "image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "image": "/images/Banner/pexels-pixabay-256490.jpg",
       "category": "Event Snapshots",
       "featured": true
     },
     {
       "id": 6,
-      "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "image": "/images/Banner/pexels-rdne-7551733.jpg",
       "category": "Seasonal Celebrations",
       "featured": true
     },
     {
       "id": 7,
-      "image": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "image": "/images/Banner/pexels-rdne-7648306.jpg",
       "category": "Seasonal Celebrations",
       "featured": true
     },
     {
       "id": 8,
-      "image": "https://images.unsplash.com/photo-1482686115713-0fbcaced6e28?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      "image": "/images/Banner/pexels-rdne-7683615.jpg",
       "category": "Seasonal Celebrations",
       "featured": true
     }

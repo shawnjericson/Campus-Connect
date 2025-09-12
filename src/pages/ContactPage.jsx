@@ -1,58 +1,32 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Phone, Mail, MapPin, Clock, User, Building, Users } from 'lucide-react'
+import { useContactsInfo } from '../hooks/useContactsInfo'
+import { LoadingSpinner, ErrorMessage } from '../components/shared'
+import { CONTACT_TABS } from '../constants'
 
 function ContactPage() {
-  const [contactData, setContactData] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [activeTab, setActiveTab] = useState('faculty')
-
-  // Load contact data from JSON
-  useEffect(() => {
-    const loadContactData = async () => {
-      try {
-        setLoading(true)
-        const response = await fetch('/data/contacts-info.json')
-        if (!response.ok) throw new Error('Failed to load contact data')
-        const data = await response.json()
-        setContactData(data)
-      } catch (err) {
-        setError(err.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadContactData()
-  }, [])
+  const [activeTab, setActiveTab] = useState(CONTACT_TABS.FACULTY)
+  const {
+    university,
+    facultyMembers,
+    studentCoordinators,
+    departments,
+    contactInfo,
+    officeHours,
+    loading,
+    error,
+    retry
+  } = useContactsInfo()
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-900 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading contact information...</p>
-        </div>
-      </div>
-    )
+    return <LoadingSpinner fullScreen message="Loading contact information..." />
   }
 
   if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-600 mb-4">Error loading contacts: {error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-red-900 text-white rounded hover:bg-red-800"
-          >
-            Retry
-          </button>
-        </div>
-      </div>
-    )
+    return <ErrorMessage fullScreen message={error} onRetry={retry} />
   }
 
-  if (!contactData) {
+  if (!contactInfo && !facultyMembers.length && !studentCoordinators.length) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -62,7 +36,7 @@ function ContactPage() {
     )
   }
 
-  const { university, faculty, student_coordinators, departments, office_hours } = contactData
+  // Data is now available from the hook, no need to destructure contactData
 
   // Contact Card Component
   const ContactCard = ({ contact, type = 'faculty' }) => (
@@ -202,7 +176,7 @@ function ContactPage() {
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {faculty.map(member => (
+                {facultyMembers.map(member => (
                   <ContactCard key={member.id} contact={member} type="faculty" />
                 ))}
               </div>
@@ -220,7 +194,7 @@ function ContactPage() {
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {student_coordinators.map(coordinator => (
+                {studentCoordinators.map(coordinator => (
                   <ContactCard key={coordinator.id} contact={coordinator} type="student" />
                 ))}
               </div>
@@ -282,9 +256,9 @@ function ContactPage() {
                         <div>
                           <p className="font-medium text-gray-900">Office Hours</p>
                           <p className="text-gray-600">
-                            Weekdays: {office_hours.weekdays}<br />
-                            Saturday: {office_hours.saturday}<br />
-                            Sunday: {office_hours.sunday}
+                            Weekdays: {officeHours.weekdays}<br />
+                            Saturday: {officeHours.saturday}<br />
+                            Sunday: {officeHours.sunday}
                           </p>
                         </div>
                       </div>
@@ -301,7 +275,7 @@ function ContactPage() {
                     </h3>
                     <div className="aspect-video rounded-lg overflow-hidden">
                       <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.7!2d106.7009!3d10.7769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ2JzM2LjgiTiAxMDbCsDQyJzAzLjIiRQ!5e0!3m2!1sen!2s!4v1635000000000!5m2!1sen!2s"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d872.8715230865433!2d106.71344195376555!3d10.806658030603254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529ed00409f09%3A0x11f7708a5c77d777!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgVGjhu5FuZyDEkMOgbyB04bqhbyBM4bqtcCBUcsOsbmggVmnDqm4gUXXhu5FjIHThur8gQXB0ZWNo!5e0!3m2!1svi!2s!4v1757669837485!5m2!1svi!2s"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}

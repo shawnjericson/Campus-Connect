@@ -6,14 +6,14 @@ import {
   Star, Trophy, Tag, Mail, X, Download, QrCode
 } from 'lucide-react'
 import { useBookmarks } from '../contexts/BookmarkContext'
+import { useEvents } from '../hooks/useEvents'
+import { LoadingSpinner, ErrorMessage } from '../components/shared'
+import { ERROR_MESSAGES } from '../constants'
 import BookmarkButton from '../components/BookmarkButton'
 
 function EventDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const [event, setEvent] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
   const [showRegisterModal, setShowRegisterModal] = useState(false)
   const [registrationStatus, setRegistrationStatus] = useState(null)
   const [registrationForm, setRegistrationForm] = useState({
@@ -28,49 +28,13 @@ function EventDetailPage() {
   const [qrCodeData, setQrCodeData] = useState('')
   const { isHydrated } = useBookmarks()
 
+  const { getEventById, loading, error, retry } = useEvents()
+  const event = getEventById(parseInt(id))
+
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0)
-
-    const fetchEvent = async () => {
-      try {
-        const response = await fetch('/data/events.json')
-        if (!response.ok) {
-          throw new Error('Failed to fetch events')
-        }
-        const data = await response.json()
-
-        // Find event in the nested structure
-        let foundEvent = null
-        if (data.events) {
-          // Check direct events array
-          foundEvent = data.events.find(event => event.id === parseInt(id))
-
-          // If not found, check nested events
-          if (!foundEvent) {
-            for (const item of data.events) {
-              if (item.events && Array.isArray(item.events)) {
-                foundEvent = item.events.find(event => event.id === parseInt(id))
-                if (foundEvent) break
-              }
-            }
-          }
-        }
-
-        if (!foundEvent) {
-          throw new Error('Event not found')
-        }
-
-        setEvent(foundEvent)
-      } catch (err) {
-        setError(err.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchEvent()
-  }, [id])
+  }, [])
 
   const handleRegister = () => {
     setShowRegisterModal(true)
@@ -235,32 +199,15 @@ function EventDetailPage() {
   }
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-900 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading event details...</p>
-        </div>
-      </div>
-    )
+    return <LoadingSpinner fullScreen message="Loading event details..." />
   }
 
   if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Event Not Found</h2>
-          <p className="text-gray-600 mb-6">{error}</p>
-          <button
-            onClick={() => navigate('/events')}
-            className="bg-red-900 text-white px-6 py-3 rounded-lg hover:bg-red-800 transition-colors"
-          >
-            Back to Events
-          </button>
-        </div>
-      </div>
-    )
+    return <ErrorMessage fullScreen message={error} onRetry={retry} />
+  }
+
+  if (!event) {
+    return <ErrorMessage fullScreen message={ERROR_MESSAGES.EVENT_NOT_FOUND} onRetry={() => navigate('/events')} />
   }
 
   return (
