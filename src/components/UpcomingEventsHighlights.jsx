@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Calendar, Clock, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEvents } from '../hooks/useEvents'
+import CountdownTimer from './ui/CountdownTimer'
 
 const UpcomingEventsHighlights = () => {
   const { events, loading, error } = useEvents()
@@ -11,24 +11,6 @@ const UpcomingEventsHighlights = () => {
   const featuredEvents = events.filter(event => event.featured && event.status === 'upcoming')
   const upcomingEvents = events.filter(event => event.status === 'upcoming')
   const displayEvents = featuredEvents.length > 0 ? featuredEvents : upcomingEvents.slice(0, 6)
-
-  // Countdown function
-  const getCountdown = (targetDate) => {
-    const now = new Date().getTime()
-    const target = new Date(targetDate).getTime()
-    const difference = target - now
-
-    if (difference > 0) {
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24))
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000)
-
-      return { days, hours, minutes, seconds, isActive: true }
-    }
-
-    return { days: 0, hours: 0, minutes: 0, seconds: 0, isActive: false }
-  }
 
   // Auto-slide functionality
   useEffect(() => {
@@ -46,39 +28,6 @@ const UpcomingEventsHighlights = () => {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + displayEvents.length) % displayEvents.length)
-  }
-
-  const CountdownTimer = ({ targetDate }) => {
-    const [countdown, setCountdown] = useState(getCountdown(targetDate))
-
-    useEffect(() => {
-      const timer = setInterval(() => {
-        setCountdown(getCountdown(targetDate))
-      }, 60000) // Update every minute
-
-      return () => clearInterval(timer)
-    }, [targetDate])
-
-    if (!countdown.isActive) {
-      return <span className="text-red-900 font-medium">Event Started</span>
-    }
-
-    return (
-      <div className="flex items-center space-x-4 text-sm">
-        <div className="text-center">
-          <div className="text-red-900 font-bold text-lg">{countdown.days}</div>
-          <div className="text-gray-600 text-xs">Days</div>
-        </div>
-        <div className="text-center">
-          <div className="text-red-900 font-bold text-lg">{countdown.hours}</div>
-          <div className="text-gray-600 text-xs">Hours</div>
-        </div>
-        <div className="text-center">
-          <div className="text-red-900 font-bold text-lg">{countdown.minutes}</div>
-          <div className="text-gray-600 text-xs">Minutes</div>
-        </div>
-      </div>
-    )
   }
 
   if (loading) {
@@ -162,7 +111,9 @@ const UpcomingEventsHighlights = () => {
                 {/* Countdown Timer */}
                 {displayEvents[currentSlide]?.countdown?.enabled && (
                   <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-                    <CountdownTimer targetDate={displayEvents[currentSlide]?.countdown?.targetDate} />
+                    <CountdownTimer 
+                      targetDate={displayEvents[currentSlide]?.countdown?.targetDate}
+                    />
                   </div>
                 )}
 
