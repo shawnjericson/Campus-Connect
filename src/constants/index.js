@@ -1,7 +1,6 @@
 // API Endpoints
 export const API_ENDPOINTS = {
   EVENTS: '/data/events.json',
-  GALLERY: '/data/gallery-images.json',
   CONTACTS: '/data/contacts-info.json',
   ABOUT: '/data/about-info.json',
   BANNERS: '/data/banners.json'

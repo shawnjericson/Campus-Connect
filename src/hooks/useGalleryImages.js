@@ -12,13 +12,30 @@ export const useGalleryImages = () => {
         setLoading(true)
         setError(null)
         
-        const response = await fetch(API_ENDPOINTS.GALLERY)
+        const response = await fetch(API_ENDPOINTS.EVENTS)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         
-        const galleryData = await response.json()
-        setData(galleryData)
+        const eventsData = await response.json()
+
+        // Extract gallery details from all events
+        const allGalleryImages = []
+        eventsData.events.forEach(event => {
+          if (event.galleryDetails && event.galleryDetails.length > 0) {
+            event.galleryDetails.forEach(image => {
+              allGalleryImages.push({
+                ...image,
+                category: event.category,
+                event: event.title,
+                date: event.date,
+                year: new Date(event.date).getFullYear().toString()
+              })
+            })
+          }
+        })
+
+        setData({ images: allGalleryImages })
       } catch (err) {
         console.error('Error fetching gallery images:', err)
         setError(err.message || ERROR_MESSAGES.DATA_LOAD_ERROR)

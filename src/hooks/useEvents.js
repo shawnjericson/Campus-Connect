@@ -122,34 +122,54 @@ export const useEvents = () => {
   }, [events, getEventsByCategory, getEventsByStatus, searchEvents])
 
   const sortEvents = useMemo(() => {
-    return (eventsList, sortBy = 'date', order = 'asc') => {
+    return (eventsList, sortBy = 'priority', sortOrder = 'asc') => {
       return [...eventsList].sort((a, b) => {
-        let aValue, bValue
+        let comparison = 0
 
         switch (sortBy) {
+          case 'priority':
+            // Featured/priority events first
+            const aPriority = a.priority || 999
+            const bPriority = b.priority || 999
+            comparison = aPriority - bPriority
+            return sortOrder === 'desc' ? -comparison : comparison
+
           case 'date':
-            aValue = new Date(a.date)
-            bValue = new Date(b.date)
-            break
-          case 'title':
-            aValue = a.title.toLowerCase()
-            bValue = b.title.toLowerCase()
-            break
+            // Sort by date: upcoming events first, then by closest date
+            const today = new Date()
+            today.setHours(0, 0, 0, 0) // Start of today
+            const aDate = new Date(a.date)
+            const bDate = new Date(b.date)
+
+            const aIsUpcoming = aDate >= today
+            const bIsUpcoming = bDate >= today
+
+            if (aIsUpcoming && !bIsUpcoming) {
+              // A upcoming, B past: A always first
+              return -1
+            } else if (!aIsUpcoming && bIsUpcoming) {
+              // A past, B upcoming: B always first
+              return 1
+            } else if (aIsUpcoming && bIsUpcoming) {
+              // Both upcoming: closest first
+              return aDate - bDate
+            } else {
+              // Both past: most recent first
+              return bDate - aDate
+            }
+
+          case 'name':
+            // Sort by name: A-Z order (AI Summit before TECHWIZ)
+            comparison = a.title.localeCompare(b.title)
+            return sortOrder === 'desc' ? -comparison : comparison
+
           case 'category':
-            aValue = a.category.toLowerCase()
-            bValue = b.category.toLowerCase()
-            break
-          case 'participants':
-            aValue = a.currentParticipants || a.attendees || 0
-            bValue = b.currentParticipants || b.attendees || 0
-            break
+            comparison = a.category.localeCompare(b.category)
+            return sortOrder === 'desc' ? -comparison : comparison
+
           default:
             return 0
         }
-
-        if (aValue < bValue) return order === 'asc' ? -1 : 1
-        if (aValue > bValue) return order === 'asc' ? 1 : -1
-        return 0
       })
     }
   }, [])

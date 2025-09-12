@@ -10,7 +10,7 @@ import { useEvents } from '../hooks/useEvents'
 function EventsPage() {
   const {
     events: allEvents,
-    calculateEventStatus,
+    sortEvents,
     loading,
     error
   } = useEvents()
@@ -53,59 +53,12 @@ function EventsPage() {
         filtered = filtered.filter(event => event.status === selectedStatus)
       }
 
-      // Sort events
-      filtered.sort((a, b) => {
-        let comparison = 0
-
-        switch (sortBy) {
-          case 'priority':
-            // Featured/priority events first
-            const aPriority = a.priority || 999
-            const bPriority = b.priority || 999
-            comparison = aPriority - bPriority
-            return sortOrder === 'desc' ? -comparison : comparison
-
-          case 'date':
-            // Sort by date: upcoming events first, then by closest date
-            const today = new Date()
-            today.setHours(0, 0, 0, 0) // Start of today
-            const aDate = new Date(a.date)
-            const bDate = new Date(b.date)
-
-            const aIsUpcoming = aDate >= today
-            const bIsUpcoming = bDate >= today
-
-            if (aIsUpcoming && !bIsUpcoming) {
-              // A upcoming, B past: A always first
-              return -1
-            } else if (!aIsUpcoming && bIsUpcoming) {
-              // A past, B upcoming: B always first
-              return 1
-            } else if (aIsUpcoming && bIsUpcoming) {
-              // Both upcoming: closest first (September before December)
-              return aDate - bDate
-            } else {
-              // Both past: most recent first
-              return bDate - aDate
-            }
-
-          case 'name':
-            // Sort by name: A-Z order (AI Summit before TECHWIZ)
-            comparison = a.title.localeCompare(b.title)
-            return sortOrder === 'desc' ? -comparison : comparison
-
-          case 'category':
-            comparison = a.category.localeCompare(b.category)
-            return sortOrder === 'desc' ? -comparison : comparison
-
-          default:
-            return 0
-        }
-      })
+      // Sort events using hook function
+      filtered = sortEvents(filtered, sortBy, sortOrder)
 
       setFilteredEvents(filtered)
     }
-  }, [allEvents, selectedCategory, selectedStatus, searchQuery, sortBy, sortOrder])
+  }, [allEvents, selectedCategory, selectedStatus, searchQuery, sortBy, sortOrder, sortEvents])
 
   if (loading) {
     return (

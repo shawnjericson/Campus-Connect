@@ -29,7 +29,27 @@
       "countdown": {
         "enabled": true,
         "targetDate": "2025-09-12T09:00:00"
-      }
+      },
+      "galleryDetails": [
+        {
+          "id": 1,
+          "title": "TECHWIZ 6 2025 Opening Ceremony",
+          "description": "Grand opening ceremony of the international programming competition",
+          "url": "/images/Event/Techwiz.png",
+          "thumbnail": "/images/Event/Techwiz.png",
+          "photographer": "Event Team",
+          "tags": ["techwiz", "programming", "competition", "opening"]
+        },
+        {
+          "id": 2,
+          "title": "TECHWIZ Competition Arena",
+          "description": "Participants competing in the programming challenges",
+          "url": "/images/Event/imgi_19_1733124426509-img-1733124424956-techwiz-img2-.png",
+          "thumbnail": "/images/Event/imgi_19_1733124426509-img-1733124424956-techwiz-img2-.png",
+          "photographer": "Event Team",
+          "tags": ["techwiz", "programming", "competition", "coding"]
+        }
+      ]
     },
     {
       "id": 2,
@@ -58,7 +78,18 @@
       "countdown": {
         "enabled": true,
         "targetDate": "2025-09-12T10:00:00"
-      }
+      },
+      "galleryDetails": [
+        {
+          "id": 5,
+          "title": "Cultural Week Performance",
+          "description": "Traditional dance performance during cultural week",
+          "url": "/images/Event/FB_IMG_1757639532640.jpg",
+          "thumbnail": "/images/Event/FB_IMG_1757639532640.jpg",
+          "photographer": "Cultural Team",
+          "tags": ["cultural", "dance", "performance", "traditional"]
+        }
+      ]
     },
     {
       "id": 3,
@@ -70,7 +101,7 @@
       "category": "Technical",
       "faculty": "Information Technology",
       "organizer": "Information Technology Faculty",
-      "status": "upcoming",
+      "status": "ongoing",
       "featured": true,
       "image": "/images/Event/AI & Machine Learning Summit 2.jpg",
       "thumbnail": "/images/Event/AI & Machine Learning Summit.jpg",
@@ -87,7 +118,18 @@
       "countdown": {
         "enabled": true,
         "targetDate": "2025-09-15T14:00:00"
-      }
+      },
+      "galleryDetails": [
+        {
+          "id": 3,
+          "title": "AI Summit Presentation",
+          "description": "Expert presenting on machine learning trends",
+          "url": "/images/Event/FB_IMG_1757639567275.jpg",
+          "thumbnail": "/images/Event/FB_IMG_1757639567275.jpg",
+          "photographer": "Tech Team",
+          "tags": ["ai", "machine learning", "summit", "presentation"]
+        }
+      ]
     },
     {
       "id": 4,
@@ -115,7 +157,8 @@
       "countdown": {
         "enabled": true,
         "targetDate": "2025-10-10T11:00:00"
-      }
+      },
+      "galleryDetails": []
     },
     {
       "id": 5,
@@ -143,7 +186,8 @@
       "countdown": {
         "enabled": true,
         "targetDate": "2025-11-22T09:30:00"
-      }
+      },
+      "galleryDetails": []
     },
     {
       "id": 6,
@@ -169,7 +213,8 @@
       "countdown": {
         "enabled": true,
         "targetDate": "2025-12-18T15:00:00"
-      }
+      },
+      "galleryDetails": []
     },
     {
       "id": 7,
@@ -189,7 +234,8 @@
       "maxParticipants": 400,
       "currentParticipants": 250,
       "registrationDeadline": "2025-09-01",
-      "tags": ["orientation", "studentlife", "networking", "welcome"]
+      "tags": ["orientation", "studentlife", "networking", "welcome"],
+      "galleryDetails": []
     },
     {
       "id": 8,
@@ -210,7 +256,18 @@
       "maxParticipants": 300,
       "currentParticipants": 280,
       "registrationDeadline": "2024-02-01",
-      "tags": ["sports", "tournament", "athletics", "competition"]
+      "tags": ["sports", "tournament", "athletics", "competition"],
+      "galleryDetails": [
+        {
+          "id": 9,
+          "title": "Sports Tournament",
+          "description": "Annual sports competition with various events",
+          "url": "/images/Event/FB_IMG_1757639615828.jpg",
+          "thumbnail": "/images/Event/FB_IMG_1757639615828.jpg",
+          "photographer": "Sports Team",
+          "tags": ["sports", "tournament", "competition", "athletics"]
+        }
+      ]
     },
     {
       "id": 9,
@@ -231,7 +288,18 @@
       "maxParticipants": 120,
       "currentParticipants": 96,
       "registrationDeadline": "2024-10-20",
-      "tags": ["hackathon", "coding", "teamwork", "innovation"]
+      "tags": ["hackathon", "coding", "teamwork", "innovation"],
+      "galleryDetails": [
+        {
+          "id": 4,
+          "title": "Hackathon Competition",
+          "description": "48-hour coding challenge for students",
+          "url": "/images/Event/FB_IMG_1757639623445.jpg",
+          "thumbnail": "/images/Event/FB_IMG_1757639623445.jpg",
+          "photographer": "Tech Team",
+          "tags": ["hackathon", "coding", "programming", "innovation"]
+        }
+      ]
     },
     {
       "id": 10,
@@ -252,7 +320,27 @@
       "maxParticipants": 250,
       "currentParticipants": 120,
       "registrationDeadline": "2024-11-05",
-      "tags": ["design", "multimedia", "creativity", "exhibition"]
+      "tags": ["design", "multimedia", "creativity", "exhibition"],
+      "galleryDetails": [
+        {
+          "id": 7,
+          "title": "Traditional Arts Showcase",
+          "description": "Display of traditional arts and crafts",
+          "url": "/images/Event/FB_IMG_1757639918802.jpg",
+          "thumbnail": "/images/Event/FB_IMG_1757639918802.jpg",
+          "photographer": "Arts Team",
+          "tags": ["arts", "traditional", "culture", "showcase"]
+        },
+        {
+          "id": 8,
+          "title": "Music Performance",
+          "description": "Student band performing at cultural event",
+          "url": "/images/Event/FB_IMG_1757639922532.jpg",
+          "thumbnail": "/images/Event/FB_IMG_1757639922532.jpg",
+          "photographer": "Cultural Team",
+          "tags": ["music", "performance", "band", "entertainment"]
+        }
+      ]
     },
     {
       "id": 11,
@@ -272,7 +360,18 @@
       "maxParticipants": 80,
       "currentParticipants": 65,
       "registrationDeadline": "2024-05-10",
-      "tags": ["skills", "workshop", "professional", "development"]
+      "tags": ["skills", "workshop", "professional", "development"],
+      "galleryDetails": [
+        {
+          "id": 12,
+          "title": "Swimming Competition",
+          "description": "Annual swimming championship",
+          "url": "/images/Event/FB_IMG_1757640744804.jpg",
+          "thumbnail": "/images/Event/FB_IMG_1757640744804.jpg",
+          "photographer": "Sports Team",
+          "tags": ["swimming", "championship", "water sports", "competition"]
+        }
+      ]
     },
     {
       "id": 12,
@@ -293,7 +392,8 @@
       "maxParticipants": 400,
       "currentParticipants": 350,
       "registrationDeadline": "2024-03-15",
-      "tags": ["technology", "conference", "networking", "innovation"]
+      "tags": ["technology", "conference", "networking", "innovation"],
+      "galleryDetails": []
     },
     {
       "id": 13,
@@ -313,7 +413,8 @@
       "maxParticipants": 200,
       "currentParticipants": 180,
       "registrationDeadline": "2024-05-05",
-      "tags": ["research", "exhibition", "science", "academic"]
+      "tags": ["research", "exhibition", "science", "academic"],
+      "galleryDetails": []
     }
   ]
 }
