@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Calendar, Users, MapPin, ArrowRight, Heart, ChevronLeft, ChevronRight, Clock } from 'lucide-react'
 import { useBookmarks } from '../contexts/BookmarkContext'
-import { LoadingSpinner, ErrorMessage } from '../components/shared'
 import BookmarkButton from '../components/BookmarkButton'
 import UpcomingEventsHighlights from '../components/UpcomingEventsHighlights'
 import ImageSlider from '../components/ImageSlider'
@@ -13,6 +12,8 @@ import useBanners from '../hooks/useBanners'
 function HomePage() {
   const { isHydrated } = useBookmarks()
   const {
+    getUpcomingEvents,
+    getPastEvents,
     getEventsByStatus,
     loading,
     error
@@ -30,30 +31,9 @@ function HomePage() {
     badge: "LIVE SYSTEM"
   }
 
-<<<<<<< HEAD
-  // Auto-slide functionality
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
-    }, 5000) // Change slide every 5 seconds
-
-    return () => clearInterval(timer)
-  }, [heroSlides.length])
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
-  }
-
-  const upcomingEvents = getEventsByStatus('upcoming').slice(0, 3)
-=======
   const upcomingEvents = getUpcomingEvents(3)
->>>>>>> 50ae9948cbadd45e9b12d708b4d162367c739aec
   const ongoingEvents = getEventsByStatus('ongoing')
-  const pastEvents = getEventsByStatus('past').slice(0, 6)
+  const pastEvents = getPastEvents(6)
 
   if (loading) {
     return (

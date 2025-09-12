@@ -1,11 +1,47 @@
+import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useImageSlider } from '../hooks/useImageSlider'
 
 const ImageSlider = ({ images, alt, className = "", autoSlide = true, slideInterval = 3000 }) => {
-  const { currentIndex, imageArray, goToPrevious, goToNext, goToSlide, hasMultipleImages } = useImageSlider(images, autoSlide, slideInterval)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  // Ensure images is an array and has at least one item
+  const imageArray = Array.isArray(images) && images.length > 0
+    ? images
+    : ['https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&crop=center']
+
+  // Auto slide functionality
+  useEffect(() => {
+    if (!autoSlide || imageArray.length <= 1) return
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === imageArray.length - 1 ? 0 : prevIndex + 1
+      )
+    }, slideInterval)
+
+    return () => clearInterval(interval)
+  }, [autoSlide, imageArray.length, slideInterval])
+
+  const goToPrevious = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setCurrentIndex(currentIndex === 0 ? imageArray.length - 1 : currentIndex - 1)
+  }
+
+  const goToNext = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setCurrentIndex(currentIndex === imageArray.length - 1 ? 0 : currentIndex + 1)
+  }
+
+  const goToSlide = (index, e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setCurrentIndex(index)
+  }
 
   // If only one image, show it without slider controls
-  if (!hasMultipleImages) {
+  if (imageArray.length <= 1) {
     return (
       <img
         src={imageArray[0] || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&crop=center'}
@@ -42,7 +78,7 @@ const ImageSlider = ({ images, alt, className = "", autoSlide = true, slideInter
       </button>
 
       {/* Dots Indicator - Only show if more than 1 image */}
-      {hasMultipleImages && (
+      {imageArray.length > 1 && (
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           {imageArray.map((_, index) => (
             <button
@@ -58,7 +94,7 @@ const ImageSlider = ({ images, alt, className = "", autoSlide = true, slideInter
       )}
 
       {/* Image Counter */}
-      {hasMultipleImages && (
+      {imageArray.length > 1 && (
         <div className="absolute top-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           {currentIndex + 1}/{imageArray.length}
         </div>
