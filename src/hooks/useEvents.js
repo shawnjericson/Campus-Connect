@@ -46,38 +46,6 @@ export const useEvents = () => {
   }, [data])
   const categories = useMemo(() => data?.categories || [], [data])
   const faculties = useMemo(() => data?.faculties || [], [data])
-
-  // Helper function to calculate dynamic event status
-  const calculateEventStatus = useMemo(() => {
-    return (event) => {
-      const now = new Date()
-      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-      const eventDate = new Date(event.date)
-      const eventDateOnly = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate())
-      const registrationDeadline = new Date(event.registrationDeadline)
-      const regDeadlineOnly = new Date(registrationDeadline.getFullYear(), registrationDeadline.getMonth(), registrationDeadline.getDate())
-
-
-
-      // Past event: event date has completely passed
-      if (eventDateOnly < today) {
-        return 'past'
-      }
-
-      // Ongoing event: registration deadline has passed but event hasn't ended yet
-      if (regDeadlineOnly < today && eventDateOnly >= today) {
-        return 'ongoing'
-      }
-
-      // Upcoming event: registration is still open
-      if (regDeadlineOnly >= today) {
-        return 'upcoming'
-      }
-
-      return 'upcoming' // fallback
-    }
-  }, [])
-
   // Helper function to check registration status
   const isRegistrationOpen = useMemo(() => {
     return (event) => {
@@ -90,10 +58,10 @@ export const useEvents = () => {
     }
   }, [])
 
-  // Filter functions with dynamic status calculation
+  // Simple filter functions using status from data
   const getEventsByStatus = useMemo(() => {
-    return (status) => events.filter(event => calculateEventStatus(event) === status)
-  }, [events, calculateEventStatus])
+    return (status) => events.filter(event => event.status === status)
+  }, [events])
 
   const getEventsByCategory = useMemo(() => {
     return (category) => events.filter(event => 
@@ -121,23 +89,7 @@ export const useEvents = () => {
     }
   }, [events])
 
-  const getUpcomingEvents = useMemo(() => {
-    return (limit) => {
-      const upcoming = events
-        .filter(event => calculateEventStatus(event) === 'upcoming')
-        .sort((a, b) => new Date(a.date) - new Date(b.date))
-      return limit ? upcoming.slice(0, limit) : upcoming
-    }
-  }, [events, calculateEventStatus])
 
-  const getPastEvents = useMemo(() => {
-    return (limit) => {
-      const past = events
-        .filter(event => calculateEventStatus(event) === 'past')
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
-      return limit ? past.slice(0, limit) : past
-    }
-  }, [events, calculateEventStatus])
 
   const getEventById = useMemo(() => {
     return (id) => events.find(event => event.id === parseInt(id))
@@ -148,35 +100,26 @@ export const useEvents = () => {
       let filtered = events
 
       if (category && category !== 'all') {
-        filtered = filtered.filter(event => 
-          event.category.toLowerCase() === category.toLowerCase()
-        )
+        filtered = getEventsByCategory(category)
       }
 
       if (faculty && faculty !== 'all') {
-        filtered = filtered.filter(event => 
+        filtered = filtered.filter(event =>
           event.faculty.toLowerCase() === faculty.toLowerCase()
         )
       }
 
       if (status && status !== 'all') {
-        filtered = filtered.filter(event => event.status === status)
+        filtered = getEventsByStatus(status)
       }
 
       if (search) {
-        const lowercaseSearch = search.toLowerCase()
-        filtered = filtered.filter(event =>
-          event.title.toLowerCase().includes(lowercaseSearch) ||
-          event.description.toLowerCase().includes(lowercaseSearch) ||
-          event.organizer.toLowerCase().includes(lowercaseSearch) ||
-          event.location.toLowerCase().includes(lowercaseSearch) ||
-          event.tags?.some(tag => tag.toLowerCase().includes(lowercaseSearch))
-        )
+        filtered = searchEvents(search)
       }
 
       return filtered
     }
-  }, [events])
+  }, [events, getEventsByCategory, getEventsByStatus, searchEvents])
 
   const sortEvents = useMemo(() => {
     return (eventsList, sortBy = 'date', order = 'asc') => {
@@ -222,13 +165,10 @@ export const useEvents = () => {
     getEventsByCategory,
     getEventsByFaculty,
     searchEvents,
-    getUpcomingEvents,
-    getPastEvents,
     getEventById,
     filterEvents,
     sortEvents,
     // Utility functions
-    calculateEventStatus,
     isRegistrationOpen
   }
 }
