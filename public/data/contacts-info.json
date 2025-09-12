@@ -15,15 +15,15 @@
   "faculty": [
     {
       "id": 1,
-      "name": "Dr. Nguyen Van Minh",
-      "designation": "Director & Principal",
-      "department": "Administration",
+      "name": "Mr. Nguyen Ngoc Duy Anh",
+      "designation": "Best Mentor",
+      "department": "CTO",
       "phone": "+84 28 3744 5678",
-      "email": "director@aptech.edu.vn",
+      "email": "anhnnd.hotro@gmail.com",
       "office": "Admin Building, Room 101",
-      "specialization": "Educational Leadership, IT Management",
+      "specialization": "Educational Leadership, CTO",
       "experience": "15+ years",
-      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+      "image": "/images/ContactInfo/NguyenNgocDuyAnh.png"
     },
     {
       "id": 2,
@@ -77,58 +77,63 @@
   "student_coordinators": [
     {
       "id": 1,
-      "name": "Nguyen Minh Quan",
-      "designation": "Student Council President",
-      "department": "Computer Science",
+      "name": "Dang Le Tuan Anh",
+      "designation": "Team Leader",
+      "department": "Software Engineering",
       "year": "Final Year",
-      "phone": "+84 90 123 4567",
-      "email": "president@student.aptech.edu.vn",
-      "responsibilities": ["Overall student coordination", "Event planning", "Student representation"],
-      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+      "phone": "+84 38 3382 869",
+      "email": "shawnjericson@gmail.com",
+      "responsibilities": [
+        "Planning & estimation",
+        "Assignment & unblocking",
+        "Continuous improvement"
+      ],
+      "image": "/images/ContactInfo/TuanAnh.jpg"
     },
     {
       "id": 2,
-      "name": "Tran Thi Mai",
-      "designation": "Technical Events Coordinator",
+      "name": "Nguyen Le Dieu My",
+      "designation": "Team Member",
       "department": "Software Engineering",
-      "year": "Third Year",
-      "phone": "+84 90 234 5678",
-      "email": "tech.events@student.aptech.edu.vn",
-      "responsibilities": ["TechWiz coordination", "Hackathon organization", "Technical workshops"],
-      "image": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=300&h=300&fit=crop&crop=face"
+      "year": "First Year",
+      "phone": "+84869146295",
+      "email": "my.12thmay@gmail.com",
+      "responsibilities": [
+        "Testing",
+        "Writing Documents",
+        "Developing"
+      ],
+      "image": "/images/ContactInfo/My.jpg"
     },
     {
       "id": 3,
-      "name": "Le Van Duc",
-      "designation": "Cultural Events Coordinator",
-      "department": "Information Technology",
-      "year": "Second Year",
-      "phone": "+84 90 345 6789",
-      "email": "cultural@student.aptech.edu.vn",
-      "responsibilities": ["Cultural festival", "Music & arts events", "International programs"],
-      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face"
+      "name": "Pham Hoang Huan",
+      "designation": "Team Member",
+      "department": "Software Engineering",
+      "year": "First Year",
+      "phone": "+84 90 272 243",
+      "email": "ggocomay1@gmail.com",
+      "responsibilities": [
+        "Cultural festival",
+        "Music & arts events",
+        "International programs"
+      ],
+      "image": "/images/ContactInfo/Huan.jpg"
     },
     {
       "id": 4,
-      "name": "Pham Thi Linh",
-      "designation": "Sports Coordinator",
-      "department": "Computer Science",
-      "year": "Third Year",
+      "name": "Tran Tien Huy",
+      "designation": "Team Member",
+      "department": "Software Engineering",
+      "year": "First Year",
       "phone": "+84 90 456 7890",
-      "email": "sports@student.aptech.edu.vn",
-      "responsibilities": ["Sports tournaments", "Inter-college competitions", "Health & wellness programs"],
-      "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face"
-    },
-    {
-      "id": 5,
-      "name": "Hoang Minh Tuan",
-      "designation": "Media & Communications",
-      "department": "Digital Media",
-      "year": "Final Year",
-      "phone": "+84 90 567 8901",
-      "email": "media@student.aptech.edu.vn",
-      "responsibilities": ["Event photography", "Social media management", "Campus communications"],
-      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face"
+      "email": "tt.huy@student.aptech.edu.vn",
+      "responsibilities": [
+        "Tester",
+        "Content Creator",
+        "Designer"
+      ],
+      "image": "/images/ContactInfo/avatar.jpg"
     }
   ],
   "departments": [
