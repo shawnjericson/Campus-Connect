@@ -272,16 +272,10 @@ function AboutPage() {
                 return (
                   <div
                     key={department.id}
-                    className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                    className="bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
                   >
-                    <div className="relative">
-                      <img
-                        src={department.image}
-                        alt={department.name}
-                        className="w-full h-48 object-cover"
-                      />
-                      <div className={`absolute inset-0 bg-gradient-to-r ${colorClasses[department.color]} opacity-80`}></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
+                    <div className={`relative bg-gradient-to-r ${colorClasses[department.color]} p-8`}>
+                      <div className="flex items-center justify-center">
                         <IconComponent className="w-16 h-16 text-white" />
                       </div>
                     </div>
@@ -327,10 +321,7 @@ function AboutPage() {
                         </div>
                       </div>
 
-                      <button className="w-full bg-red-900 text-white py-3 rounded-lg hover:bg-red-800 transition-colors flex items-center justify-center space-x-2">
-                        <span>Learn More</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
+
                     </div>
                   </div>
                 )

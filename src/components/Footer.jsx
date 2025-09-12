@@ -121,7 +121,7 @@ const Footer = () => {
                 <MapPin className="w-4 h-4 text-red-900 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-gray-600 text-sm leading-relaxed">
-                    35/6 đường D5, Phường Thạnh Mỹ Tây<br />
+                    35/6 D5 Street, Thanh My Tay Ward<br />
                     Ho Chi Minh City, Vietnam
                   </p>
                 </div>

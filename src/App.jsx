@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { BookmarkProvider } from './contexts/BookmarkContext'
 import NavigationBar from './components/NavigationBar'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 // Pages
 import HomePage from './pages/HomePage'
@@ -33,6 +34,7 @@ function App() {
   return (
     <BookmarkProvider>
       <div className="min-h-screen bg-gray-50">
+        <ScrollToTop />
         <NavigationBar />
 
         <main className="min-h-screen pt-20">
@@ -54,12 +56,14 @@ function App() {
         <ChatBotWidget
           events={chatbotEvents}
           title="CampusConnect Assistant"
-          greeting="Chào bạn! Mình có thể giúp tìm sự kiện tại CampusConnect. Hãy thử: 'events today', 'events this week', hoặc 'events tag:technical'."
+          greeting="Hello! I can help you find events at CampusConnect. Try: 'events today', 'upcoming technical events', or 'show cultural events'."
           suggestions={[
             "events today",
+            "upcoming events",
+            "technical events",
+            "cultural events",
             "events this week",
-            "events tag:technical",
-            "events tag:cultural"
+            "ongoing events"
           ]}
         />
       </div>

@@ -161,9 +161,20 @@ function interpretQuery(query) {
     return { type: "events", range: explicit, location: extractLocation(lower), tag: extractTag(lower) };
   }
 
-  // default to event search if message mentions events or looks like a search
-  if (/(event|sự kiện|meetup|workshop|webinar|hackathon)/i.test(lower) || lower.startsWith("events")) {
-    return { type: "events", range: null, location: extractLocation(lower), tag: extractTag(lower) };
+  // Enhanced event search keywords - English and Vietnamese
+  const eventKeywords = [
+    // English
+    'event', 'events', 'meetup', 'workshop', 'webinar', 'hackathon', 'conference', 'seminar', 'training',
+    'show', 'find', 'search', 'list', 'upcoming', 'ongoing', 'past', 'technical', 'cultural', 'sport',
+    'technology', 'programming', 'coding', 'career', 'graduation', 'innovation', 'fair', 'ceremony',
+    // Vietnamese
+    'sự kiện', 'hội thảo', 'đào tạo', 'tìm kiếm', 'danh sách', 'sắp tới', 'đang diễn ra', 'đã qua'
+  ];
+
+  const hasEventKeyword = eventKeywords.some(keyword => lower.includes(keyword));
+
+  if (hasEventKeyword || lower.startsWith("events") || lower.includes("what") || lower.includes("when")) {
+    return { type: "events", range: null, location: extractLocation(lower), tag: extractTag(lower), category: extractCategory(lower), status: extractStatus(lower) };
   }
 
   // fallback: small talk or route to OpenAI if available
@@ -182,17 +193,49 @@ function extractLocation(lower) {
   return m2 ? m2[1].trim() : null;
 }
 
+function extractCategory(lower) {
+  const categories = {
+    'technical': ['technical', 'tech', 'technology', 'programming', 'coding', 'it', 'software', 'development'],
+    'cultural': ['cultural', 'culture', 'art', 'music', 'festival', 'celebration'],
+    'sport': ['sport', 'sports', 'athletic', 'competition', 'tournament', 'game'],
+    'academic': ['academic', 'education', 'seminar', 'conference', 'research'],
+    'career': ['career', 'job', 'employment', 'recruitment', 'fair', 'hiring']
+  };
+
+  for (const [category, keywords] of Object.entries(categories)) {
+    if (keywords.some(keyword => lower.includes(keyword))) {
+      return category;
+    }
+  }
+  return null;
+}
+
+function extractStatus(lower) {
+  if (lower.includes('upcoming') || lower.includes('future') || lower.includes('sắp tới')) {
+    return 'upcoming';
+  }
+  if (lower.includes('ongoing') || lower.includes('current') || lower.includes('happening') || lower.includes('đang diễn ra')) {
+    return 'ongoing';
+  }
+  if (lower.includes('past') || lower.includes('previous') || lower.includes('finished') || lower.includes('đã qua')) {
+    return 'past';
+  }
+  return null;
+}
+
 function withinRange(dateISO, range) {
   if (!range) return true;
   const t = new Date(dateISO).getTime();
   return t >= range.from.getTime() && t <= range.to.getTime();
 }
 
-function filterEvents(events, { range, location, tag }) {
+function filterEvents(events, { range, location, tag, category, status }) {
   return events.filter((e) => {
     if (range && !withinRange(e.date, range)) return false;
     if (location && !e.location.toLowerCase().includes(location.toLowerCase())) return false;
     if (tag && !(e.tags || []).map((t) => t.toLowerCase()).includes(tag.toLowerCase())) return false;
+    if (category && e.category && !e.category.toLowerCase().includes(category.toLowerCase())) return false;
+    if (status && e.status && e.status.toLowerCase() !== status.toLowerCase()) return false;
     return true;
   });
 }

@@ -31,10 +31,7 @@ function EventDetailPage() {
   const { getEventById, loading, error, retry } = useEvents()
   const event = getEventById(parseInt(id))
 
-  useEffect(() => {
-    // Scroll to top when component mounts
-    window.scrollTo(0, 0)
-  }, [])
+
 
   const handleRegister = () => {
     setShowRegisterModal(true)
@@ -437,8 +434,15 @@ function EventDetailPage() {
 
       {/* Registration Modal */}
       {showRegisterModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 max-h-[90vh] overflow-y-auto">
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setShowRegisterModal(false)
+            }
+          }}
+        >
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-2xl font-bold text-gray-900">Event Registration</h3>
               <button
@@ -585,8 +589,15 @@ function EventDetailPage() {
 
       {/* Success Modal with QR Code */}
       {showSuccessModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setShowSuccessModal(false)
+            }
+          }}
+        >
+          <div className="bg-white rounded-xl shadow-2xl max-w-sm w-full p-6">
             <div className="text-center">
               {/* Success Icon */}
               <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">

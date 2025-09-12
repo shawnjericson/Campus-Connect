@@ -57,7 +57,14 @@ function GalleryPage() {
 
   // Image Modal Component
   const ImageModal = ({ image, onClose }) => (
-    <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
+    <div
+      className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose()
+        }
+      }}
+    >
       <div className="relative max-w-4xl max-h-full">
         <button
           onClick={onClose}

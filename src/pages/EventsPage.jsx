@@ -257,6 +257,7 @@ function EventsPage() {
                 >
                   <option value="all">All Events</option>
                   <option value="upcoming">Upcoming</option>
+                  <option value="ongoing">Ongoing</option>
                   <option value="past">Past Events</option>
                 </select>
               </div>
