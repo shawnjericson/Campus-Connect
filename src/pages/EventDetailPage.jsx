@@ -16,6 +16,7 @@ function EventDetailPage() {
   const navigate = useNavigate()
   const [showRegisterModal, setShowRegisterModal] = useState(false)
   const [registrationStatus, setRegistrationStatus] = useState(null)
+  const [showShareMenu, setShowShareMenu] = useState(false)
   const [registrationForm, setRegistrationForm] = useState({
     fullName: '',
     email: '',
@@ -94,6 +95,70 @@ function EventDetailPage() {
     return true
   }
 
+  // Share functionality
+  const handleShare = async (platform) => {
+    const eventUrl = window.location.href
+    const eventTitle = event.title
+    const eventDate = new Date(event.date).toLocaleDateString()
+    const shareText = `Check out this event: ${eventTitle} on ${eventDate}`
+
+    switch (platform) {
+      case 'native':
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: eventTitle,
+              text: shareText,
+              url: eventUrl
+            })
+          } catch (error) {
+            console.log('Share cancelled')
+          }
+        } else {
+          handleShare('copy')
+        }
+        break
+
+      case 'facebook':
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(eventUrl)}`, '_blank')
+        break
+
+      case 'twitter':
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(eventUrl)}`, '_blank')
+        break
+
+      case 'linkedin':
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(eventUrl)}`, '_blank')
+        break
+
+      case 'whatsapp':
+        window.open(`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + eventUrl)}`, '_blank')
+        break
+
+      case 'email':
+        window.open(`mailto:?subject=${encodeURIComponent(eventTitle)}&body=${encodeURIComponent(shareText + '\n\n' + eventUrl)}`)
+        break
+
+      case 'copy':
+        try {
+          await navigator.clipboard.writeText(eventUrl)
+          alert('Event link copied to clipboard!')
+        } catch (error) {
+          // Fallback for older browsers
+          const textArea = document.createElement('textarea')
+          textArea.value = eventUrl
+          document.body.appendChild(textArea)
+          textArea.select()
+          document.execCommand('copy')
+          document.body.removeChild(textArea)
+          alert('Event link copied to clipboard!')
+        }
+        break
+    }
+
+    setShowShareMenu(false)
+  }
+
   const confirmRegistration = async () => {
     const errors = validateForm()
     setFormErrors(errors)
@@ -145,6 +210,20 @@ function EventDetailPage() {
       }))
     }
   }
+
+  // Close share menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showShareMenu && !event.target.closest('.share-menu-container')) {
+        setShowShareMenu(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showShareMenu])
 
   const downloadQRCode = () => {
     // Create QR code URL (using a QR code service)
@@ -422,10 +501,71 @@ function EventDetailPage() {
                   />
                 )}
                 
-                <button className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 px-4 rounded-lg transition-colors flex items-center justify-center">
-                  <Share2 className="w-4 h-4 mr-2" />
-                  Share
-                </button>
+                <div className="relative flex-1 share-menu-container">
+                  <button
+                    onClick={() => setShowShareMenu(!showShareMenu)}
+                    className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 px-4 rounded-lg transition-colors flex items-center justify-center"
+                  >
+                    <Share2 className="w-4 h-4 mr-2" />
+                    Share
+                  </button>
+
+                  {/* Share Menu */}
+                  {showShareMenu && (
+                    <div className="absolute bottom-full mb-2 left-0 right-0 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                      <button
+                        onClick={() => handleShare('native')}
+                        className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                      >
+                        <Share2 className="w-4 h-4 mr-3 text-gray-500" />
+                        Share via System
+                      </button>
+                      <button
+                        onClick={() => handleShare('copy')}
+                        className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                      >
+                        <Download className="w-4 h-4 mr-3 text-gray-500" />
+                        Copy Link
+                      </button>
+                      <hr className="my-1" />
+                      <button
+                        onClick={() => handleShare('facebook')}
+                        className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                      >
+                        <div className="w-4 h-4 mr-3 bg-blue-600 rounded"></div>
+                        Facebook
+                      </button>
+                      <button
+                        onClick={() => handleShare('twitter')}
+                        className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                      >
+                        <div className="w-4 h-4 mr-3 bg-blue-400 rounded"></div>
+                        Twitter
+                      </button>
+                      <button
+                        onClick={() => handleShare('linkedin')}
+                        className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                      >
+                        <div className="w-4 h-4 mr-3 bg-blue-700 rounded"></div>
+                        LinkedIn
+                      </button>
+                      <button
+                        onClick={() => handleShare('whatsapp')}
+                        className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                      >
+                        <div className="w-4 h-4 mr-3 bg-green-500 rounded"></div>
+                        WhatsApp
+                      </button>
+                      <button
+                        onClick={() => handleShare('email')}
+                        className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                      >
+                        <Mail className="w-4 h-4 mr-3 text-gray-500" />
+                        Email
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

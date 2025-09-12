@@ -37,8 +37,7 @@ const Footer = () => {
                     .w{ fill:#760009; font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,Arial; }`}
                   </style>
                   <text x="60" y="190" className="w" fontSize="200" fontWeight="700">Campus </text>
-                  <text x="880" y="190" className="w" fontSize="200" fontWeight="800">Connect</text>
-                  <path d="M60 210 C 360 240, 540 240, 625 210 S 980 170, 1820 200" fill="none" stroke="#760009" strokeWidth="18" strokeLinecap="round" />
+                  <text x="890" y="190" className="w" fontSize="200" fontWeight="800">Connect</text>
                 </svg>
               </div>
               <p className="text-gray-600 text-sm leading-relaxed">

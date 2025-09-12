@@ -131,7 +131,33 @@ function AboutPage() {
           <div className="space-y-16">
             {/* Mission, Vision, Values with Images */}
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-
+              {/* Left side - Images */}
+              <div className="space-y-6">
+                <div className="relative">
+                  <img
+                    src="/images/Aptech1.png"
+                    alt="Aptech Campus"
+                    className="w-full h-64 object-cover rounded-xl shadow-lg"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-xl"></div>
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h4 className="font-bold text-lg">Modern Learning Environment</h4>
+                    <p className="text-sm opacity-90">State-of-the-art facilities for IT education</p>
+                  </div>
+                </div>
+                <div className="relative">
+                  <img
+                    src="/images/Aptech2.png"
+                    alt="Aptech Students"
+                    className="w-full h-64 object-cover rounded-xl shadow-lg"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-xl"></div>
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h4 className="font-bold text-lg">Future Tech Leaders</h4>
+                    <p className="text-sm opacity-90">Empowering students for successful careers</p>
+                  </div>
+                </div>
+              </div>
 
               {/* Right side - Mission, Vision, Values */}
               <div className="space-y-8">
@@ -248,7 +274,6 @@ function AboutPage() {
                     key={department.id}
                     className="bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
                   >
-
                     <div className="p-8">
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-2xl font-bold text-gray-900">{department.name}</h3>
@@ -352,7 +377,12 @@ function AboutPage() {
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {category.events && category.events.map((event, eventIndex) => (
-                        <div key={eventIndex} className="border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                        <div key={eventIndex} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+                          <img
+                            src={event.image}
+                            alt={event.name}
+                            className="w-full h-40 object-cover"
+                          />
                           <div className="p-6">
                             <div className="flex items-center justify-between mb-3">
                               <h4 className="font-bold text-gray-900">{event.name}</h4>

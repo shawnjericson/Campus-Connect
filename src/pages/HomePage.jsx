@@ -225,12 +225,11 @@ function HomePage() {
                 <div className="w-2 h-2 bg-red-900 rounded-full animate-pulse"></div>
                 <span className="text-red-900 text-xs md:text-sm font-medium tracking-wider">{welcomeMessage.badge}</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-                <span className="text-red-900">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-relaxed">
+                <span className="text-red-900 block mb-2">
                   {welcomeMessage.title}
                 </span>
-                <br />
-                <span className="text-gray-900">{welcomeMessage.subtitle}</span>
+                <span className="text-gray-900 block">{welcomeMessage.subtitle}</span>
               </h1>
             </div>
           </div>

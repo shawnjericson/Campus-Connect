@@ -41,15 +41,12 @@ function NavigationBar() {
           {/* Logo - CampusConnect */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
-              <div className="w-16 h-16 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-orange-500/25 transition-all duration-300 group-hover:scale-105 border border-orange-200" style={{ backgroundColor: '#FFF5E9' }}>
+              <div className="w-24 h-16 rounded-md flex items-center justify-center group-hover:shadow-orange-500/25 transition-all duration-300 group-hover:scale-105 " style={{ backgroundColor: '#ffffff' }}>
                 <img
-                  src="/images/CampusconnectLogo.png"
+                  src="/images/Campusconnect1.jpg"
                   alt="CampusConnect Logo"
                   className="w-24 h-24 object-contain"
                 />
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full flex items-center justify-center animate-pulse">
-                <Zap className="w-2 h-2 text-white" />
               </div>
             </div>
             <div className="flex flex-col">
@@ -60,8 +57,7 @@ function NavigationBar() {
                     .w{ fill:#760009; font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,Arial; }`}
                   </style>
                   <text x="60" y="190" className="w" fontSize="200" fontWeight="700">Campus </text>
-                  <text x="880" y="190" className="w" fontSize="200" fontWeight="800">Connect</text>
-                  <path d="M60 210 C 360 240, 540 240, 625 210 S 980 170, 1820 200" fill="none" stroke="#760009" strokeWidth="18" strokeLinecap="round"/>
+                  <text x="890" y="190" className="w" fontSize="200" fontWeight="800">Connect</text>
                 </svg>
               </div>
             </div>

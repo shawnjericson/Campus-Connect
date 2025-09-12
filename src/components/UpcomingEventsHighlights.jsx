@@ -171,7 +171,7 @@ const UpcomingEventsHighlights = () => {
                   to={`/events/${displayEvents[currentSlide]?.id}`}
                   className="inline-flex items-center gap-2 bg-red-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-red-800 transition-all duration-300 transform hover:scale-105"
                 >
-                  <span>Learn More</span>
+                  <span>View Details</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
