@@ -153,19 +153,19 @@ const Footer = () => {
               <h5 className="text-sm font-semibold text-gray-900 mb-2">Campus Stats</h5>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div className="text-center">
-                  <div className="text-red-900 font-bold">500+</div>
+                  <div className="text-red-600 font-bold">500+</div>
                   <div className="text-gray-600">Students</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-red-900 font-bold">50+</div>
+                  <div className="text-red-600 font-bold">50+</div>
                   <div className="text-gray-600">Events/Year</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-red-900 font-bold">20+</div>
+                  <div className="text-red-600 font-bold">20+</div>
                   <div className="text-gray-600">Programs</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-red-900 font-bold">15+</div>
+                  <div className="text-red-600 font-bold">15+</div>
                   <div className="text-gray-600">Years</div>
                 </div>
               </div>
@@ -187,8 +187,8 @@ const Footer = () => {
             <div className="text-center md:text-right">
               <p className="text-gray-600 text-sm flex items-center justify-center md:justify-end">
                 Made with
-                <Heart className="w-3 h-3 text-red-900 mx-1" />
-                by <span className="font-semibold text-red-900 ml-1">Concurrency</span>
+                <Heart className="w-3 h-3 text-red-600 mx-1" />
+                by <span className="font-semibold text-red-600 ml-1">Concurrency</span>
               </p>
             </div>
           </div>

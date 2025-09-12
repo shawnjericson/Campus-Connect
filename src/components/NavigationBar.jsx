@@ -76,15 +76,15 @@ function NavigationBar() {
                   to={item.href}
                   className={`group relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                     isActive(item.href)
-                      ? 'text-red-900 bg-red-50 border border-red-200 shadow-sm'
-                      : 'text-gray-700 hover:text-red-900 hover:bg-gray-50 border border-transparent hover:border-gray-200'
+                      ? 'text-red-600 bg-red-50 border border-red-200 shadow-sm'
+                      : 'text-gray-700 hover:text-red-600 hover:bg-gray-50 border border-transparent hover:border-gray-200'
                   }`}
                 >
                   <div className="flex items-center">
                     <span>{item.name}</span>
                   </div>
                   {isActive(item.href) && (
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-red-900 rounded-full"></div>
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-red-600 rounded-full"></div>
                   )}
                 </Link>
               )
@@ -103,7 +103,7 @@ function NavigationBar() {
             <BookmarkIndicator />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-xl bg-gray-100 border border-gray-200 text-gray-600 hover:text-red-900 hover:border-red-300 hover:bg-red-50 focus:outline-none transition-all duration-300"
+              className="p-2 rounded-xl bg-gray-100 border border-gray-200 text-gray-600 hover:text-red-600 hover:border-red-300 hover:bg-red-50 focus:outline-none transition-all duration-300"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -122,8 +122,8 @@ function NavigationBar() {
                     to={item.href}
                     className={`flex items-center space-x-3 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
                       isActive(item.href)
-                        ? 'text-red-900 bg-red-50 border border-red-200 shadow-sm'
-                        : 'text-gray-700 hover:text-red-900 hover:bg-gray-50 border border-transparent hover:border-gray-200'
+                        ? 'text-red-600 bg-red-50 border border-red-200 shadow-sm'
+                        : 'text-gray-700 hover:text-red-600 hover:bg-gray-50 border border-transparent hover:border-gray-200'
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
